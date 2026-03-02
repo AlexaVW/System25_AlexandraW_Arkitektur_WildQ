@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using Domain.Entities.Models.ApiModels;
+
+namespace WildQ.Application.Interfaces
+{
+    public interface ISearchAnimalService
+    {
+        Task<List<SearchAnimal>> GetAnimalsAsync(string animalName);
+    }
+}
