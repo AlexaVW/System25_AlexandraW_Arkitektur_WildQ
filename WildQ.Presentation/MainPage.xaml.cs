@@ -1,4 +1,5 @@
-﻿using WildQ.Application.Interfaces;
+﻿using Domain.Entities.Models.MongoDbModels;
+using WildQ.Application.Interfaces;
 using WildQ.Application.Services;
 
 namespace WildQ.Presentation
@@ -19,6 +20,13 @@ namespace WildQ.Presentation
             CollectionViewAnimals.ItemsSource = await _animalService.GetAllAnimalsAsync();
 
             //CollectionViewAnimals.ItemsSource = await _searchAnimalService.GetAnimalsAsync("lion");
+        }
+
+        private async void OnClickedAddAnimal(object sender, EventArgs e)
+        {
+            await _animalService.CreateAnimalAsync(new Animal() { Id = Guid.NewGuid().ToString(), AnimalName = EntryAnimalName.Text, ImageSource = EntryImageUrl.Text});
+            EntryAnimalName.Text = "";
+            EntryImageUrl.Text = "";
         }
     }
 }

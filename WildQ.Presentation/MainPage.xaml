@@ -28,6 +28,18 @@
                 </CollectionView.ItemTemplate>
                 
             </CollectionView>
+
+            <Entry
+                x:Name="EntryAnimalName"
+                Placeholder="Enter Animal Name"/>
+
+            <Entry
+                x:Name="EntryImageUrl"
+                Placeholder="Enter ImageUrl"/>
+
+            <Button
+                Text="Add animal"
+                Clicked="OnClickedAddAnimal"/>
         </VerticalStackLayout>
     </ScrollView>
 
