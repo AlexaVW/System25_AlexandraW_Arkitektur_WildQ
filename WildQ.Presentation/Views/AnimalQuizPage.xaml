@@ -22,63 +22,33 @@
 
 
             <Label 
-        Text="{Binding AnimalName}"
+        Text="{Binding Animal.AnimalName}"
         VerticalOptions="Center" 
         HorizontalOptions="Center"
         Style="{StaticResource Headline}"
         TextColor="Wheat"/>
 
-            <Image Source="{Binding ImageSource}"
+            <Image Source="{Binding Animal.ImageSource}"
         HeightRequest="300"
         HorizontalOptions="Center"/>
 
-            <CollectionView ItemsSource="{Binding Questions}">
+            <Label
+                Text="{Binding CurrentQuestion.QuestionText}"
+                TextColor="Black"
+                FontSize="20"
+                HorizontalTextAlignment="Center"/>
+
+            <CollectionView ItemsSource ="{Binding CurrentQuestion.Answers}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <VerticalStackLayout Padding="10">
-                            <Border 
-                        Padding="10"
-                        Margin="15"
-                        Stroke="Gray"
-                        StrokeThickness="2"
-                        StrokeShape="RoundRectangle 10"
-                        BackgroundColor="Wheat">
-                                <Border.Shadow>
-                                    <Shadow
-                                Radius="5"
-                                Opacity="0.6"/>
-                                </Border.Shadow>
-                                <Label
-                            Text="{Binding QuestionText}"
-                            
-                            HorizontalTextAlignment="Center"
-                            TextColor="Black"
-                            FontSize="20"
-                            />
-                            </Border>
-
-
-
-                            <CollectionView ItemsSource="{Binding Answers}">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <VerticalStackLayout Padding="15">
-                                            <Button
-                                        Text="{Binding AnswerText}"
-                                        BackgroundColor="Wheat"
-                                        TextColor="DarkOliveGreen"/>
-                                        </VerticalStackLayout>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
-
-                        </VerticalStackLayout>
+                        <Button
+                            Text="{Binding AnswerText}"
+                            BackgroundColor="Wheat"
+                            TextColor="DarkOliveGreen"
+                            Clicked="OnClickedAnswer"/>
                     </DataTemplate>
-
                 </CollectionView.ItemTemplate>
-
             </CollectionView>
-
 
         </VerticalStackLayout>
     </ScrollView>

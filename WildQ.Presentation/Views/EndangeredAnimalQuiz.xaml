@@ -18,7 +18,7 @@
             BackgroundColor="Wheat"
             TextColor="DarkOliveGreen"/>
 
-            <ListView ItemsSource="{Binding Animals}" ItemSelected="OnListViewItemSelected">
+            <ListView ItemsSource="{Binding Animals}" ItemSelected="OnListViewItemSelected"> 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

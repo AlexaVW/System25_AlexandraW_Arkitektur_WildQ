@@ -24,6 +24,8 @@ public partial class QuizAdminPage : ContentPage
             AnimalNameEntry.Text = animal.AnimalName; //Takes what's in AnimalName and puts it in EntryText
             ImageSourceEntry.Text = animal.ImageSource;
             SaveButton.Text = "Update Animal"; //New text on the button
+
+            //QuestionTextEntry.Text = animal.Questions;
         }
     }
 

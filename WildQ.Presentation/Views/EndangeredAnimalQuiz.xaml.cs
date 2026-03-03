@@ -19,8 +19,7 @@ public partial class EndangeredAnimalQuiz : ContentPage
         if (animal != null)
         {
             // Binding AnimalQuizPage with the animal that is clicked on
-            var page = new AnimalQuizPage();
-            page.BindingContext = animal;
+            var page = new AnimalQuizPage(animal);
             await Navigation.PushAsync(page);
         }
     }

@@ -33,7 +33,6 @@ namespace WildQ.Presentation.ViewModels
         {
             _animalService = new AnimalService();
             LoadAnimalsInQuizAsync();
-
             
         }
 
