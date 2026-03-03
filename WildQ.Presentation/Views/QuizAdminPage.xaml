@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WildQ.Presentation.Views.QuizAdminPage"
+             Title="QuizAdminPage">
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="DarkOliveGreen"
+                     Spacing="10">
+            <Label 
+        Text="Add Animal"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center"
+        TextColor="Wheat"
+        Style="{StaticResource SubHeadline}"/>
+
+            <Entry 
+        x:Name="AnimalNameEntry"
+        Placeholder="Enter Animal Name"
+        BackgroundColor="Wheat"
+        TextColor="Gray"
+        />
+            <Entry
+        x:Name="ImageSourceEntry"
+        Placeholder="Enter Image Source"
+        BackgroundColor="Wheat"
+        TextColor="Gray"/>
+            <Button
+        x:Name="SaveButton"
+        Text="Save Animal"
+        Clicked="OnClickedSaveButton"
+        BackgroundColor="Wheat"
+        TextColor="DarkOliveGreen"/>
+
+            <Label 
+        Text="Add Question"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center"
+        TextColor="Wheat"
+        Style="{StaticResource SubHeadline}"/>
+
+            <Entry
+        x:Name="QuestionTextEntry"
+        Placeholder="Enter Question Text"
+        BackgroundColor="Wheat"
+        TextColor="Gray"/>
+
+            <Label 
+        Text="Add Answers"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center"
+        TextColor="Wheat"
+        Style="{StaticResource SubHeadline}"/>
+
+            <Entry
+        x:Name="AnswerText1Entry"
+        Placeholder="Enter Answer 1 (Correct answer)"
+        BackgroundColor="Wheat"
+        TextColor="Gray"/>
+
+            <Entry
+        x:Name="AnswerText2Entry"
+        Placeholder="Enter Answer 2"
+        BackgroundColor="Wheat"
+        TextColor="Gray"/>
+
+            <Entry
+        x:Name="AnswerText3Entry"
+        Placeholder="Enter Answer 3"
+        BackgroundColor="Wheat"
+        TextColor="Gray"/>
+
+            <Entry
+        x:Name="AnswerText4Entry"
+        Placeholder="Enter Answer 4"
+        BackgroundColor="Wheat"
+        TextColor="Gray"/>
+
+
+            <Button
+        x:Name="SaveQuestionButton"
+        Text="Save Question"
+        Clicked="OnClickedSaveQuestionButton"
+        BackgroundColor="Wheat"
+        TextColor="DarkOliveGreen"/>
+
+
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

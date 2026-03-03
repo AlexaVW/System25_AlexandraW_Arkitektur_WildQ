@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities.Interfaces;
 using Domain.Entities.Models.ApiModels;
+using WildQ.Infrastructure.Data;
 
 namespace WildQ.Infrastructure.Repositories
 {
     public class SearchAnimalRepositoryAPI : ISearchAnimalRepository
     {
-        public Task<List<SearchAnimal>> GetAsync(string animalName)
+        public async Task<List<SearchAnimal>> GetAsync(string animalName)
         {
-            throw new NotImplementedException();
+            return await APISearchAnimal.GetAnimalsAsync(animalName);
         }
     }
 }

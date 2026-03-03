@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WildQ.Presentation.Views.SearchAnimalPage"
+             Title="SearchAnimalPage">
+    <ScrollView>
+        <VerticalStackLayout
+        BackgroundColor="DarkOliveGreen">
+            <Label 
+            Text="Search for an animal and get information about it"
+            TextColor="Wheat"
+            Style="{StaticResource SubHeadline}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+            <HorizontalStackLayout>
+
+                <Entry
+                x:Name="entryAnimalName"
+                Text="{Binding AnimalNameInput}"
+                Placeholder="Enter an animal spieces"
+                PlaceholderColor="Grey"
+                BackgroundColor="Wheat"
+                WidthRequest="200"/>
+
+                <Button 
+                Command ="{Binding GetAnimal}"
+                Text="Search for animal"
+                BackgroundColor="Wheat"
+                TextColor="Grey"
+                />
+
+
+            </HorizontalStackLayout>
+
+            <CollectionView ItemsSource="{Binding Animals}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout BackgroundColor="Wheat" Padding="10" Margin="0,0,0,12">
+                            <Label 
+                                Text="{Binding Name}"
+                                Style="{StaticResource SubHeadline}"
+                                HorizontalOptions="Start"
+                                FontSize="20"/>
+                            <Label
+                                Text="{Binding Characteristics.Name_of_young,
+                                StringFormat='Name of Young: {0}'}"/>
+                            <Label
+                                Text="{Binding Characteristics.Group_behavior,
+                                StringFormat='Group Behavior: {0}'}"/>
+                            <Label
+                                Text="{Binding Characteristics.Estimated_population_size,
+                                StringFormat='Estimated Population Size: {0}'}"/>
+                            <Label
+                                Text="{Binding Characteristics.Gestation_period,
+                                StringFormat='Gestation Period: {0}'}"/>
+                            <Label
+                                Text="{Binding Characteristics.Litter_size,
+                                StringFormat='Litter Size: {0}'}"/>
+                            <Label
+                                Text="{Binding Characteristics.Diet,
+                                StringFormat='Diet: {0}'}"/>
+                            <Label
+                                Text="{Binding Characteristics.Location,
+                                StringFormat='Location: {0}'}"/>
+                            <Label
+                                Text="{Binding Characteristics.Top_speed,
+                                StringFormat='Top Speed: {0}'}"/>
+                            <Label
+                                Text="{Binding Characteristics.Lifespan,
+                                StringFormat='Lifespan: {0}'}"/>
+                            <Label
+                                Text="{Binding Characteristics.Weight,
+                                StringFormat='Weight: {0}'}"/>
+                            <Label
+                                Text="{Binding Characteristics.Height,
+                                StringFormat='Height: {0}'}"/>
+                            <Label
+                                Text="{Binding Characteristics.Age_of_sexual_maturity,
+                                StringFormat='Age of Sexual Maturity: {0}'}"/>
+
+
+
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

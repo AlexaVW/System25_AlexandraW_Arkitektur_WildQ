@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WildQ.Presentation.Views.EndangeredAnimalQuiz"
+             Title="EndangeredAnimalQuiz">
+    <ScrollView BackgroundColor="DarkOliveGreen">
+        <VerticalStackLayout>
+            <Label 
+            Text="Endangered Animals Quiz"
+            TextColor="Wheat"
+            Style="{StaticResource SubHeadline}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+            <Button 
+            Text="Add Quiz"
+            Clicked="OnClickedGoAdminQuizPage"
+            BackgroundColor="Wheat"
+            TextColor="DarkOliveGreen"/>
+
+            <ListView ItemsSource="{Binding Animals}" ItemSelected="OnListViewItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10"
+                              RowDefinitions="Auto, *"
+                              ColumnDefinitions="200, *"
+                              ColumnSpacing="20"
+                              HorizontalOptions="Center"
+                              VerticalOptions="Center">
+
+                                <Label Grid.Column="1"
+                                Text="{Binding AnimalName}"
+                                TextColor="Wheat"
+                                FontSize="30"/>
+                                <Image Grid.RowSpan="2"
+                                Source="{Binding ImageSource}"
+                                HeightRequest="150"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

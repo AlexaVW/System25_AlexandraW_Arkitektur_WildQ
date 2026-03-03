@@ -15,18 +15,23 @@ namespace WildQ.Presentation
             _searchAnimalService = searchAnimalService;
         }
 
-        private async void ClickedOnGetData(object sender, EventArgs e)
-        {
-            CollectionViewAnimals.ItemsSource = await _animalService.GetAllAnimalsAsync();
+        
 
-            //CollectionViewAnimals.ItemsSource = await _searchAnimalService.GetAnimalsAsync("lion");
+        
+
+        private async void OnClickedSearchAnimal(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Views.SearchAnimalPage());
         }
 
-        private async void OnClickedAddAnimal(object sender, EventArgs e)
+        private async void OnClickedEndangeredAnimalQuiz(object sender, EventArgs e)
         {
-            await _animalService.CreateAnimalAsync(new Animal() { Id = Guid.NewGuid().ToString(), AnimalName = EntryAnimalName.Text, ImageSource = EntryImageUrl.Text});
-            EntryAnimalName.Text = "";
-            EntryImageUrl.Text = "";
+            await Navigation.PushAsync(new Views.EndangeredAnimalQuiz());
+        }
+
+        private async void OnClickedProfile(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Views.ProfilePage());
         }
     }
 }

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WildQ.Presentation.MainPage">
+
+    <ScrollView BackgroundColor="DarkOliveGreen">
+        <VerticalStackLayout
+        Margin="0,20"
+        Spacing="25"
+        HorizontalOptions="Center">
+            <Image
+            Source="wildq_transparent.png"
+            HeightRequest="185"
+            Aspect="AspectFit"/>
+
+            <HorizontalStackLayout
+            Spacing="10">
+
+                <Button
+                Text="Endangered Animals Quiz"
+                Clicked="OnClickedEndangeredAnimalQuiz"
+                Style="{StaticResource NavButtonBrown}"/>
+
+                <Button
+                Text="Search Animal"
+                Clicked="OnClickedSearchAnimal"
+                Style="{StaticResource NavButtonBrown}"/>
+
+                <Button
+                Text="Profile"
+                Clicked="OnClickedProfile"
+                Style="{StaticResource NavButtonBrown}"/>
+
+            </HorizontalStackLayout>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

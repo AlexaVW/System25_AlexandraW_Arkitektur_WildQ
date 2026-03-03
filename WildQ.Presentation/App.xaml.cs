@@ -5,6 +5,8 @@
         public App()
         {
             InitializeComponent();
+
+            Microsoft.Maui.Controls.Application.Current.UserAppTheme = AppTheme.Light; // Forcing lightmode
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
