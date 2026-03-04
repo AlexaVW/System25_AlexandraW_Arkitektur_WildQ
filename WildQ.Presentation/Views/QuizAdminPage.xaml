@@ -7,7 +7,7 @@
         <VerticalStackLayout BackgroundColor="DarkOliveGreen"
                      Spacing="10">
             <Label 
-        Text="Add Animal"
+        Text="Animal"
         VerticalOptions="Center" 
         HorizontalOptions="Center"
         TextColor="Wheat"
@@ -31,8 +31,20 @@
         BackgroundColor="Wheat"
         TextColor="DarkOliveGreen"/>
 
+            <CollectionView ItemsSource="{Binding Questions}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Label
+                                Text="{Binding QuestionText}"
+                                BackgroundColor="Wheat"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
             <Label 
-        Text="Add Question"
+        Text="Question"
         VerticalOptions="Center" 
         HorizontalOptions="Center"
         TextColor="Wheat"
@@ -45,7 +57,7 @@
         TextColor="Gray"/>
 
             <Label 
-        Text="Add Answers"
+        Text="Answers"
         VerticalOptions="Center" 
         HorizontalOptions="Center"
         TextColor="Wheat"

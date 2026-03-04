@@ -11,6 +11,8 @@ public partial class QuizAdminPage : ContentPage
 
     IAnimalService _animalService;
     public Animal Animal { get; set; }
+
+    public List<Question> Questions { get; set; }
     public QuizAdminPage(Animal animal)// Can choose to not send in anything or choose to send in an animal to edit.
     {
 		InitializeComponent();
@@ -21,11 +23,13 @@ public partial class QuizAdminPage : ContentPage
 
         if (animal != null) //If Update Animal 
         {
+            BindingContext = Animal; //To print out the questions
+
             AnimalNameEntry.Text = animal.AnimalName; //Takes what's in AnimalName and puts it in EntryText
             ImageSourceEntry.Text = animal.ImageSource;
             SaveButton.Text = "Update Animal"; //New text on the button
 
-            //QuestionTextEntry.Text = animal.Questions;
+            
         }
     }
 
