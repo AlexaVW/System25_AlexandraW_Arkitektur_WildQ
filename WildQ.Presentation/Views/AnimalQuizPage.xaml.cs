@@ -31,7 +31,7 @@ public partial class AnimalQuizPage : ContentPage
         _animalService = new AnimalService(); 
         
         Animal = animal; 
-        _animal = animal;
+        _animal = animal; //Telling that the animal sent in to the construct is this animal
 
         // To start
         if(Animal != null && Animal.Questions.Count > 0) //If Animal exists and has more than 0 questions
@@ -75,14 +75,14 @@ public partial class AnimalQuizPage : ContentPage
 
     private async void OnClickedUpdateAnimal(object sender, EventArgs e)
     {
-        //var animal = ((Button)sender).BindingContext as Animal;
+        //var animal = ((Button)sender).BindingContext as Animal; //Dont need this when sending in private animal. 
         await Navigation.PushAsync(new QuizAdminPage(_animal));
     }
 
     private async void OnClickedDeleteAnimal(object sender, EventArgs e)
     {
-        var animal = ((Button)sender).BindingContext as Animal;
-        await _animalService.DeleteAnimalAsync(animal);
+        //var animal = ((Button)sender).BindingContext as Animal; //Dont need this when sending in private animal
+        await _animalService.DeleteAnimalAsync(_animal);
         await Navigation.PushAsync(new EndangeredAnimalQuiz());
 
     }
