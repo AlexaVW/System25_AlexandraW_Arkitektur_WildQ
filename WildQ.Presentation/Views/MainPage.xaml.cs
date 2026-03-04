@@ -16,9 +16,6 @@ namespace WildQ.Presentation
         }
 
         
-
-        
-
         private async void OnClickedSearchAnimal(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Views.SearchAnimalPage());

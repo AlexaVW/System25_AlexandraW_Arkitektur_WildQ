@@ -22,7 +22,7 @@ public partial class AnimalQuizPage : ContentPage
         set
         {
             _currentQuestion = value;
-            OnPropertyChanged(nameof(CurrentQuestion)); //If it's the next question - property is changed it tells the UI to update
+            OnPropertyChanged(nameof(CurrentQuestion)); //If it's the next question - property is changed and it tells the UI to update
         }
     }
     public AnimalQuizPage(Animal animal) // Constructor

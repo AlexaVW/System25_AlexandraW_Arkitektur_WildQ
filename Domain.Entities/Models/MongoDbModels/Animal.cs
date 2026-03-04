@@ -13,6 +13,6 @@ namespace Domain.Entities.Models.MongoDbModels
         public string ImageSource { get; set; }
 
         //One animal has many questions
-        public List<Question> Questions { get; set; } = new List<Question>();
+        public List<Question> Questions { get; set; } = new List<Question>(); //Observable collection?
     }
 }

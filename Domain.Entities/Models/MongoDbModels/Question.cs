@@ -8,7 +8,6 @@ namespace Domain.Entities.Models.MongoDbModels
 {
     public class Question
     {
-
         public string Id { get; set; }
         public string QuestionText { get; set; }
         //public string AnimalId { get; set; }
@@ -16,7 +15,6 @@ namespace Domain.Entities.Models.MongoDbModels
         // One question belongs to one animal
 
         // One question has many answers
-        public List<Answer> Answers { get; set; } = new List<Answer>();
-
+        public List<Answer> Answers { get; set; } = new List<Answer>(); //Observable collection?
     }
 }
