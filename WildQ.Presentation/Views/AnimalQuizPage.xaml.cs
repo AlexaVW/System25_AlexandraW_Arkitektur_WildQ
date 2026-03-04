@@ -75,8 +75,8 @@ public partial class AnimalQuizPage : ContentPage
 
     private async void OnClickedUpdateAnimal(object sender, EventArgs e)
     {
-        var animal = ((Button)sender).BindingContext as Animal;
-        await Navigation.PushAsync(new QuizAdminPage(animal));
+        //var animal = ((Button)sender).BindingContext as Animal;
+        await Navigation.PushAsync(new QuizAdminPage(_animal));
     }
 
     private async void OnClickedDeleteAnimal(object sender, EventArgs e)
