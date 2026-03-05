@@ -31,7 +31,10 @@
         BackgroundColor="Wheat"
         TextColor="DarkOliveGreen"/>
 
-            <CollectionView ItemsSource="{Binding Questions}">
+            <CollectionView ItemsSource="{Binding Questions}" SelectionChanged="OnSelectedChangedQuestion" SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <VerticalStackLayout>

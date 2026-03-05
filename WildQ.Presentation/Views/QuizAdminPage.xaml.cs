@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.Threading.Tasks;
 using Domain.Entities.Interfaces;
 using Domain.Entities.Models.MongoDbModels;
 using WildQ.Application.Interfaces;
@@ -96,5 +98,14 @@ public partial class QuizAdminPage : ContentPage
             AnswerText = answerText,
             IsTrue = isTrue
         };
+    }
+
+    private async void OnSelectedChangedQuestion(object sender, SelectionChangedEventArgs e)
+    {
+        Question question = ((CollectionView)sender).SelectedItem as Question; //Casting the selected item as question
+        Debug.WriteLine("Selected animal " + question.QuestionText);
+
+        await Navigation.PushAsync(new EditQuestionPage(question, Animal));
+
     }
 }
