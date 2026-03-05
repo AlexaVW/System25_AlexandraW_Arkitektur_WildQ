@@ -34,11 +34,14 @@
 
             <Label
                 Text="{Binding CurrentQuestion.QuestionText}"
-                TextColor="Black"
+                TextColor="Wheat"
                 FontSize="20"
                 HorizontalTextAlignment="Center"/>
 
             <CollectionView ItemsSource ="{Binding RandomOrderOnAnswers}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Button

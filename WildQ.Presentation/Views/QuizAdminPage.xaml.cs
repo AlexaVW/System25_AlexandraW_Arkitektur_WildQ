@@ -31,12 +31,8 @@ public partial class QuizAdminPage : ContentPage
             ImageSourceEntry.Text = animal.ImageSource;
             SaveButton.Text = "Update Animal"; //New text on the button
 
-            QuestionsAndAnswersSection.IsVisible = false;
         }
-        else
-        {
-            QuestionsAndAnswersSection.IsVisible = true; //Showing entries for questions and answers on Add Animal
-        }
+        
     }
 
     private async void OnClickedSaveButton(object sender, EventArgs e)

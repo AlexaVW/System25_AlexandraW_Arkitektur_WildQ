@@ -32,23 +32,8 @@
         TextColor="DarkOliveGreen"/>
 
             
-            <CollectionView ItemsSource="{Binding Questions}" SelectionChanged="OnSelectedChangedQuestion" SelectionMode="Single">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <VerticalStackLayout>
-                            <Label
-                                Text="{Binding QuestionText}"
-                                BackgroundColor="Wheat"/>
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <VerticalStackLayout x:Name="QuestionsAndAnswersSection">
                 <Label 
-        Text="Question"
+        Text="New Question"
         VerticalOptions="Center" 
         HorizontalOptions="Center"
         TextColor="Wheat"
@@ -61,7 +46,7 @@
         TextColor="Gray"/>
 
             <Label 
-        Text="Answers"
+        Text="New Answers"
         VerticalOptions="Center" 
         HorizontalOptions="Center"
         TextColor="Wheat"
@@ -98,9 +83,29 @@
         Clicked="OnClickedSaveQuestionButton"
         BackgroundColor="Wheat"
         TextColor="DarkOliveGreen"/>
-            </VerticalStackLayout>
 
+            <Label
+    Text="Choose an existing question to edit"
+    VerticalOptions="Center" 
+    HorizontalOptions="Center"
+    TextColor="Wheat"
+    Style="{StaticResource SubHeadline}"/>
+            <CollectionView ItemsSource="{Binding Questions}" SelectionChanged="OnSelectedChangedQuestion" SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
 
+                            <Label
+                    HorizontalOptions="Center"
+                    Text="{Binding QuestionText}"
+                    BackgroundColor="Wheat"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
 
 
