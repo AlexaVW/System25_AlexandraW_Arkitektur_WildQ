@@ -10,6 +10,8 @@ public partial class AnimalQuizPage : ContentPage
 {
     IAnimalService _animalService;
 
+    int amountOfCorrectAnswers = 0;
+
     private Animal _animal;
     public Animal Animal { get; set; } // public - To use in binding for AnimalName and ImageSource in xaml
 
@@ -18,6 +20,7 @@ public partial class AnimalQuizPage : ContentPage
     private Random _random = new Random();
 
     private int _currentQuestionIndex = 0; // To keep track on which question we are on
+
 
     private Question _currentQuestion;
     public Question CurrentQuestion // To be able to change the current question
@@ -56,7 +59,8 @@ public partial class AnimalQuizPage : ContentPage
 
         if (_currentQuestionIndex >= _animal.Questions.Count) // If there are no questions left
         {
-            await DisplayAlert("You finished the quiz", "Well done", "OK");
+            
+            await DisplayAlert("You finished the quiz", $"You answered correct on {amountOfCorrectAnswers} questions out of {_animal.Questions.Count}!" , "OK");
             await Navigation.PopAsync(); //Going back to the EndageredAnimalQuiz page
             return; 
         }
@@ -68,9 +72,10 @@ public partial class AnimalQuizPage : ContentPage
     {
         var button = sender as Button; //Setting the sender as a Button
         var selectedAnswer = button.BindingContext as Answer; //Binding the button as Answer
-
+        
         if (selectedAnswer.IsTrue)
         {
+            amountOfCorrectAnswers += 1;
             await DisplayAlert("Correct answer", "Well done", "Next");
 
         }
