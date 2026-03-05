@@ -12,7 +12,11 @@ public partial class AnimalQuizPage : ContentPage
 
     private Animal _animal;
     public Animal Animal { get; set; } // public - To use in binding for AnimalName and ImageSource in xaml
-    
+
+    public List <Answer> RandomOrderOnAnswers { get; set; }
+
+    private Random _random = new Random();
+
     private int _currentQuestionIndex = 0; // To keep track on which question we are on
 
     private Question _currentQuestion;
@@ -21,8 +25,13 @@ public partial class AnimalQuizPage : ContentPage
         get { return _currentQuestion; }
         set
         {
-            _currentQuestion = value;
-            OnPropertyChanged(nameof(CurrentQuestion)); //If it's the next question - property is changed and it tells the UI to update
+            _currentQuestion = value; // Updating the current question
+
+            RandomizeOrderOnAnswers(); // Randomizing the answers on the current question
+
+            OnPropertyChanged(nameof(CurrentQuestion)); //Tells the UI to update to the current questiontext
+
+            OnPropertyChanged(nameof(RandomOrderOnAnswers)); // Tells the UI to update after the random order on the answers are done
         }
     }
     public AnimalQuizPage(Animal animal) // Constructor
@@ -85,6 +94,12 @@ public partial class AnimalQuizPage : ContentPage
         await _animalService.DeleteAnimalAsync(_animal);
         await Navigation.PushAsync(new EndangeredAnimalQuiz());
 
+    }
+
+    private void RandomizeOrderOnAnswers()
+    {
+        RandomOrderOnAnswers = _currentQuestion.Answers.OrderBy(answer => _random.Next()).ToList();
+        //Random.Next gives random numbers to each answer. Ordering by those numbers - Making it to a list
     }
 
     

@@ -38,7 +38,7 @@
                 FontSize="20"
                 HorizontalTextAlignment="Center"/>
 
-            <CollectionView ItemsSource ="{Binding CurrentQuestion.Answers}">
+            <CollectionView ItemsSource ="{Binding RandomOrderOnAnswers}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Button
