@@ -31,7 +31,11 @@ public partial class QuizAdminPage : ContentPage
             ImageSourceEntry.Text = animal.ImageSource;
             SaveButton.Text = "Update Animal"; //New text on the button
 
-            
+            QuestionsAndAnswersSection.IsVisible = false;
+        }
+        else
+        {
+            QuestionsAndAnswersSection.IsVisible = true; //Showing entries for questions and answers on Add Animal
         }
     }
 
@@ -103,9 +107,13 @@ public partial class QuizAdminPage : ContentPage
     private async void OnSelectedChangedQuestion(object sender, SelectionChangedEventArgs e)
     {
         Question question = ((CollectionView)sender).SelectedItem as Question; //Casting the selected item as question
-        Debug.WriteLine("Selected animal " + question.QuestionText);
 
-        await Navigation.PushAsync(new EditQuestionPage(question, Animal));
+        ((CollectionView)sender).SelectedItem = null; // We we can go back and click on the same question again
+
+        if (question != null)
+        {
+            await Navigation.PushAsync(new EditQuestionPage(question, Animal));
+        }
 
     }
 }

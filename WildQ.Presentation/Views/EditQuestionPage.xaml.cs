@@ -10,6 +10,7 @@ public partial class EditQuestionPage : ContentPage
 
 	IAnimalService _animalService;
 
+	
 	public Animal Animal { get; set; }
 	public Question Question { get; set; }
 	public EditQuestionPage(Question question, Animal animal)
@@ -46,6 +47,6 @@ public partial class EditQuestionPage : ContentPage
 		
 
 		await _animalService.UpdateAnimalAsync(Animal);
-		await Navigation.PushAsync(new AnimalQuizPage(Animal));
+		await Navigation.PushAsync(new QuizAdminPage(Animal));
     }
 }

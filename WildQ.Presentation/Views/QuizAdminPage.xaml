@@ -31,6 +31,7 @@
         BackgroundColor="Wheat"
         TextColor="DarkOliveGreen"/>
 
+            
             <CollectionView ItemsSource="{Binding Questions}" SelectionChanged="OnSelectedChangedQuestion" SelectionMode="Single">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
@@ -45,8 +46,8 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-            <Label 
+            <VerticalStackLayout x:Name="QuestionsAndAnswersSection">
+                <Label 
         Text="Question"
         VerticalOptions="Center" 
         HorizontalOptions="Center"
@@ -97,6 +98,7 @@
         Clicked="OnClickedSaveQuestionButton"
         BackgroundColor="Wheat"
         TextColor="DarkOliveGreen"/>
+            </VerticalStackLayout>
 
 
 

@@ -86,5 +86,7 @@ public partial class AnimalQuizPage : ContentPage
         await Navigation.PushAsync(new EndangeredAnimalQuiz());
 
     }
+
+    
     
 }

@@ -26,6 +26,6 @@ public partial class EndangeredAnimalQuiz : ContentPage
 
     private async void OnClickedGoAdminQuizPage(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new QuizAdminPage(null)); //null because we don't have an animal yet
+        await Navigation.PushAsync(new QuizAdminPage(null)); //null so we don't have an to have an animal yet
     }
 }

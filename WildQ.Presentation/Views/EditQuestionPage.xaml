@@ -51,7 +51,7 @@
 
         <Button
             x:Name="SaveQuestionButton"
-            Text="Save Question"
+            Text="Update Question"
             Clicked="OnClickedSaveQuestionButton"
             BackgroundColor="Wheat"
             TextColor="DarkOliveGreen"/>
