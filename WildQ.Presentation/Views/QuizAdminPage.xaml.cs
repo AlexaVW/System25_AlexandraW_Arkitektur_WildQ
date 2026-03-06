@@ -86,7 +86,7 @@ public partial class QuizAdminPage : ContentPage
         // The list with Questions are inside Animal so we can update the whole Animal
         await _animalService.UpdateAnimalAsync(Animal);
 
-        await Navigation.PushAsync(new EndangeredAnimalQuiz());
+        await Navigation.PushAsync(new QuizAdminPage(Animal));
 
     }
 

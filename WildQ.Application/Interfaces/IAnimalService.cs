@@ -10,7 +10,7 @@ namespace WildQ.Application.Interfaces
     public interface IAnimalService
     {
         Task<List<Animal>> GetAllAnimalsAsync();
-        Task<Animal> GetAnimalAsync(int animalId);
+        Task<Animal> GetAnimalAsync(string animalId);
         Task CreateAnimalAsync(Animal animal);
         Task UpdateAnimalAsync(Animal animal);
         Task DeleteAnimalAsync(Animal animal);

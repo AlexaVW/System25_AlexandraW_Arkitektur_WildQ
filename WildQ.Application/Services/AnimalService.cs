@@ -18,7 +18,7 @@ namespace WildQ.Application.Services
             return await _animalRepository.GetAllAsync();
         }
 
-        public async Task<Animal> GetAnimalAsync(int animalId)
+        public async Task<Animal> GetAnimalAsync(string animalId)
         {
             throw new NotImplementedException();
         }

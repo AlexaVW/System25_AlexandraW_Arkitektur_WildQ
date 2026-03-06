@@ -55,5 +55,10 @@
             Clicked="OnClickedSaveQuestionButton"
             BackgroundColor="Wheat"
             TextColor="DarkOliveGreen"/>
+
+        <Button
+            Text="Delete Question"
+            BackgroundColor="DarkRed"
+            Clicked="OnClickedDeleteQuestion"/>
     </VerticalStackLayout>
 </ContentPage>

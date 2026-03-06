@@ -49,4 +49,12 @@ public partial class EditQuestionPage : ContentPage
 		await _animalService.UpdateAnimalAsync(Animal);
 		await Navigation.PushAsync(new QuizAdminPage(Animal));
     }
+
+    private async void OnClickedDeleteQuestion(object sender, EventArgs e)
+    {
+		Animal.Questions.Remove(Question);
+
+		await _animalService.UpdateAnimalAsync(Animal);
+		await Navigation.PushAsync(new QuizAdminPage(Animal));
+    }
 }
