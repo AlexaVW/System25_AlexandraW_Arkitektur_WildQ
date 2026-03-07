@@ -34,6 +34,7 @@ namespace WildQ.Infrastructure.Data
                     animals = JsonSerializer.Deserialize<List<SearchAnimal>>(responseStr);
                 }
             }
+            
             catch (Exception ex) 
             {
                 Console.WriteLine("Something went wrong with getting the API");

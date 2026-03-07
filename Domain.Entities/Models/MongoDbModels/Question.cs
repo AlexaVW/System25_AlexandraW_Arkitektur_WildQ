@@ -15,6 +15,6 @@ namespace Domain.Entities.Models.MongoDbModels
         // One question belongs to one animal
 
         // One question has many answers
-        public List<Answer> Answers { get; set; } = new List<Answer>(); //Observable collection?
+        public List<Answer> Answers { get; set; } = new List<Answer>();
     }
 }

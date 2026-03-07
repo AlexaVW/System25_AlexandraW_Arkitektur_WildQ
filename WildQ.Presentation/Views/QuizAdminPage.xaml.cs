@@ -30,13 +30,17 @@ public partial class QuizAdminPage : ContentPage
             AnimalNameEntry.Text = animal.AnimalName; //Takes what's in AnimalName and puts it in EntryText
             ImageSourceEntry.Text = animal.ImageSource;
             SaveButton.Text = "Update Animal"; //New text on the button
-
         }
-        
     }
 
     private async void OnClickedSaveButton(object sender, EventArgs e)
     {
+        if (string.IsNullOrEmpty(AnimalNameEntry.Text) || string.IsNullOrEmpty(ImageSourceEntry.Text))
+        {
+            await DisplayAlert("Error", "You can't leave any field empty", "OK");
+            return;
+        }
+        
         if (Animal == null) // If it's empty - Create new Animal
         {
             Animal = new Animal()
@@ -45,26 +49,57 @@ public partial class QuizAdminPage : ContentPage
                 Id = Guid.NewGuid().ToString(),
                 AnimalName = AnimalNameEntry.Text,
                 ImageSource = ImageSourceEntry.Text
-
             };
-            // Adding animal to the repository which calls on MongoDb
-            await _animalService.CreateAnimalAsync(Animal);
-            await DisplayAlert("Succesfull", "Animal is saved", "OK");
+            try
+            {
+                // Adding animal to the repository which calls on MongoDb
+                await _animalService.CreateAnimalAsync(Animal);
+                await DisplayAlert("Succesful", "Animal is saved", "OK");
+            }
+            
+            catch (Exception ex)
+            {
+                await DisplayAlert("Could not create animal", ex.Message, "OK");
+                return;
+            }
+            
         }
         else // If anything is changed it is inserted into Animal
         {
+            
             Animal.AnimalName = AnimalNameEntry.Text; // Reading from entry  - inserts it in Animal
             Animal.ImageSource = ImageSourceEntry.Text;
 
-            await _animalService.UpdateAnimalAsync(Animal);
+            try
+            {
+                await _animalService.UpdateAnimalAsync(Animal);
+            }
+            
+            catch (Exception exc)
+            {
+                await DisplayAlert("Could not update animal", exc.Message, "OK");
+                return;
+            }
         }
-
-
     }
 
     private async void OnClickedSaveQuestionButton(object sender, EventArgs e)
     {
+        if (string.IsNullOrEmpty(QuestionTextEntry.Text))
+        {
+            await DisplayAlert("Error", "You can't leave any field empty", "OK");
+            return;
+        }
 
+        if(string.IsNullOrEmpty(AnswerText1Entry.Text) || 
+            string.IsNullOrEmpty(AnswerText2Entry.Text) ||
+            string.IsNullOrEmpty(AnswerText3Entry.Text) ||
+            string.IsNullOrEmpty(AnswerText4Entry.Text))
+        {
+            await DisplayAlert("Error", "You can't leave any field empty", "OK");
+            return;
+        }
+        
         if (Animal == null) //Have to save the animal before creating questions
         {
             await DisplayAlert("Error", "You have to save the animal first", "OK");
@@ -84,11 +119,19 @@ public partial class QuizAdminPage : ContentPage
         };
         Animal.Questions.Add(question);
 
-        // The list with Questions are inside Animal so we can update the whole Animal
-        await _animalService.UpdateAnimalAsync(Animal);
+        try
+        {
+            // The list with Questions are inside Animal so we can update the whole Animal
+            await _animalService.UpdateAnimalAsync(Animal);
+            await DisplayAlert("Succesful", "the question is updated", "OK");
 
-        await Navigation.PushAsync(new QuizAdminPage(Animal));
-
+            await Navigation.PushAsync(new QuizAdminPage(Animal));
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Could not add the question", ex.Message, "OK");
+            return;
+        }
     }
 
     private static Answer CreateNewAnswer(string answerText, bool isTrue)

@@ -7,10 +7,8 @@ namespace WildQ.Presentation.Views;
 
 public partial class EditQuestionPage : ContentPage
 {
-
 	IAnimalService _animalService;
 
-	
 	public Animal Animal { get; set; }
 	public Question Question { get; set; }
 	public EditQuestionPage(Question question, Animal animal)
@@ -44,17 +42,30 @@ public partial class EditQuestionPage : ContentPage
         Question.Answers[2].AnswerText = AnswerText3Entry.Text;
         Question.Answers[3].AnswerText = AnswerText4Entry.Text;
 
-		
-
-		await _animalService.UpdateAnimalAsync(Animal);
-		await Navigation.PushAsync(new QuizAdminPage(Animal));
+		try
+		{
+            await _animalService.UpdateAnimalAsync(Animal);
+            await Navigation.PushAsync(new QuizAdminPage(Animal));
+        }
+		catch (Exception ex)
+		{
+			await DisplayAlert("Could not update question", ex.Message, "OK");
+		}
     }
 
     private async void OnClickedDeleteQuestion(object sender, EventArgs e)
     {
 		Animal.Questions.Remove(Question);
 
-		await _animalService.UpdateAnimalAsync(Animal);
-		await Navigation.PushAsync(new QuizAdminPage(Animal));
+		try
+		{
+            await _animalService.UpdateAnimalAsync(Animal);
+            await Navigation.PushAsync(new QuizAdminPage(Animal));
+        }
+		catch(Exception ex)
+		{
+            await DisplayAlert("Could not delete question", ex.Message, "OK");
+        }
+		
     }
 }
