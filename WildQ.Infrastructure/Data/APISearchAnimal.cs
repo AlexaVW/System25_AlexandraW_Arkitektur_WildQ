@@ -17,21 +17,31 @@ namespace WildQ.Infrastructure.Data
 
         public static async Task<List<SearchAnimal>> GetAnimalsAsync(string animalName)
         {
-            HttpClient client = new HttpClient();
-
-            client.BaseAddress = new Uri(_baseAddress);
-            client.DefaultRequestHeaders.Add("X-Api-Key", _apiKey);
-
-            HttpResponseMessage response = await client.GetAsync(_uri + animalName);
-
-            List<SearchAnimal> animals = null;
-            if (response.IsSuccessStatusCode)
+            List<SearchAnimal> animals = new List<SearchAnimal>(); //Initializing the list before try catch so that it will always return a list, empty or not. It wont be null
+            try
             {
-                string responseStr = await response.Content.ReadAsStringAsync();
-                animals = JsonSerializer.Deserialize<List<SearchAnimal>>(responseStr);
-            }
+                HttpClient client = new HttpClient();
 
+                client.BaseAddress = new Uri(_baseAddress);
+                client.DefaultRequestHeaders.Add("X-Api-Key", _apiKey);
+
+                HttpResponseMessage response = await client.GetAsync(_uri + animalName);
+
+                
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseStr = await response.Content.ReadAsStringAsync();
+                    animals = JsonSerializer.Deserialize<List<SearchAnimal>>(responseStr);
+                }
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine("Something went wrong with getting the API");
+                Console.WriteLine(ex);
+                
+            }
             return animals;
+
         }
     }
 }

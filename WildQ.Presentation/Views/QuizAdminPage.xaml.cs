@@ -49,6 +49,7 @@ public partial class QuizAdminPage : ContentPage
             };
             // Adding animal to the repository which calls on MongoDb
             await _animalService.CreateAnimalAsync(Animal);
+            await DisplayAlert("Succesfull", "Animal is saved", "OK");
         }
         else // If anything is changed it is inserted into Animal
         {
