@@ -23,7 +23,7 @@ namespace WildQ.Infrastructure.Repositories
             }
             catch (ArgumentNullException e)
             {
-                throw new ArgumentNullException(nameof(animal), "Couldn't create animal. Animal is null");
+                throw new ArgumentNullException(nameof(animal), "Couldn't create animal. Animal is null. You have to pass in an animal object that is not null");
             }
 
             catch (Exception ex)
@@ -45,7 +45,7 @@ namespace WildQ.Infrastructure.Repositories
             }
             catch(ArgumentNullException e)
             {
-                throw new ArgumentNullException(nameof(animal), "Couldn't delete animal. Animal is null");
+                throw new ArgumentNullException(nameof(animal), "Couldn't delete animal. Animal is null. You have to pass in an animal object that is not null");
             }
             catch (Exception ex)
             {
@@ -87,7 +87,7 @@ namespace WildQ.Infrastructure.Repositories
             }
             catch (ArgumentNullException e)
             {
-                throw new ArgumentNullException(nameof(animal), "Couldn't update animal. Animal is null");
+                throw new ArgumentNullException(nameof(animal), "Couldn't update animal. Animal is null. You have to pass in an animal object that not null");
             }
             catch (Exception ex)
             {

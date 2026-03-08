@@ -97,6 +97,11 @@ public partial class AnimalQuizPage : ContentPage
     {
         //var animal = ((Button)sender).BindingContext as Animal; //Dont need this when sending in private animal
         await _animalService.DeleteAnimalAsync(_animal);
+        bool delete = await DisplayAlert("Deleting animal", "Are you sure you want to delete this quiz?", "Yes", "No");
+        if (!delete)
+        {
+            return;
+        }
         await Navigation.PushAsync(new EndangeredAnimalQuiz());
 
     }

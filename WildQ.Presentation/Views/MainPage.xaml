@@ -16,6 +16,8 @@
             <HorizontalStackLayout
             Spacing="10">
 
+                
+                
                 <Button
                 Text="Endangered Animals Quiz"
                 Clicked="OnClickedEndangeredAnimalQuiz"
@@ -26,15 +28,8 @@
                 Clicked="OnClickedSearchAnimal"
                 Style="{StaticResource NavButtonBrown}"/>
 
-                <Button
-                Text="Profile"
-                Clicked="OnClickedProfile"
-                Style="{StaticResource NavButtonBrown}"/>
-
             </HorizontalStackLayout>
-
 
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

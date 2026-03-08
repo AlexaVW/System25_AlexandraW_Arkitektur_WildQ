@@ -26,9 +26,6 @@ namespace WildQ.Presentation
             await Navigation.PushAsync(new Views.EndangeredAnimalQuiz());
         }
 
-        private async void OnClickedProfile(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Views.ProfilePage());
-        }
+        
     }
 }

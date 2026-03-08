@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Domain.Entities.Models.MongoDbModels;
 
 namespace WildQ.Presentation.Views;
@@ -27,5 +28,10 @@ public partial class EndangeredAnimalQuiz : ContentPage
     private async void OnClickedGoAdminQuizPage(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new QuizAdminPage(null)); //null so we don't have an to have an animal yet
+    }
+
+    private async void OnClickedGoBackToMainPage(object sender, EventArgs e)
+    {
+        await Navigation.PopToRootAsync();
     }
 }

@@ -5,12 +5,17 @@
              Title="EndangeredAnimalQuiz">
     <ScrollView BackgroundColor="DarkOliveGreen">
         <VerticalStackLayout>
+            
             <Label 
             Text="Endangered Animals Quiz"
             TextColor="Wheat"
             Style="{StaticResource SubHeadline}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+            <Button
+                Text="Go Back"
+                Clicked="OnClickedGoBackToMainPage"/>
 
             <Button 
             Text="Add Quiz"
