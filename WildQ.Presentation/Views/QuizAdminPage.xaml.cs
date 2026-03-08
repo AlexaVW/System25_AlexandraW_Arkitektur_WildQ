@@ -130,4 +130,9 @@ public partial class QuizAdminPage : ContentPage
         }
 
     }
+
+    private async void OnClickedGoBackToAnimalQuizPage(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new EndangeredAnimalQuiz());
+    }
 }

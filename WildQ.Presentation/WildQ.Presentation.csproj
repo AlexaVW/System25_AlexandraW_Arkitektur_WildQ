@@ -71,6 +71,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\EndangeredAnimalQuiz.xaml.cs">
+	    <DependentUpon>EndangeredAnimalQuiz.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Resources\Styles\MyColors.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

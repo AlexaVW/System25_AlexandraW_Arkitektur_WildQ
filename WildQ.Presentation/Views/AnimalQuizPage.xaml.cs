@@ -112,6 +112,8 @@ public partial class AnimalQuizPage : ContentPage
         //Random.Next gives random numbers to each answer. Ordering by those numbers - Making it to a list
     }
 
-    
-    
+    private async void OnClickedGoBackToEndangeredAnimalQuiz(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new EndangeredAnimalQuiz());
+    }
 }

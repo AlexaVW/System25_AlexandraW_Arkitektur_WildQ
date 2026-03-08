@@ -13,6 +13,11 @@
         TextColor="Wheat"
         Style="{StaticResource SubHeadline}"/>
 
+            <Button
+            Text="Go Back"
+            Clicked="OnClickedGoBackToAnimalQuizPage"
+            Style="{StaticResource NavButtonBrown}"/>
+
             <Entry 
         x:Name="AnimalNameEntry"
         Placeholder="Enter Animal Name"

@@ -53,4 +53,9 @@ public partial class EditQuestionPage : ContentPage
             await _animalService.UpdateAnimalAsync(Animal);
             await Navigation.PushAsync(new QuizAdminPage(Animal));
     }
+
+    private async void OnClickedGoBackToQuizAdminPage(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new QuizAdminPage(Animal));
+    }
 }

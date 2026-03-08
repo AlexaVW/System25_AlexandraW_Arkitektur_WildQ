@@ -4,6 +4,11 @@
              x:Class="WildQ.Presentation.Views.EditQuestionPage"
              Title="EditQuestionPage">
     <VerticalStackLayout BackgroundColor="DarkOliveGreen">
+        <Button
+        Text="Go Back"
+        Clicked="OnClickedGoBackToQuizAdminPage"
+        Style="{StaticResource NavButtonBrown}"/>
+        
         <Label 
             Text="Question"
             VerticalOptions="Center" 

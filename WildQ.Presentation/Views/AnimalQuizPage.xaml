@@ -8,16 +8,19 @@
 
             <HorizontalStackLayout Spacing="10">
                 <Button
+                Text="Go Back"
+                Clicked="OnClickedGoBackToEndangeredAnimalQuiz"
+                Style="{StaticResource NavButtonBrown}"/>
+                
+                <Button
             Text="Edit Animal"
             Clicked="OnClickedUpdateAnimal"
-            BackgroundColor="Wheat"
-            TextColor="DarkOliveGreen"/>
+            Style="{StaticResource NavButtonBrown}"/>
 
                 <Button
             Text="Delete Animal"
             Clicked="OnClickedDeleteAnimal"
-            BackgroundColor="Wheat"
-            TextColor="DarkOliveGreen"/>
+            Style="{StaticResource NavButtonBrown}"/>
             </HorizontalStackLayout>
 
 

@@ -14,7 +14,10 @@
             HorizontalOptions="Center" />
 
             <HorizontalStackLayout>
-
+                <Button
+                Text="Go Back"
+                Clicked="OnClickedGoBackToMainPage"
+                Style="{StaticResource NavButtonBrown}"/>
                 <Entry
                 x:Name="entryAnimalName"
                 Text="{Binding AnimalNameInput}"

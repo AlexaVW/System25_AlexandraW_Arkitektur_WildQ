@@ -8,4 +8,9 @@ public partial class SearchAnimalPage : ContentPage
 
         BindingContext = new ViewModels.SearchAnimalPageViewModel();
     }
+
+    private async void OnClickedGoBackToMainPage(object sender, EventArgs e)
+    {
+        await Navigation.PopToRootAsync();
+    }
 }

@@ -15,7 +15,8 @@
 
             <Button
                 Text="Go Back"
-                Clicked="OnClickedGoBackToMainPage"/>
+                Clicked="OnClickedGoBackToMainPage"
+                Style="{StaticResource NavButtonBrown}"/>
 
             <Button 
             Text="Add Quiz"
