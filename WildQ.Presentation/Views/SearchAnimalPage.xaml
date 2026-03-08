@@ -2,22 +2,31 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WildQ.Presentation.Views.SearchAnimalPage"
-             Title="SearchAnimalPage">
-    <ScrollView>
+             Title="SearchAnimalPage"
+             BackgroundColor="DarkOliveGreen">
+    <ScrollView >
         <VerticalStackLayout
-        BackgroundColor="DarkOliveGreen">
+            MaximumWidthRequest="700"
+            Margin="25"
+            Spacing="20"
+            HorizontalOptions="Center">
+            
             <Label 
             Text="Search for an animal and get information about it"
             TextColor="Wheat"
             Style="{StaticResource SubHeadline}"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"/>
 
-            <HorizontalStackLayout>
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Spacing="20">
+                
                 <Button
                 Text="Go Back"
                 Clicked="OnClickedGoBackToMainPage"
                 Style="{StaticResource NavButtonBrown}"/>
+                
                 <Entry
                 x:Name="entryAnimalName"
                 Text="{Binding AnimalNameInput}"
@@ -32,8 +41,6 @@
                 BackgroundColor="Wheat"
                 TextColor="Grey"
                 />
-
-
             </HorizontalStackLayout>
 
             <CollectionView ItemsSource="{Binding Animals}">
@@ -43,57 +50,70 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <VerticalStackLayout BackgroundColor="Wheat" Padding="10" Margin="0,0,0,12">
+                        <Border
+                        StrokeShape="RoundRectangle 30"
+                        BackgroundColor="Wheat"
+                            MaximumWidthRequest="700">
+                            <VerticalStackLayout BackgroundColor="Wheat" Padding="10" HorizontalOptions="Center">
                             <Label 
                                 Text="{Binding Name}"
                                 Style="{StaticResource SubHeadline}"
-                                HorizontalOptions="Start"
-                                FontSize="20"/>
+                                FontSize="20"
+                                HorizontalOptions="Center"/>
                             <Label
                                 Text="{Binding Characteristics.Name_of_young,
-                                StringFormat='Name of Young: {0}'}"/>
+                                StringFormat='Name of Young: {0}'}"
+                                HorizontalOptions="Center"/>
                             <Label
                                 Text="{Binding Characteristics.Group_behavior,
-                                StringFormat='Group Behavior: {0}'}"/>
+                                StringFormat='Group Behavior: {0}'}"
+                                HorizontalOptions="Center"/>
                             <Label
                                 Text="{Binding Characteristics.Estimated_population_size,
-                                StringFormat='Estimated Population Size: {0}'}"/>
+                                StringFormat='Estimated Population Size: {0}'}"
+                                HorizontalOptions="Center"/>
                             <Label
                                 Text="{Binding Characteristics.Gestation_period,
-                                StringFormat='Gestation Period: {0}'}"/>
+                                StringFormat='Gestation Period: {0}'}"
+                                HorizontalOptions="Center"/>
                             <Label
                                 Text="{Binding Characteristics.Litter_size,
-                                StringFormat='Litter Size: {0}'}"/>
+                                StringFormat='Litter Size: {0}'}"
+                                HorizontalOptions="Center"/>
                             <Label
                                 Text="{Binding Characteristics.Diet,
-                                StringFormat='Diet: {0}'}"/>
+                                StringFormat='Diet: {0}'}"
+                                HorizontalOptions="Center"/>
                             <Label
                                 Text="{Binding Characteristics.Location,
-                                StringFormat='Location: {0}'}"/>
+                                StringFormat='Location: {0}'}"
+                                HorizontalOptions="Center"/>
                             <Label
                                 Text="{Binding Characteristics.Top_speed,
-                                StringFormat='Top Speed: {0}'}"/>
+                                StringFormat='Top Speed: {0}'}"
+                                HorizontalOptions="Center"/>
                             <Label
                                 Text="{Binding Characteristics.Lifespan,
-                                StringFormat='Lifespan: {0}'}"/>
+                                StringFormat='Lifespan: {0}'}"
+                                HorizontalOptions="Center"/>
                             <Label
                                 Text="{Binding Characteristics.Weight,
-                                StringFormat='Weight: {0}'}"/>
+                                StringFormat='Weight: {0}'}"
+                                HorizontalOptions="Center"/>
                             <Label
                                 Text="{Binding Characteristics.Height,
-                                StringFormat='Height: {0}'}"/>
+                                StringFormat='Height: {0}'}"
+                                HorizontalOptions="Center"/>
                             <Label
                                 Text="{Binding Characteristics.Age_of_sexual_maturity,
-                                StringFormat='Age of Sexual Maturity: {0}'}"/>
-
-
-
+                                StringFormat='Age of Sexual Maturity: {0}'}"
+                                HorizontalOptions="Center"/>
                         </VerticalStackLayout>
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-
+            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

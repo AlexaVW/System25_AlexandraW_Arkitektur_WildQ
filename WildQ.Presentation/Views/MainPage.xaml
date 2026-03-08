@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WildQ.Presentation.MainPage">
+             x:Class="WildQ.Presentation.MainPage"
+             BackgroundColor="DarkOliveGreen">
 
-    <ScrollView BackgroundColor="DarkOliveGreen">
+    <ScrollView>
         <VerticalStackLayout
+            MaximumWidthRequest="700"
         Margin="0,20"
         Spacing="25"
         HorizontalOptions="Center">
@@ -14,10 +16,8 @@
             Aspect="AspectFit"/>
 
             <HorizontalStackLayout
-            Spacing="10">
-
-                
-                
+            Spacing="10"
+                HorizontalOptions="Center">
                 <Button
                 Text="Endangered Animals Quiz"
                 Clicked="OnClickedEndangeredAnimalQuiz"
@@ -27,8 +27,51 @@
                 Text="Search Animal"
                 Clicked="OnClickedSearchAnimal"
                 Style="{StaticResource NavButtonBrown}"/>
-
             </HorizontalStackLayout>
+
+
+            <VerticalStackLayout Spacing="20" WidthRequest="550">
+                <Border
+                    StrokeShape="RoundRectangle 10"
+                    BackgroundColor="Wheat"
+                    Padding="10">
+                    <Label
+                    Text="Welcome to WildQ!"
+                    HeightRequest="40"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    TextColor="DarkOliveGreen"/>
+                </Border>
+                
+                <Border
+                    StrokeShape="RoundRectangle 10"
+                    BackgroundColor="Wheat"
+                    Padding="10">
+                    <Label
+                        Text ="Here you can take a quiz about animals that are endangered, to learn more about them"
+                        HeightRequest="40"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        TextColor="DarkOliveGreen"/>
+                </Border>
+
+                <Border
+                    StrokeShape="RoundRectangle 10"
+                    BackgroundColor="Wheat"
+                    Padding="10">
+                    <Label
+                        Text="You can also search for any animal you want to learn more about!"
+                        HeightRequest="40"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        TextColor="DarkOliveGreen"/>
+                </Border>
+
+                    
+                </VerticalStackLayout>
+            
 
         </VerticalStackLayout>
     </ScrollView>
