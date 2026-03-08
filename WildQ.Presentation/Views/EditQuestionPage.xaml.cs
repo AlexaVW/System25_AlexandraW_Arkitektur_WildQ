@@ -42,30 +42,15 @@ public partial class EditQuestionPage : ContentPage
         Question.Answers[2].AnswerText = AnswerText3Entry.Text;
         Question.Answers[3].AnswerText = AnswerText4Entry.Text;
 
-		try
-		{
             await _animalService.UpdateAnimalAsync(Animal);
             await Navigation.PushAsync(new QuizAdminPage(Animal));
-        }
-		catch (Exception ex)
-		{
-			await DisplayAlert("Could not update question", ex.Message, "OK");
-		}
     }
 
     private async void OnClickedDeleteQuestion(object sender, EventArgs e)
     {
 		Animal.Questions.Remove(Question);
 
-		try
-		{
             await _animalService.UpdateAnimalAsync(Animal);
             await Navigation.PushAsync(new QuizAdminPage(Animal));
-        }
-		catch(Exception ex)
-		{
-            await DisplayAlert("Could not delete question", ex.Message, "OK");
-        }
-		
     }
 }

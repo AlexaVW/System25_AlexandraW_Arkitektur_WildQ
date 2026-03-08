@@ -50,36 +50,18 @@ public partial class QuizAdminPage : ContentPage
                 AnimalName = AnimalNameEntry.Text,
                 ImageSource = ImageSourceEntry.Text
             };
-            try
-            {
+            
                 // Adding animal to the repository which calls on MongoDb
                 await _animalService.CreateAnimalAsync(Animal);
                 await DisplayAlert("Succesful", "Animal is saved", "OK");
-            }
-            
-            catch (Exception ex)
-            {
-                await DisplayAlert("Could not create animal", ex.Message, "OK");
-                return;
-            }
-            
         }
         else // If anything is changed it is inserted into Animal
         {
             
             Animal.AnimalName = AnimalNameEntry.Text; // Reading from entry  - inserts it in Animal
             Animal.ImageSource = ImageSourceEntry.Text;
-
-            try
-            {
-                await _animalService.UpdateAnimalAsync(Animal);
-            }
             
-            catch (Exception exc)
-            {
-                await DisplayAlert("Could not update animal", exc.Message, "OK");
-                return;
-            }
+            await _animalService.UpdateAnimalAsync(Animal);
         }
     }
 
@@ -119,19 +101,11 @@ public partial class QuizAdminPage : ContentPage
         };
         Animal.Questions.Add(question);
 
-        try
-        {
-            // The list with Questions are inside Animal so we can update the whole Animal
-            await _animalService.UpdateAnimalAsync(Animal);
-            await DisplayAlert("Succesful", "the question is updated", "OK");
+        // The list with Questions are inside Animal so we can update the whole Animal
+        await _animalService.UpdateAnimalAsync(Animal);
+        await DisplayAlert("Succesful", "the question is updated", "OK");
 
-            await Navigation.PushAsync(new QuizAdminPage(Animal));
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Could not add the question", ex.Message, "OK");
-            return;
-        }
+        await Navigation.PushAsync(new QuizAdminPage(Animal));
     }
 
     private static Answer CreateNewAnswer(string answerText, bool isTrue)

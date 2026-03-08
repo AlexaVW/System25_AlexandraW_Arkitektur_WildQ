@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,15 @@ namespace WildQ.Infrastructure.Repositories
 
                 await animalCollection;
             }
+            catch (ArgumentNullException e)
+            {
+                throw new ArgumentNullException(nameof(animal), "Couldn't create animal. Animal is null");
+            }
+
             catch (Exception ex)
             {
-                Console.WriteLine("Couldn't create Animal");
-                Console.WriteLine(ex);
+
+                throw new Exception("Error\n" + ex.Message);
             }
         }
 
@@ -37,12 +43,15 @@ namespace WildQ.Infrastructure.Repositories
 
                 await animalCollection;
             }
-            catch(Exception ex)
+            catch(ArgumentNullException e)
             {
-                Console.WriteLine("Couldn't delete the animal");
-                Console.WriteLine(ex);
+                throw new ArgumentNullException(nameof(animal), "Couldn't delete animal. Animal is null");
             }
-            
+            catch (Exception ex)
+            {
+                throw new Exception("Error\n" + ex.Message);
+            }
+
         }
 
         public async Task<List<Animal>> GetAllAsync() 
@@ -76,12 +85,14 @@ namespace WildQ.Infrastructure.Repositories
 
                 await animalCollection;
             }
+            catch (ArgumentNullException e)
+            {
+                throw new ArgumentNullException(nameof(animal), "Couldn't update animal. Animal is null");
+            }
             catch (Exception ex)
             {
-                Console.WriteLine("Couldn't update animal");
-                Console.WriteLine(ex);
+                throw new Exception("Error\n" + ex.Message);
             }
-            
         }
     }
 }
