@@ -29,9 +29,10 @@
                 Style="{StaticResource NavButtonBrown}"/>
 
                 <Button
-                Text="Log in"
-                Clicked="OnClickedLogIn"
-                Style="{StaticResource NavButtonBrown}"/>
+                    x:Name="LoginAndLogoutButton"
+                    Text="Login"
+                    Clicked="OnClickedLoginAndLogout"
+                    Style="{StaticResource NavButtonBrown}"/>
             </HorizontalStackLayout>
 
 
@@ -41,13 +42,14 @@
                     BackgroundColor="Wheat"
                     Padding="10">
                     <Label
-                    Text="Welcome to WildQ!"
-                    HeightRequest="40"
-                    FontSize="20"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"
-                    TextColor="DarkOliveGreen"/>
+                        x:Name="WelcomeTextLabel"
+                        Text="Welcome!"
+                        HeightRequest="40"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        TextColor="DarkOliveGreen"/>
                 </Border>
                 
                 <Border

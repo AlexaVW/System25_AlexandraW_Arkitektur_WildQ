@@ -1,3 +1,4 @@
+using WildQ.Application.Interfaces;
 using WildQ.Application.Services;
 namespace WildQ.Presentation.Views;
 
