@@ -19,10 +19,11 @@
                 Style="{StaticResource NavButtonBrown}"/>
 
             <Button 
-            Text="Add Quiz"
-            Clicked="OnClickedGoAdminQuizPage"
-            BackgroundColor="Wheat"
-            TextColor="DarkOliveGreen"/>
+                x:Name="AddQuizButton"
+                Text="Add Quiz"
+                Clicked="OnClickedGoAdminQuizPage"
+                BackgroundColor="Wheat"
+                TextColor="DarkOliveGreen"/>
 
             <ListView ItemsSource="{Binding Animals}" ItemSelected="OnListViewItemSelected"> 
                 <ListView.ItemTemplate>

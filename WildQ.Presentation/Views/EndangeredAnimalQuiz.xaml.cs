@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Domain.Entities.Models.MongoDbModels;
+using WildQ.Application.Services;
 
 namespace WildQ.Presentation.Views;
 
@@ -10,6 +11,18 @@ public partial class EndangeredAnimalQuiz : ContentPage
 		InitializeComponent();
 
         BindingContext = new ViewModels.AnimalQuizViewModel();
+        
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        var userSession = UserSession.GetUserSession();
+        if (!userSession.IsAdmin)
+        {
+            AddQuizButton.IsVisible = false;
+        }
     }
 
     private async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e) // When an animal is selected
@@ -27,6 +40,8 @@ public partial class EndangeredAnimalQuiz : ContentPage
 
     private async void OnClickedGoAdminQuizPage(object sender, EventArgs e)
     {
+        
+        
         await Navigation.PushAsync(new QuizAdminPage(null)); //null so we don't have an to have an animal yet
     }
 

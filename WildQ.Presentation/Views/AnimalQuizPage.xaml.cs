@@ -53,6 +53,18 @@ public partial class AnimalQuizPage : ContentPage
         BindingContext = this;
 	}
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        var userSession = UserSession.GetUserSession();
+        if (!userSession.IsAdmin)
+        {
+            EditAnimalButton.IsVisible = false;
+            DeleteAnimalButton.IsVisible= false;
+        }
+    }
+
     private async void NextQuestion() 
     {
         _currentQuestionIndex++; // To go to the next question index

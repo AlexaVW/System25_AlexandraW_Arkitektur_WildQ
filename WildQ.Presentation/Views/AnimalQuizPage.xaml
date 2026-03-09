@@ -8,28 +8,30 @@
 
             <HorizontalStackLayout Spacing="10">
                 <Button
-                Text="Go Back"
-                Clicked="OnClickedGoBackToEndangeredAnimalQuiz"
-                Style="{StaticResource NavButtonBrown}"/>
+                    Text="Go Back"
+                    Clicked="OnClickedGoBackToEndangeredAnimalQuiz"
+                    Style="{StaticResource NavButtonBrown}"/>
                 
                 <Button
-            Text="Edit Animal"
-            Clicked="OnClickedUpdateAnimal"
-            Style="{StaticResource NavButtonBrown}"/>
+                    x:Name="EditAnimalButton"
+                    Text="Edit Animal"
+                    Clicked="OnClickedUpdateAnimal"
+                    Style="{StaticResource NavButtonBrown}"/>
 
                 <Button
-            Text="Delete Animal"
-            Clicked="OnClickedDeleteAnimal"
-            Style="{StaticResource NavButtonBrown}"/>
+                    x:Name="DeleteAnimalButton"
+                    Text="Delete Animal"
+                    Clicked="OnClickedDeleteAnimal"
+                    Style="{StaticResource NavButtonBrown}"/>
             </HorizontalStackLayout>
 
 
             <Label 
-        Text="{Binding Animal.AnimalName}"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center"
-        Style="{StaticResource Headline}"
-        TextColor="Wheat"/>
+                Text="{Binding Animal.AnimalName}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                Style="{StaticResource Headline}"
+                TextColor="Wheat"/>
 
             <Image Source="{Binding Animal.ImageSource}"
         HeightRequest="300"
