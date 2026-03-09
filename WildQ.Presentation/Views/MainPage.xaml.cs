@@ -1,4 +1,5 @@
-﻿using Domain.Entities.Models.MongoDbModels;
+﻿using System.Threading.Tasks;
+using Domain.Entities.Models.MongoDbModels;
 using WildQ.Application.Interfaces;
 using WildQ.Application.Services;
 
@@ -26,6 +27,9 @@ namespace WildQ.Presentation
             await Navigation.PushAsync(new Views.EndangeredAnimalQuiz());
         }
 
-        
+        private async void OnClickedLogIn(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Views.LogInPage());
+        }
     }
 }

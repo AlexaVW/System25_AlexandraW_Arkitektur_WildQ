@@ -22,8 +22,7 @@
         x:Name="AnimalNameEntry"
         Placeholder="Enter Animal Name"
         BackgroundColor="Wheat"
-        TextColor="Gray"
-        />
+        TextColor="Gray"/>
             <Entry
         x:Name="ImageSourceEntry"
         Placeholder="Enter Image Source"

@@ -27,6 +27,11 @@
                 Text="Search Animal"
                 Clicked="OnClickedSearchAnimal"
                 Style="{StaticResource NavButtonBrown}"/>
+
+                <Button
+                Text="Log in"
+                Clicked="OnClickedLogIn"
+                Style="{StaticResource NavButtonBrown}"/>
             </HorizontalStackLayout>
 
 
