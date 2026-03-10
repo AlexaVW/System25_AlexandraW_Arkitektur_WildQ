@@ -15,11 +15,11 @@ namespace WildQ.Presentation.ViewModels
 {
     public class SearchAnimalPageViewModel : INotifyPropertyChanged
     {
-        ISearchAnimalService _searchAnimalService;
+        readonly private ISearchAnimalService _searchAnimalService;
 
-        public SearchAnimalPageViewModel()
+        public SearchAnimalPageViewModel(ISearchAnimalService searchAnimalService)
         {
-            _searchAnimalService = new SearchAnimalService();
+            _searchAnimalService = searchAnimalService;
             GetAnimal = new Command(async () =>
             {
                 await LoadAnimalsAsync(AnimalNameInput);

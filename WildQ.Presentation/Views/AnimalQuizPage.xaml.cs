@@ -114,7 +114,8 @@ public partial class AnimalQuizPage : ContentPage
         {
             return;
         }
-        await Navigation.PushAsync(new EndangeredAnimalQuiz());
+        //await Navigation.PushAsync(new EndangeredAnimalQuiz());
+        await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuiz));
 
     }
 
@@ -126,6 +127,7 @@ public partial class AnimalQuizPage : ContentPage
 
     private async void OnClickedGoBackToEndangeredAnimalQuiz(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EndangeredAnimalQuiz());
+        //await Navigation.PushAsync(new EndangeredAnimalQuiz());
+        await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuiz));
     }
 }

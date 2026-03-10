@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using WildQ.Application.Interfaces;
 using WildQ.Application.Services;
+using WildQ.Presentation.ViewModels;
+using WildQ.Presentation.Views;
 
 namespace WildQ.Presentation
 {
@@ -25,6 +27,12 @@ namespace WildQ.Presentation
             builder.Services.AddScoped<IAnimalService, AnimalService>();
 
             builder.Services.AddScoped<ISearchAnimalService, SearchAnimalService>();
+
+            builder.Services.AddTransient<SearchAnimalPageViewModel>(); // Creates a new instance
+            builder.Services.AddTransient<SearchAnimalPage>();
+
+            builder.Services.AddTransient<AnimalQuizViewModel>();
+            builder.Services.AddTransient<EndangeredAnimalQuiz>();
 
             return builder.Build();
         }

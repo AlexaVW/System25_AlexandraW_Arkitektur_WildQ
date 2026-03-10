@@ -14,9 +14,14 @@ namespace WildQ.Presentation.ViewModels
 {
     public class AnimalQuizViewModel : INotifyPropertyChanged
     {
-        //private IAnimalRepository _animalsInQuizRepository = new AnimalRepositoryDb();
+        private readonly IAnimalService _animalService;
 
-        IAnimalService _animalService;
+        public AnimalQuizViewModel(IAnimalService animalService) //Constructor
+        {
+            _animalService = animalService;
+            LoadAnimalsInQuizAsync();
+
+        }
 
         // Creating an ObservableCollection on Animals instead of a list so that the system can see if anything has changed or not
         private ObservableCollection<Animal> _animals;
@@ -29,12 +34,7 @@ namespace WildQ.Presentation.ViewModels
                 OnPropertyChanged(nameof(Animals));
             }
         }
-        public AnimalQuizViewModel() //Constructor
-        {
-            _animalService = new AnimalService();
-            LoadAnimalsInQuizAsync();
-            
-        }
+        
 
         private void OnPropertyChanged(string propertyName)
         {

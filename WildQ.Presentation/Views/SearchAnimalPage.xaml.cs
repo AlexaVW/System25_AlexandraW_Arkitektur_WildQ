@@ -1,12 +1,14 @@
+using WildQ.Application.Interfaces;
+
 namespace WildQ.Presentation.Views;
 
 public partial class SearchAnimalPage : ContentPage
 {
-	public SearchAnimalPage()
+	public SearchAnimalPage(ViewModels.SearchAnimalPageViewModel viewModel)
 	{
 		InitializeComponent();
 
-        BindingContext = new ViewModels.SearchAnimalPageViewModel();
+        BindingContext = viewModel;
     }
 
     private async void OnClickedGoBackToMainPage(object sender, EventArgs e)

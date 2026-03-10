@@ -6,11 +6,12 @@ namespace WildQ.Presentation.Views;
 
 public partial class EndangeredAnimalQuiz : ContentPage
 {
-	public EndangeredAnimalQuiz()
+	
+    public EndangeredAnimalQuiz(ViewModels.AnimalQuizViewModel viewModel)
 	{
 		InitializeComponent();
 
-        BindingContext = new ViewModels.AnimalQuizViewModel();
+        BindingContext = viewModel;
         
     }
 

@@ -2,6 +2,7 @@
 using Domain.Entities.Models.MongoDbModels;
 using WildQ.Application.Interfaces;
 using WildQ.Application.Services;
+using WildQ.Presentation.Views;
 
 namespace WildQ.Presentation
 {
@@ -38,7 +39,8 @@ namespace WildQ.Presentation
         }
         private async void OnClickedSearchAnimal(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Views.SearchAnimalPage());
+            //await Navigation.PushAsync(new Views.SearchAnimalPage());
+            await Shell.Current.GoToAsync(nameof(SearchAnimalPage));
         }
 
         private async void OnClickedEndangeredAnimalQuiz(object sender, EventArgs e)
@@ -51,7 +53,8 @@ namespace WildQ.Presentation
                 return;
             }
             
-            await Navigation.PushAsync(new Views.EndangeredAnimalQuiz());
+            //await Navigation.PushAsync(new Views.EndangeredAnimalQuiz());
+            await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuiz));
         }
 
         private async void OnClickedLogIn(object sender, EventArgs e)
