@@ -31,8 +31,8 @@ namespace WildQ.Presentation
             builder.Services.AddTransient<SearchAnimalPageViewModel>(); // Creates a new instance
             builder.Services.AddTransient<SearchAnimalPage>();
 
-            builder.Services.AddTransient<AnimalQuizViewModel>();
-            builder.Services.AddTransient<EndangeredAnimalQuiz>();
+            builder.Services.AddTransient<EndangeredAnimalQuizViewModel>();
+            builder.Services.AddTransient<EndangeredAnimalQuizPage>();
 
             return builder.Build();
         }

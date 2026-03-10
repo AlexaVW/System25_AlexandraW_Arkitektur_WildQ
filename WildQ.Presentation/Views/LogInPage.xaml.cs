@@ -9,6 +9,7 @@ public partial class LogInPage : ContentPage
 		InitializeComponent();
 	}
 
+
     private async void OnClickedLogIn(object sender, EventArgs e)
     {
         string userName = UserNameEntry.Text;
@@ -26,6 +27,5 @@ public partial class LogInPage : ContentPage
             userSession.LogIn(userName, passWord, false);
             await Navigation.PopToRootAsync();
         }
-        
     }
 }

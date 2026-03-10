@@ -4,16 +4,15 @@ using WildQ.Application.Services;
 
 namespace WildQ.Presentation.Views;
 
-public partial class EndangeredAnimalQuiz : ContentPage
+public partial class EndangeredAnimalQuizPage : ContentPage
 {
-	
-    public EndangeredAnimalQuiz(ViewModels.AnimalQuizViewModel viewModel)
+    public EndangeredAnimalQuizPage(ViewModels.EndangeredAnimalQuizViewModel viewModel)
 	{
 		InitializeComponent();
 
         BindingContext = viewModel;
-        
     }
+
 
     protected override void OnAppearing()
     {
@@ -41,8 +40,6 @@ public partial class EndangeredAnimalQuiz : ContentPage
 
     private async void OnClickedGoAdminQuizPage(object sender, EventArgs e)
     {
-        
-        
         await Navigation.PushAsync(new QuizAdminPage(null)); //null so we don't have an to have an animal yet
     }
 

@@ -71,8 +71,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\EndangeredAnimalQuiz.xaml.cs">
-	    <DependentUpon>EndangeredAnimalQuiz.xaml</DependentUpon>
+	  <Compile Update="Views\EndangeredAnimalQuizPage.xaml.cs">
+	    <DependentUpon>EndangeredAnimalQuizPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -89,7 +89,7 @@
 	  <MauiXaml Update="Views\EditQuestionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\EndangeredAnimalQuiz.xaml">
+	  <MauiXaml Update="Views\EndangeredAnimalQuizPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\LogInPage.xaml">

@@ -9,6 +9,22 @@ namespace WildQ.Presentation.Views;
 public partial class AnimalQuizPage : ContentPage
 {
     IAnimalService _animalService;
+    public AnimalQuizPage(Animal animal) // Constructor
+    {
+        InitializeComponent();
+        _animalService = new AnimalService();
+
+        Animal = animal;
+        _animal = animal; //Telling that the animal sent in to the construct is this animal
+
+        // To start
+        if (Animal != null && Animal.Questions.Count > 0) //If Animal exists and has more than 0 questions
+        {
+            CurrentQuestion = Animal.Questions[0]; // Then starting the quiz with the first question
+        }
+        BindingContext = this;
+    }
+
 
     int amountOfCorrectAnswers = 0;
 
@@ -37,21 +53,7 @@ public partial class AnimalQuizPage : ContentPage
             OnPropertyChanged(nameof(RandomOrderOnAnswers)); // Tells the UI to update after the random order on the answers are done
         }
     }
-    public AnimalQuizPage(Animal animal) // Constructor
-	{
-		InitializeComponent();
-        _animalService = new AnimalService(); 
-        
-        Animal = animal; 
-        _animal = animal; //Telling that the animal sent in to the construct is this animal
-
-        // To start
-        if(Animal != null && Animal.Questions.Count > 0) //If Animal exists and has more than 0 questions
-        {
-            CurrentQuestion = Animal.Questions[0]; // Then starting the quiz with the first question
-        }
-        BindingContext = this;
-	}
+    
 
     protected override void OnAppearing()
     {
@@ -115,7 +117,7 @@ public partial class AnimalQuizPage : ContentPage
             return;
         }
         //await Navigation.PushAsync(new EndangeredAnimalQuiz());
-        await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuiz));
+        await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
 
     }
 
@@ -128,6 +130,6 @@ public partial class AnimalQuizPage : ContentPage
     private async void OnClickedGoBackToEndangeredAnimalQuiz(object sender, EventArgs e)
     {
         //await Navigation.PushAsync(new EndangeredAnimalQuiz());
-        await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuiz));
+        await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
     }
 }

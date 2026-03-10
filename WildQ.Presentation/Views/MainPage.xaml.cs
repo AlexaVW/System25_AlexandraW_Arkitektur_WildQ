@@ -18,6 +18,7 @@ namespace WildQ.Presentation
             _searchAnimalService = searchAnimalService;
         }
 
+
         protected override void OnAppearing() //Will always run when mainpage runs
         {
             base.OnAppearing();
@@ -34,7 +35,6 @@ namespace WildQ.Presentation
                 WelcomeTextLabel.Text = "Welcome!"; // If logged out
                 LoginAndLogoutButton.Text = "Login";
             }
-
         }
         private async void OnClickedSearchAnimal(object sender, EventArgs e)
         {
@@ -53,7 +53,7 @@ namespace WildQ.Presentation
             }
             
             //await Navigation.PushAsync(new Views.EndangeredAnimalQuiz());
-            await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuiz));
+            await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
         }
 
         private async void OnClickedLogIn(object sender, EventArgs e)

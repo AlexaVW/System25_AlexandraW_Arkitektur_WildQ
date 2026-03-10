@@ -26,6 +26,7 @@ namespace WildQ.Presentation.ViewModels
             });
         }
 
+
         private string _animalNameInput;
         public string AnimalNameInput
         {

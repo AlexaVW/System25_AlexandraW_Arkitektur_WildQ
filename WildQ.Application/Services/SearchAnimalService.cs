@@ -10,7 +10,6 @@ namespace WildQ.Application.Services
 {
     public class SearchAnimalService : ISearchAnimalService
     {
-        
         public async Task<List<SearchAnimal>> GetAnimalsAsync(string animalName)
         {
             return await Infrastructure.Data.APISearchAnimal.GetAnimalsAsync(animalName);

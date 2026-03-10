@@ -10,7 +10,7 @@ namespace WildQ.Presentation
 
             Routing.RegisterRoute(nameof(SearchAnimalPage), typeof(SearchAnimalPage));
 
-            Routing.RegisterRoute(nameof(EndangeredAnimalQuiz), typeof(EndangeredAnimalQuiz));
+            Routing.RegisterRoute(nameof(EndangeredAnimalQuizPage), typeof(EndangeredAnimalQuizPage));
         }
     }
 }

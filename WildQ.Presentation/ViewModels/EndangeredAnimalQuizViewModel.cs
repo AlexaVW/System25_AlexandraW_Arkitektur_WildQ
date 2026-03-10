@@ -12,15 +12,16 @@ using WildQ.Application.Services;
 
 namespace WildQ.Presentation.ViewModels
 {
-    public class AnimalQuizViewModel : INotifyPropertyChanged
+    public class EndangeredAnimalQuizViewModel : INotifyPropertyChanged
     {
         private readonly IAnimalService _animalService;
 
-        public AnimalQuizViewModel(IAnimalService animalService) //Constructor
+        public EndangeredAnimalQuizViewModel(IAnimalService animalService) //Constructor
         {
             _animalService = animalService;
             LoadAnimalsInQuizAsync();
         }
+
 
         // Creating an ObservableCollection on Animals instead of a list so that the system can see if anything has changed or not
         private ObservableCollection<Animal> _animals;
