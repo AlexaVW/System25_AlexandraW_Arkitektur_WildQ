@@ -13,6 +13,7 @@ namespace WildQ.Application.Services
     public class AnimalService : IAnimalService
     {
         IAnimalRepository _animalRepository = new AnimalRepositoryMongoDb(); //Before dependency injection
+
         public async Task<List<Animal>> GetAllAnimalsAsync()
         {
             return await _animalRepository.GetAllAsync();

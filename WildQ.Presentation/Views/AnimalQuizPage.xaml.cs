@@ -46,7 +46,7 @@ public partial class AnimalQuizPage : ContentPage
         {
             _currentQuestion = value; // Updating the current question
 
-            RandomizeOrderOnAnswers(); // Randomizing the answers on the current question
+            RandomizeOrderOnAnswers(); // Randomizing the order of answers on the current question
 
             OnPropertyChanged(nameof(CurrentQuestion)); //Tells the UI to update to the current questiontext
 
@@ -73,9 +73,8 @@ public partial class AnimalQuizPage : ContentPage
 
         if (_currentQuestionIndex >= _animal.Questions.Count) // If there are no questions left
         {
-            
             await DisplayAlert("You finished the quiz", $"You answered correct on {amountOfCorrectAnswers} questions out of {_animal.Questions.Count}!" , "OK");
-            await Navigation.PopAsync(); //Going back to the EndageredAnimalQuiz page
+            await Navigation.PushAsync(new ScorePage(amountOfCorrectAnswers));
             return; 
         }
 

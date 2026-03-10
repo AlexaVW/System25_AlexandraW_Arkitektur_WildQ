@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Domain.Entities.Interfaces;
+using Microsoft.Extensions.Logging;
 using WildQ.Application.Interfaces;
 using WildQ.Application.Services;
+using WildQ.Infrastructure.Repositories;
 using WildQ.Presentation.ViewModels;
 using WildQ.Presentation.Views;
 
@@ -25,8 +27,8 @@ namespace WildQ.Presentation
 
             //Dependency Injection
             builder.Services.AddScoped<IAnimalService, AnimalService>();
-
             builder.Services.AddScoped<ISearchAnimalService, SearchAnimalService>();
+            builder.Services.AddScoped<IAnimalRepository, AnimalRepositoryMongoDb>();
 
             builder.Services.AddTransient<SearchAnimalPageViewModel>(); // Creates a new instance
             builder.Services.AddTransient<SearchAnimalPage>();
