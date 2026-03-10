@@ -20,7 +20,6 @@ namespace WildQ.Presentation.ViewModels
         {
             _animalService = animalService;
             LoadAnimalsInQuizAsync();
-
         }
 
         // Creating an ObservableCollection on Animals instead of a list so that the system can see if anything has changed or not

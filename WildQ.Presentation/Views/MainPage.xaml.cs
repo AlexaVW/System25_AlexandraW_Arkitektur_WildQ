@@ -8,15 +8,14 @@ namespace WildQ.Presentation
 {
     public partial class MainPage : ContentPage
     {
-        IAnimalService _animalService;
+        // Not using
+        IAnimalService _animalService; 
         ISearchAnimalService _searchAnimalService;
         public MainPage(IAnimalService animalService, ISearchAnimalService searchAnimalService)
         {
             InitializeComponent();
             _animalService = animalService;
             _searchAnimalService = searchAnimalService;
-
-            
         }
 
         protected override void OnAppearing() //Will always run when mainpage runs

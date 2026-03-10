@@ -12,12 +12,9 @@ public partial class QuizAdminPage : ContentPage
     //IAnimalRepository _animalRepository = new AnimalRepositoryDb();
 
     IAnimalService _animalService;
-    public Animal Animal { get; set; }
-
-    public List<Question> Questions { get; set; }
     public QuizAdminPage(Animal animal)// Can choose to not send in anything or choose to send in an animal to edit.
     {
-		InitializeComponent();
+        InitializeComponent();
 
         _animalService = new AnimalService();
 
@@ -32,6 +29,10 @@ public partial class QuizAdminPage : ContentPage
             SaveButton.Text = "Update Animal"; //New text on the button
         }
     }
+    public Animal Animal { get; set; }
+
+    public List<Question> Questions { get; set; }
+    
 
     private async void OnClickedSaveButton(object sender, EventArgs e)
     {
