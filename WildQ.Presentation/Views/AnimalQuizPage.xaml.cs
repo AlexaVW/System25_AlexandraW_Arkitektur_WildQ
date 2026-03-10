@@ -73,9 +73,8 @@ public partial class AnimalQuizPage : ContentPage
 
         if (_currentQuestionIndex >= _animal.Questions.Count) // If there are no questions left
         {
-            await DisplayAlert("You finished the quiz", $"You answered correct on {amountOfCorrectAnswers} questions out of {_animal.Questions.Count}!" , "OK");
-            await Navigation.PushAsync(new ScorePage(amountOfCorrectAnswers));
-            return; 
+            await Navigation.PushAsync(new ScorePage(amountOfCorrectAnswers, _animal));
+            return;
         }
 
         CurrentQuestion = _animal.Questions[_currentQuestionIndex]; // Going to the next question - updating UI
