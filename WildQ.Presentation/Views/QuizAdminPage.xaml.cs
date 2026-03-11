@@ -20,6 +20,8 @@ public partial class QuizAdminPage : ContentPage
 
         Animal = animal;
 
+        EditExistingQuestionLabel.IsVisible = false; // Not visible when creating animal
+
         if (animal != null) //If Update Animal 
         {
             BindingContext = Animal; //To print out the questions
@@ -28,6 +30,8 @@ public partial class QuizAdminPage : ContentPage
             ImageSourceEntry.Text = animal.ImageSource;
             OrderEntry.Text = animal.Order;
             SaveButton.Text = "Update Animal"; //New text on the button
+
+            EditExistingQuestionLabel.IsVisible = animal.Questions != null && animal.Questions.Count > 0; // Is visible if there are questions
         }
     }
 
@@ -38,8 +42,10 @@ public partial class QuizAdminPage : ContentPage
     // Methods
     private async void OnClickedSaveButton(object sender, EventArgs e)
     {
-
-        if (string.IsNullOrEmpty(AnimalNameEntry.Text) || string.IsNullOrEmpty(ImageSourceEntry.Text) || string.IsNullOrEmpty(OrderEntry.Text))
+        if (string.IsNullOrEmpty(AnimalNameEntry.Text) || 
+            string.IsNullOrEmpty(ImageSourceEntry.Text) || 
+            string.IsNullOrEmpty(OrderEntry.Text) || 
+            string.IsNullOrEmpty(OrderEntry.Text))
         {
             await DisplayAlert("Error", "You can't leave any field empty", "OK");
             return;

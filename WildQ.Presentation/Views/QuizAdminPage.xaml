@@ -95,6 +95,7 @@
                 TextColor="DarkOliveGreen"/>
 
             <Label
+                x:Name="EditExistingQuestionLabel"
                 Text="Choose an existing question to edit"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
