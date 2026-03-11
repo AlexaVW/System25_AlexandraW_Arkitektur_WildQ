@@ -2,12 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WildQ.Presentation.Views.EditQuestionPage"
-             Title="EditQuestionPage">
-    <VerticalStackLayout BackgroundColor="DarkOliveGreen">
+             Title="EditQuestionPage"
+             BackgroundColor="DarkOliveGreen">
+    <VerticalStackLayout >
         <Button
-        Text="Go Back"
-        Clicked="OnClickedGoBackToQuizAdminPage"
-        Style="{StaticResource NavButtonBrown}"/>
+            Text="Go Back"
+            Clicked="OnClickedGoBackToQuizAdminPage"
+            Style="{StaticResource NavButtonBrown}"/>
         
         <Label 
             Text="Question"
@@ -52,7 +53,6 @@
             Placeholder="Enter Answer 4"
             BackgroundColor="Wheat"
             TextColor="Gray"/>
-
 
         <Button
             x:Name="SaveQuestionButton"

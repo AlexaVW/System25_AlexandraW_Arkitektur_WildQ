@@ -10,6 +10,8 @@ namespace WildQ.Presentation.Views;
 public partial class QuizAdminPage : ContentPage
 {
     IAnimalService _animalService;
+    
+    // Constructor
     public QuizAdminPage(Animal animal)// Can choose to not send in anything or choose to send in an animal to edit.
     {
         InitializeComponent();
@@ -24,18 +26,20 @@ public partial class QuizAdminPage : ContentPage
 
             AnimalNameEntry.Text = animal.AnimalName; //Takes what's in AnimalName and puts it in EntryText
             ImageSourceEntry.Text = animal.ImageSource;
+            OrderEntry.Text = animal.Order;
             SaveButton.Text = "Update Animal"; //New text on the button
         }
     }
 
-
+    // Properties
     public Animal Animal { get; set; }
-
     public List<Question> Questions { get; set; }
     
+    // Methods
     private async void OnClickedSaveButton(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(AnimalNameEntry.Text) || string.IsNullOrEmpty(ImageSourceEntry.Text))
+
+        if (string.IsNullOrEmpty(AnimalNameEntry.Text) || string.IsNullOrEmpty(ImageSourceEntry.Text) || string.IsNullOrEmpty(OrderEntry.Text))
         {
             await DisplayAlert("Error", "You can't leave any field empty", "OK");
             return;
@@ -48,7 +52,8 @@ public partial class QuizAdminPage : ContentPage
                 // Reading from entry
                 Id = Guid.NewGuid().ToString(),
                 AnimalName = AnimalNameEntry.Text,
-                ImageSource = ImageSourceEntry.Text
+                ImageSource = ImageSourceEntry.Text,
+                Order = OrderEntry.Text
             };
             
                 // Adding animal to the repository which calls on MongoDb
@@ -60,6 +65,7 @@ public partial class QuizAdminPage : ContentPage
             
             Animal.AnimalName = AnimalNameEntry.Text; // Reading from entry  - inserts it in Animal
             Animal.ImageSource = ImageSourceEntry.Text;
+            Animal.Order = OrderEntry.Text;
             
             await _animalService.UpdateAnimalAsync(Animal);
         }
@@ -122,13 +128,12 @@ public partial class QuizAdminPage : ContentPage
     {
         Question question = ((CollectionView)sender).SelectedItem as Question; //Casting the selected item as question
 
-        ((CollectionView)sender).SelectedItem = null; // We we can go back and click on the same question again
+        ((CollectionView)sender).SelectedItem = null; // So we can go back and click on the same question again
 
         if (question != null)
         {
             await Navigation.PushAsync(new EditQuestionPage(question, Animal));
         }
-
     }
 
     private async void OnClickedGoBackToAnimalQuizPage(object sender, EventArgs e)

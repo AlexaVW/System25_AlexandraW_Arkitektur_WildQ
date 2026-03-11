@@ -11,6 +11,7 @@ namespace Domain.Entities.Models.MongoDbModels
         public string Id { get; set; }
         public string AnimalName { get; set; }
         public string ImageSource { get; set; }
+        public string Order {  get; set; }
 
         //One animal has many questions
         public List<Question> Questions { get; set; } = new List<Question>(); 

@@ -22,6 +22,7 @@ namespace WildQ.Presentation.ViewModels
             LoadAnimalsInQuizAsync();
         }
 
+        private List<Animal> _allAnimalsInQuiz; //To store all the animals so we can filter by order
 
         // Creating an ObservableCollection on Animals instead of a list so that the system can see if anything has changed or not
         private ObservableCollection<Animal> _animals;
@@ -45,17 +46,32 @@ namespace WildQ.Presentation.ViewModels
 
         private async void LoadAnimalsInQuizAsync()
         {
-            Animals = new ObservableCollection<Animal>();
-            var data = await _animalService.GetAllAnimalsAsync(); //Getting the data from repository
-            foreach (var animal in data) //Adding every animal from the list to the ObservableCollection. OnProperyChanged uppdates
-            {
-                Animals.Add(animal);
-            }
-        }
+            //Animals = new ObservableCollection<Animal>();
+            //var data = await _animalService.GetAllAnimalsAsync(); //Getting the data from repository
+            //foreach (var animal in data) //Adding every animal from the list to the ObservableCollection. OnProperyChanged uppdates
+            //{
+            //    Animals.Add(animal);
+            //}
+            var data = await _animalService.GetAllAnimalsAsync();
 
+            _allAnimalsInQuiz = data.ToList();
+            Animals = new ObservableCollection<Animal>(_allAnimalsInQuiz);
+
+        }
         // Try instead?
         // AnimalsInQuiz = new ObservableCollection<AnimalInQuiz>(await _animalsInQuizRepository.ReadAnimalInQuizAsync());
 
 
+        public void FilterByOrder(string order)
+        {
+            var filterByOrder = _allAnimalsInQuiz.Where(animal => animal.Order == order);
+
+            Animals = new ObservableCollection<Animal>(filterByOrder);
+        }
+
+        public void ShowAllAnimalsInQuiz() //Using the already stored list. Don't have to call the database again
+        {
+            Animals = new ObservableCollection<Animal>(_allAnimalsInQuiz);
+        }
     }
 }

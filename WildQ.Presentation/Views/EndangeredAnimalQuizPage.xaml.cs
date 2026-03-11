@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Domain.Entities.Models.MongoDbModels;
 using WildQ.Application.Services;
+using WildQ.Presentation.ViewModels;
 
 namespace WildQ.Presentation.Views;
 
@@ -25,15 +26,16 @@ public partial class EndangeredAnimalQuizPage : ContentPage
         }
     }
 
-    private async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e) // When an animal is selected
+    private async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e) // When an animal is selected
     {
-        var animal = ((ListView)sender).SelectedItem as Animal;
-        ((ListView)sender).SelectedItem = null; // To be able to klick on the same animal again if we go back
+        var selectedAnimal = ((CollectionView)sender).SelectedItem as Animal;
 
-        if (animal != null)
+        ((CollectionView)sender).SelectedItem = null; // To be able to klick on the same animal again if we go back
+
+        if (selectedAnimal != null)
         {
             // Binding AnimalQuizPage with the animal that is clicked on
-            var page = new AnimalQuizPage(animal);
+            var page = new AnimalQuizPage(selectedAnimal);
             await Navigation.PushAsync(page);
         }
     }
@@ -46,5 +48,51 @@ public partial class EndangeredAnimalQuizPage : ContentPage
     private async void OnClickedGoBackToMainPage(object sender, EventArgs e)
     {
         await Navigation.PopToRootAsync();
+    }
+
+    private void OnClickedCarnivoraButton(object sender, EventArgs e)
+    {
+        var viewModel = BindingContext as EndangeredAnimalQuizViewModel;
+        if (viewModel != null)
+        {
+            viewModel.FilterByOrder("Carnivora");
+        }
+        
+    }
+
+    private void OnClickedPrimatesButton(object sender, EventArgs e)
+    {
+        var viewModel = BindingContext as EndangeredAnimalQuizViewModel;
+        if (viewModel != null)
+        {
+            viewModel.FilterByOrder("Primates");
+        }
+    }
+
+    private void OnClickedOddToedUngulatesButton(object sender, EventArgs e)
+    {
+        var viewModel = BindingContext as EndangeredAnimalQuizViewModel;
+        if (viewModel != null)
+        {
+            viewModel.FilterByOrder("Odd-Toed Ungulates");
+        }
+    }
+
+    private void OnClickedEvenToedUngulatesButton(object sender, EventArgs e)
+    {
+        var viewModel = BindingContext as EndangeredAnimalQuizViewModel;
+        if (viewModel != null)
+        {
+            viewModel.FilterByOrder("Even-Toed Ungulates");
+        }
+    }
+
+    private void OnClickedAllAnimalsButton(object sender, EventArgs e)
+    {
+        var viewModel = BindingContext as EndangeredAnimalQuizViewModel;
+        if (viewModel != null)
+        {
+            viewModel.ShowAllAnimalsInQuiz();
+        }
     }
 }

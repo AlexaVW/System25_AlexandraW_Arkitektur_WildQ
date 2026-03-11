@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WildQ.Presentation.Views.EndangeredAnimalQuizPage"
-             Title="EndangeredAnimalQuiz">
-    <ScrollView BackgroundColor="DarkOliveGreen">
-        <VerticalStackLayout>
+             Title="EndangeredAnimalQuiz"
+             BackgroundColor="DarkOliveGreen">
+    <ScrollView>
+        
+    
+    <VerticalStackLayout>
             
             <Label 
             Text="Endangered Animals Quiz"
@@ -13,41 +16,103 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-            <Button
-                Text="Go Back"
-                Clicked="OnClickedGoBackToMainPage"
-                Style="{StaticResource NavButtonBrown}"/>
+            <Grid Padding="10"
+                  ColumnSpacing="10"
+                  HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button
+                    Text="Go Back"
+                    Clicked="OnClickedGoBackToMainPage"
+                    Style="{StaticResource NavButtonBrown}"
+                    Grid.Column="0"/>
 
-            <Button 
-                x:Name="AddQuizButton"
-                Text="Add Quiz"
-                Clicked="OnClickedGoAdminQuizPage"
-                BackgroundColor="Wheat"
-                TextColor="DarkOliveGreen"/>
+                <Button
+                    x:Name="OrderCarnivoraButton"
+                    Text="Carnivora"
+                    Clicked="OnClickedCarnivoraButton"
+                    BackgroundColor="Wheat"
+                    TextColor="DarkOliveGreen"
+                    Grid.Column="1"/>
 
-            <ListView ItemsSource="{Binding Animals}" ItemSelected="OnListViewItemSelected"> 
-                <ListView.ItemTemplate>
+                <Button
+                    x:Name="OrderPrimatesButton"
+                    Text="Primates"
+                    Clicked="OnClickedPrimatesButton"
+                    BackgroundColor="Wheat"
+                    TextColor="DarkOliveGreen"
+                    Grid.Column="2"/>
+
+                <Button
+                    x:Name="OddToedUngulatesButton"
+                    Text="Odd-Toed Ungulates"
+                    Clicked="OnClickedOddToedUngulatesButton"
+                    BackgroundColor="Wheat"
+                    TextColor="DarkOliveGreen"
+                    Grid.Column="3"/>
+
+                <Button
+                    x:Name="EvenToedUngulatesButton"
+                    Text="Even-Toed Ungulates"
+                    Clicked="OnClickedEvenToedUngulatesButton"
+                    BackgroundColor="Wheat"
+                    TextColor="DarkOliveGreen"
+                    Grid.Column="4"/>
+
+                <Button
+                    x:Name="AllAnimalsButton"
+                    Text="All Animals"
+                    Clicked="OnClickedAllAnimalsButton"
+                    BackgroundColor="Wheat"
+                    TextColor="DarkOliveGreen"
+                    Grid.Column="5"/>
+
+                <Button 
+                    x:Name="AddQuizButton"
+                    Text="Add Quiz"
+                    Clicked="OnClickedGoAdminQuizPage"
+                    Style="{StaticResource NavButtonBrown}"
+                    Grid.Column="6"/>
+            </Grid>
+            
+
+            <CollectionView ItemsSource="{Binding Animals}"
+                            SelectionMode="Single"
+                            SelectionChanged="OnCollectionViewSelectionChanged"
+                            HorizontalOptions="Center"
+                            Margin="10"> 
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="10"
-                              RowDefinitions="Auto, *"
-                              ColumnDefinitions="200, *"
-                              ColumnSpacing="20"
-                              HorizontalOptions="Center"
-                              VerticalOptions="Center">
+                        <Border>
+                            <VerticalStackLayout 
+                                Padding="10"
+                                Spacing="10">
+                                <Label
+                                    Text="{Binding AnimalName}"
+                                    TextColor="Wheat"
+                                    FontSize="30"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"/>
+                                
+                                <Image
+                                    Source="{Binding ImageSource}"
+                                    HeightRequest="300"
+                                    WidthRequest="300"
+                                    HorizontalOptions="Center"/>
 
-                                <Label Grid.Column="1"
-                                Text="{Binding AnimalName}"
-                                TextColor="Wheat"
-                                FontSize="30"/>
-                                <Image Grid.RowSpan="2"
-                                Source="{Binding ImageSource}"
-                                HeightRequest="150"/>
-                            </Grid>
-                        </ViewCell>
+                            </VerticalStackLayout>
+                        </Border>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -2,99 +2,108 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WildQ.Presentation.Views.QuizAdminPage"
-             Title="QuizAdminPage">
+             Title="QuizAdminPage"
+             BackgroundColor="DarkOliveGreen">
     <ScrollView>
-        <VerticalStackLayout BackgroundColor="DarkOliveGreen"
-                     Spacing="10">
+        <VerticalStackLayout Spacing="10">
             <Label 
-        Text="Animal"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center"
-        TextColor="Wheat"
-        Style="{StaticResource SubHeadline}"/>
+                Text="Animal"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="Wheat"
+                Style="{StaticResource SubHeadline}"/>
 
             <Button
-            Text="Go Back"
-            Clicked="OnClickedGoBackToAnimalQuizPage"
-            Style="{StaticResource NavButtonBrown}"/>
+                Text="Go Back"
+                Clicked="OnClickedGoBackToAnimalQuizPage"
+                Style="{StaticResource NavButtonBrown}"/>
 
             <Entry 
-        x:Name="AnimalNameEntry"
-        Placeholder="Enter Animal Name"
-        BackgroundColor="Wheat"
-        TextColor="Gray"/>
+                x:Name="AnimalNameEntry"
+                Placeholder="Enter Animal Name"
+                BackgroundColor="Wheat"
+                TextColor="Gray"/>
             <Entry
-        x:Name="ImageSourceEntry"
-        Placeholder="Enter Image Source"
-        BackgroundColor="Wheat"
-        TextColor="Gray"/>
-            <Button
-        x:Name="SaveButton"
-        Text="Save Animal"
-        Clicked="OnClickedSaveButton"
-        BackgroundColor="Wheat"
-        TextColor="DarkOliveGreen"/>
+                x:Name="ImageSourceEntry"
+                Placeholder="Enter Image Source"
+                BackgroundColor="Wheat"
+                TextColor="Gray"/>
 
+            <Entry
+                x:Name="OrderEntry"
+                Placeholder="Enter Order"
+                BackgroundColor="Wheat"
+                TextColor="Gray"/>
             
-                <Label 
-        Text="New Question"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center"
-        TextColor="Wheat"
-        Style="{StaticResource SubHeadline}"/>
-
-            <Entry
-        x:Name="QuestionTextEntry"
-        Placeholder="Enter Question Text"
-        BackgroundColor="Wheat"
-        TextColor="Gray"/>
+            <Button
+                x:Name="SaveButton"
+                Text="Save Animal"
+                Clicked="OnClickedSaveButton"
+                BackgroundColor="Wheat"
+                TextColor="DarkOliveGreen"/>
 
             <Label 
-        Text="New Answers"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center"
-        TextColor="Wheat"
-        Style="{StaticResource SubHeadline}"/>
+                Text="New Question"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="Wheat"
+                Style="{StaticResource SubHeadline}"/>
 
             <Entry
-        x:Name="AnswerText1Entry"
-        Placeholder="Enter Answer 1 (Correct answer)"
-        BackgroundColor="Wheat"
-        TextColor="Gray"/>
+                x:Name="QuestionTextEntry"
+                Placeholder="Enter Question Text"
+                BackgroundColor="Wheat"
+                TextColor="Gray"/>
+
+            <Label 
+                Text="New Answers"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="Wheat"
+                Style="{StaticResource SubHeadline}"/>
 
             <Entry
-        x:Name="AnswerText2Entry"
-        Placeholder="Enter Answer 2"
-        BackgroundColor="Wheat"
-        TextColor="Gray"/>
+                x:Name="AnswerText1Entry"
+                Placeholder="Enter Answer 1 (Correct answer)"
+                BackgroundColor="Wheat"
+                TextColor="Gray"/>
 
             <Entry
-        x:Name="AnswerText3Entry"
-        Placeholder="Enter Answer 3"
-        BackgroundColor="Wheat"
-        TextColor="Gray"/>
+                x:Name="AnswerText2Entry"
+                Placeholder="Enter Answer 2"
+                BackgroundColor="Wheat"
+                TextColor="Gray"/>
 
             <Entry
-        x:Name="AnswerText4Entry"
-        Placeholder="Enter Answer 4"
-        BackgroundColor="Wheat"
-        TextColor="Gray"/>
+                x:Name="AnswerText3Entry"
+                Placeholder="Enter Answer 3"
+                BackgroundColor="Wheat"
+                TextColor="Gray"/>
+
+            <Entry
+                x:Name="AnswerText4Entry"
+                Placeholder="Enter Answer 4"
+                BackgroundColor="Wheat"
+                TextColor="Gray"/>
 
 
             <Button
-        x:Name="SaveQuestionButton"
-        Text="Save Question"
-        Clicked="OnClickedSaveQuestionButton"
-        BackgroundColor="Wheat"
-        TextColor="DarkOliveGreen"/>
+                x:Name="SaveQuestionButton"
+                Text="Save Question"
+                Clicked="OnClickedSaveQuestionButton"
+                BackgroundColor="Wheat"
+                TextColor="DarkOliveGreen"/>
 
             <Label
-    Text="Choose an existing question to edit"
-    VerticalOptions="Center" 
-    HorizontalOptions="Center"
-    TextColor="Wheat"
-    Style="{StaticResource SubHeadline}"/>
-            <CollectionView ItemsSource="{Binding Questions}" SelectionChanged="OnSelectedChangedQuestion" SelectionMode="Single">
+                Text="Choose an existing question to edit"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="Wheat"
+                Style="{StaticResource SubHeadline}"/>
+            
+            <CollectionView ItemsSource="{Binding Questions}" 
+                            SelectionChanged="OnSelectedChangedQuestion" 
+                            SelectionMode="Single">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
                 </CollectionView.ItemsLayout>
@@ -106,12 +115,11 @@
                     HorizontalOptions="Center"
                     Text="{Binding QuestionText}"
                     BackgroundColor="Wheat"/>
+                        
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-
 
         </VerticalStackLayout>
     </ScrollView>
