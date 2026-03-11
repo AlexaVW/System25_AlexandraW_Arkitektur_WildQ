@@ -12,11 +12,11 @@
             HorizontalOptions="Center">
             
             <Label 
-            Text="Search for an animal and get information about it"
-            TextColor="Wheat"
-            Style="{StaticResource SubHeadline}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"/>
+                Text="Search for an animal and get information about it"
+                TextColor="Wheat"
+                Style="{StaticResource SubHeadline}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"/>
 
             <HorizontalStackLayout
                 HorizontalOptions="Center"
@@ -37,8 +37,7 @@
                 Command ="{Binding GetAnimal}"
                 Text="Search for animal"
                 BackgroundColor="Wheat"
-                TextColor="Grey"
-                />
+                TextColor="DarkOliveGreen"/>
             </HorizontalStackLayout>
 
             <CollectionView ItemsSource="{Binding Animals}">
@@ -49,17 +48,18 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border
-                        StrokeShape="RoundRectangle 30"
-                        BackgroundColor="Wheat"
+                            StrokeShape="RoundRectangle 30"
+                            BackgroundColor="Wheat"
                             MaximumWidthRequest="700">
-                            <VerticalStackLayout BackgroundColor="Wheat" Padding="10" HorizontalOptions="Center">
+                            <VerticalStackLayout BackgroundColor="Wheat" Padding="10" HorizontalOptions="Center" Spacing="8">
                             <Label 
                                 Text="{Binding Name}"
                                 Style="{StaticResource SubHeadline}"
-                                FontSize="20"
+                                FontSize="30"
+                                TextColor="Black"
                                 HorizontalOptions="Center"/>
                             <Label
-                                Text="{Binding Characteristics.Name_of_young,
+                                Text="{Binding Characteristics.Name_of_young ,
                                 StringFormat='Name of Young: {0}'}"
                                 HorizontalOptions="Center"/>
                             <Label

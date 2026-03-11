@@ -21,9 +21,10 @@
 
             <Style TargetType="Entry">
                 <Setter Property="FontFamily" Value="Exo2"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="16"/>
                 <Setter Property="BackgroundColor" Value="Wheat"/>
-                <Setter Property="TextColor" Value="Grey"/>
+                <Setter Property="PlaceholderColor" Value="Gray"/>
+                <Setter Property="TextColor" Value="Black"/>
             </Style>
 
             <Style TargetType="Button">

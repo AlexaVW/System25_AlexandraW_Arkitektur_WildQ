@@ -4,56 +4,67 @@
              x:Class="WildQ.Presentation.Views.ScorePage"
              Title="ScorePage"
              BackgroundColor="DarkOliveGreen">
-    <VerticalStackLayout
-        Spacing="20"
-        Margin="20">
+    <VerticalStackLayout Spacing="20" Margin="20">
 
         <Image
             Source="{Binding Animal.ImageSource}"
             HorizontalOptions="Center"
             HeightRequest="300"/>
 
-        <Label 
-            Text="{Binding Animal.AnimalName, 
-            StringFormat='Score for the {0} Quiz'}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            Style="{StaticResource Headline}"
-            TextColor="Wheat"/>
+        <Border
+            StrokeShape="RoundRectangle 5"
+            StrokeThickness="4"
+            Stroke="Wheat"
+            MaximumWidthRequest="500"
+            Padding="10">
+            <VerticalStackLayout Spacing="10">
+                <Label 
+                    Text="{Binding Animal.AnimalName, 
+                    StringFormat='Score for the {0} Quiz'}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"
+                    Style="{StaticResource Headline}"
+                    TextColor="Wheat"/>
 
-        <Label 
-            Text="{Binding AmountOfCorrectAnswers}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            FontSize="60"
-            TextColor="Wheat"/>
+                <Label 
+                    Text="{Binding AmountOfCorrectAnswers}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"
+                    FontSize="55"
+                    TextColor="Wheat"/>
 
-        <Label
-            Text="Out Of"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            FontSize="40"
-            TextColor="Wheat"/>
+                <Label
+                    Text="Out Of"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"
+                    FontSize="30"
+                    TextColor="Wheat"/>
 
-        <Label
-            Text="{Binding AmountOfQuestions}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            Style="{StaticResource Headline}"
-            FontSize="60"
-            TextColor="Wheat"/>
+                <Label
+                    Text="{Binding AmountOfQuestions}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"
+                    Style="{StaticResource Headline}"
+                    FontSize="55"
+                    TextColor="Wheat"/>
 
-        <Button
-            Text="Try Again"
-            TextColor="White"
-            Style="{StaticResource NavButtonBrown}"
-            Clicked="OnClickedTryAgain"/>
+            </VerticalStackLayout>
+        </Border>
+        
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+            <Button
+    Text="Try Again"
+    TextColor="White"
+    Style="{StaticResource NavButtonBrown}"
+    Clicked="OnClickedTryAgain"/>
 
-        <Button
-            Text="Go To MainPage"
-            TextColor="White"
-            Style="{StaticResource NavButtonBrown}"
-            Clicked="OnClickedGoToMainPage"/>
+            <Button
+    Text="Go To MainPage"
+    TextColor="White"
+    Style="{StaticResource NavButtonBrown}"
+    Clicked="OnClickedGoToMainPage"/>
+        </HorizontalStackLayout>
+        
 
     </VerticalStackLayout>
 </ContentPage>

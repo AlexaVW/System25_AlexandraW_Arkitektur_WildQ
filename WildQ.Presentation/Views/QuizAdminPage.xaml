@@ -5,7 +5,7 @@
              Title="QuizAdminPage"
              BackgroundColor="DarkOliveGreen">
     <ScrollView>
-        <VerticalStackLayout Spacing="10">
+        <VerticalStackLayout Spacing="10" WidthRequest="800">
             <Label 
                 Text="Animal"
                 VerticalOptions="Center" 
@@ -13,27 +13,33 @@
                 TextColor="Wheat"
                 Style="{StaticResource SubHeadline}"/>
 
-            <Button
-                Text="Go Back"
-                Clicked="OnClickedGoBackToAnimalQuizPage"
-                Style="{StaticResource NavButtonBrown}"/>
+            <HorizontalStackLayout>
+                <Button
+                    Text="Go Back"
+                    Clicked="OnClickedGoBackToAnimalQuizPage"
+                    Style="{StaticResource NavButtonBrown}"
+                    HorizontalOptions="Start"/>
+            </HorizontalStackLayout>
 
-            <Entry 
-                x:Name="AnimalNameEntry"
-                Placeholder="Enter Animal Name"/>
-            <Entry
-                x:Name="ImageSourceEntry"
-                Placeholder="Enter Image Source"/>
-            <Entry
-                x:Name="OrderEntry"
-                Placeholder="Enter Order"/>
-            
-            <Button
-                x:Name="SaveButton"
-                Text="Save Animal"
-                Clicked="OnClickedSaveButton"
-                BackgroundColor="Wheat"
-                TextColor="DarkOliveGreen"/>
+            <VerticalStackLayout Spacing="10" Margin="0,30">
+                <Entry 
+                    x:Name="AnimalNameEntry"
+                    Placeholder="Enter Animal Name"
+                    />
+                <Entry
+                    x:Name="ImageSourceEntry"
+                    Placeholder="Enter Image Source"/>
+                <Entry
+                    x:Name="OrderEntry"
+                    Placeholder="Enter Order"/>
+
+                <Button
+                    x:Name="SaveButton"
+                    Text="Save Animal"
+                    Clicked="OnClickedSaveButton"
+                    BackgroundColor="Wheat"
+                    TextColor="DarkOliveGreen"/>
+            </VerticalStackLayout>
 
             <Label 
                 Text="New Question"
@@ -84,26 +90,34 @@
                 HorizontalOptions="Center"
                 TextColor="Wheat"
                 Style="{StaticResource SubHeadline}"/>
-            
-            <CollectionView ItemsSource="{Binding Questions}" 
-                            SelectionChanged="OnSelectedChangedQuestion" 
-                            SelectionMode="Single">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <VerticalStackLayout>
 
-                            <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding QuestionText}"
-                    BackgroundColor="Wheat"/>
-                        
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+            <Border
+                StrokeShape="RoundRectangle 5"
+                BackgroundColor="Wheat"
+                MaximumWidthRequest="500">
+                <CollectionView ItemsSource="{Binding Questions}" 
+                SelectionChanged="OnSelectedChangedQuestion" 
+                SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout>
+
+                                <Label
+                                    HorizontalOptions="Center"
+                                    Text="{Binding QuestionText}"
+                                    FontSize="16"/>
+
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </Border>
+            
+            
 
         </VerticalStackLayout>
     </ScrollView>

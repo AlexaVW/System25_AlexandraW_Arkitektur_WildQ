@@ -5,9 +5,7 @@
              Title="AnimalQuizPage"
              BackgroundColor="DarkOliveGreen">
     <ScrollView>
-        <VerticalStackLayout 
-            Margin="10"
-            Spacing="10">
+        <VerticalStackLayout Margin="10" Spacing="10">
 
             <Grid 
                 Padding="10"
@@ -41,47 +39,60 @@
                     Grid.Column="4"/>
             </Grid>
 
+            <Border
+                StrokeShape="RoundRectangle 5"
+                StrokeThickness="4"
+                Stroke="Wheat"
+                BackgroundColor="RosyBrown"
+                MaximumWidthRequest="900"
+                Padding="0,40">
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Label 
+                        Text="{Binding Animal.AnimalName}"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center"
+                        Style="{StaticResource Headline}"
+                        TextColor="Wheat"/>
+                    <Label
+                        Text="{Binding Animal.Order,
+                        StringFormat='Order: {0}'}"
+                        VerticalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        TextColor="Wheat"/>
 
-            <Label 
-                Text="{Binding Animal.AnimalName}"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                Style="{StaticResource Headline}"
-                TextColor="Wheat"/>
+                    <Border StrokeShape="RoundRectangle 5" HeightRequest="300" WidthRequest="500">
+                        <Image 
+                            Source="{Binding Animal.ImageSource}"
+                            Aspect="Fill"/>
+                    </Border>
 
-            <Label
-                Text="{Binding Animal.Order,
-                StringFormat='Order: {0}'}"
-                
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                TextColor="Wheat"/>
+                    <Label
+                        Text="{Binding CurrentQuestion.QuestionText}"
+                        TextColor="Wheat"
+                        FontSize="20"
+                        HorizontalTextAlignment="Center"/>
 
-            <Image 
-                Source="{Binding Animal.ImageSource}"
-                HeightRequest="300"
-                HorizontalOptions="Center"/>
+                    <CollectionView ItemsSource ="{Binding RandomOrderOnAnswers}" HorizontalOptions="Center">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <VerticalStackLayout>
+                                    <Button
+                                        Text="{Binding AnswerText}"
+                                        BackgroundColor="Wheat"
+                                        TextColor="DarkOliveGreen"
+                                        Clicked="OnClickedAnswer"
+                                        WidthRequest="500"
+                                        HeightRequest="45"/>
+                                </VerticalStackLayout>
 
-            <Label
-                Text="{Binding CurrentQuestion.QuestionText}"
-                TextColor="Wheat"
-                FontSize="20"
-                HorizontalTextAlignment="Center"/>
-
-            <CollectionView ItemsSource ="{Binding RandomOrderOnAnswers}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Button
-                            Text="{Binding AnswerText}"
-                            BackgroundColor="Wheat"
-                            TextColor="DarkOliveGreen"
-                            Clicked="OnClickedAnswer"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
 
         </VerticalStackLayout>
     </ScrollView>

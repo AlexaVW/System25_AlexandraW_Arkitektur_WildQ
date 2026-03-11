@@ -95,7 +95,13 @@
                 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border>
+                        <Border
+                            StrokeShape="RoundRectangle 5"
+                            StrokeThickness="4"
+                            Stroke="Wheat"
+                            BackgroundColor="RosyBrown"
+                            MaximumWidthRequest="900"
+                            Padding="10">
                             <VerticalStackLayout 
                                 Padding="10"
                                 Spacing="10">
