@@ -14,14 +14,10 @@
 
         <Entry 
             x:Name="UserNameEntry"
-            Placeholder="Enter username"
-            BackgroundColor="Wheat"
-            TextColor="Gray"/>
+            Placeholder="Enter username"/>
         <Entry
             x:Name="PasswordEntry"
-            Placeholder="Enter Password"
-            BackgroundColor="Wheat"
-            TextColor="Gray"/>
+            Placeholder="Enter Password"/>
         <Button
             x:Name="LogInButton"
             Text="Log In"

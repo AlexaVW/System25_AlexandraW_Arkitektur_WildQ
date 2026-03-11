@@ -74,6 +74,7 @@ public partial class QuizAdminPage : ContentPage
             Animal.Order = OrderEntry.Text;
             
             await _animalService.UpdateAnimalAsync(Animal);
+            await DisplayAlert("Succesful", "Animal updated", "OK");
         }
     }
 

@@ -31,9 +31,7 @@
                 x:Name="entryAnimalName"
                 Text="{Binding AnimalNameInput}"
                 Placeholder="Enter an animal spieces"
-                PlaceholderColor="Grey"
-                BackgroundColor="Wheat"
-                WidthRequest="200"/>
+                WidthRequest="235"/>
 
                 <Button 
                 Command ="{Binding GetAnimal}"

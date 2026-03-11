@@ -88,7 +88,11 @@
                             SelectionMode="Single"
                             SelectionChanged="OnCollectionViewSelectionChanged"
                             HorizontalOptions="Center"
-                            Margin="10"> 
+                            Margin="10">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"/>
+                </CollectionView.ItemsLayout>
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border>

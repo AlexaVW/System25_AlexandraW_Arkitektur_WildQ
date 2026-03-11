@@ -116,7 +116,6 @@ public partial class AnimalQuizPage : ContentPage
         }
         //await Navigation.PushAsync(new EndangeredAnimalQuiz());
         await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
-
     }
 
     private void RandomizeOrderOnAnswers()

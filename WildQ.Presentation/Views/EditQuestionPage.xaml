@@ -19,9 +19,7 @@
 
         <Entry
             x:Name="QuestionTextEntry"
-            Placeholder="Enter Question Text"
-            BackgroundColor="Wheat"
-            TextColor="Gray"/>
+            Placeholder="Enter Question Text"/>
 
         <Label 
             Text="Answers"
@@ -32,27 +30,19 @@
 
         <Entry
             x:Name="AnswerText1Entry"
-            Placeholder="Enter Answer 1 (Correct answer)"
-            BackgroundColor="Wheat"
-            TextColor="Gray"/>
+            Placeholder="Enter Answer 1 (Correct answer)"/>
 
         <Entry
             x:Name="AnswerText2Entry"
-            Placeholder="Enter Answer 2"
-            BackgroundColor="Wheat"
-            TextColor="Gray"/>
+            Placeholder="Enter Answer 2"/>
 
         <Entry
             x:Name="AnswerText3Entry"
-            Placeholder="Enter Answer 3"
-            BackgroundColor="Wheat"
-            TextColor="Gray"/>
+            Placeholder="Enter Answer 3"/>
 
         <Entry
             x:Name="AnswerText4Entry"
-            Placeholder="Enter Answer 4"
-            BackgroundColor="Wheat"
-            TextColor="Gray"/>
+            Placeholder="Enter Answer 4"/>
 
         <Button
             x:Name="SaveQuestionButton"

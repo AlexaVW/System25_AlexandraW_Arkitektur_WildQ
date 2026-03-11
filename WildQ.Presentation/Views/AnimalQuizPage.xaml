@@ -5,26 +5,41 @@
              Title="AnimalQuizPage"
              BackgroundColor="DarkOliveGreen">
     <ScrollView>
-        <VerticalStackLayout >
+        <VerticalStackLayout 
+            Margin="10"
+            Spacing="10">
 
-            <HorizontalStackLayout Spacing="10">
+            <Grid 
+                Padding="10"
+                ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                
+                </Grid.ColumnDefinitions>
+
                 <Button
                     Text="Go Back"
                     Clicked="OnClickedGoBackToEndangeredAnimalQuiz"
-                    Style="{StaticResource NavButtonBrown}"/>
+                    Style="{StaticResource NavButtonBrown}"
+                    Grid.Column="0"/>
                 
                 <Button
                     x:Name="EditAnimalButton"
                     Text="Edit Animal"
                     Clicked="OnClickedUpdateAnimal"
-                    Style="{StaticResource NavButtonBrown}"/>
+                    Style="{StaticResource NavButtonBrown}"
+                    Grid.Column="2"/>
 
                 <Button
                     x:Name="DeleteAnimalButton"
                     Text="Delete Animal"
                     Clicked="OnClickedDeleteAnimal"
-                    Style="{StaticResource NavButtonBrown}"/>
-            </HorizontalStackLayout>
+                    BackgroundColor="DarkRed"
+                    Grid.Column="4"/>
+            </Grid>
 
 
             <Label 
@@ -35,7 +50,9 @@
                 TextColor="Wheat"/>
 
             <Label
-                Text="{Binding Animal.Order}"
+                Text="{Binding Animal.Order,
+                StringFormat='Order: {0}'}"
+                
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 TextColor="Wheat"/>

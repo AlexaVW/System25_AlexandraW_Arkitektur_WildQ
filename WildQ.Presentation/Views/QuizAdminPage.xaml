@@ -20,20 +20,13 @@
 
             <Entry 
                 x:Name="AnimalNameEntry"
-                Placeholder="Enter Animal Name"
-                BackgroundColor="Wheat"
-                TextColor="Gray"/>
+                Placeholder="Enter Animal Name"/>
             <Entry
                 x:Name="ImageSourceEntry"
-                Placeholder="Enter Image Source"
-                BackgroundColor="Wheat"
-                TextColor="Gray"/>
-
+                Placeholder="Enter Image Source"/>
             <Entry
                 x:Name="OrderEntry"
-                Placeholder="Enter Order"
-                BackgroundColor="Wheat"
-                TextColor="Gray"/>
+                Placeholder="Enter Order"/>
             
             <Button
                 x:Name="SaveButton"
@@ -51,9 +44,7 @@
 
             <Entry
                 x:Name="QuestionTextEntry"
-                Placeholder="Enter Question Text"
-                BackgroundColor="Wheat"
-                TextColor="Gray"/>
+                Placeholder="Enter Question Text"/>
 
             <Label 
                 Text="New Answers"
@@ -64,27 +55,19 @@
 
             <Entry
                 x:Name="AnswerText1Entry"
-                Placeholder="Enter Answer 1 (Correct answer)"
-                BackgroundColor="Wheat"
-                TextColor="Gray"/>
+                Placeholder="Enter Answer 1 (Correct answer)"/>
 
             <Entry
                 x:Name="AnswerText2Entry"
-                Placeholder="Enter Answer 2"
-                BackgroundColor="Wheat"
-                TextColor="Gray"/>
+                Placeholder="Enter Answer 2"/>
 
             <Entry
                 x:Name="AnswerText3Entry"
-                Placeholder="Enter Answer 3"
-                BackgroundColor="Wheat"
-                TextColor="Gray"/>
+                Placeholder="Enter Answer 3"/>
 
             <Entry
                 x:Name="AnswerText4Entry"
-                Placeholder="Enter Answer 4"
-                BackgroundColor="Wheat"
-                TextColor="Gray"/>
+                Placeholder="Enter Answer 4"/>
 
 
             <Button
