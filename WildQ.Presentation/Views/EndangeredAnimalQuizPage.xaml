@@ -99,7 +99,7 @@
                             StrokeShape="RoundRectangle 5"
                             StrokeThickness="4"
                             Stroke="Wheat"
-                            BackgroundColor="RosyBrown"
+                            BackgroundColor="{StaticResource MyOtherBrown}"
                             MaximumWidthRequest="900"
                             Padding="10">
                             <VerticalStackLayout 
@@ -111,12 +111,18 @@
                                     FontSize="30"
                                     HorizontalOptions="Center"
                                     HorizontalTextAlignment="Center"/>
+                                <Border 
+                                    Margin="10"
+                                    StrokeShape="RoundRectangle 20" 
+                                    StrokeThickness="0"
+                                    HeightRequest="300" 
+                                    WidthRequest="500" 
+                                    Padding="0">
+                                    <Image
+                                        Source="{Binding ImageSource}"
+                                        Aspect="AspectFill"/>
+                                </Border>
                                 
-                                <Image
-                                    Source="{Binding ImageSource}"
-                                    HeightRequest="300"
-                                    WidthRequest="300"
-                                    HorizontalOptions="Center"/>
 
                             </VerticalStackLayout>
                         </Border>

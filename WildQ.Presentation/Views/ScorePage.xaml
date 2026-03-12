@@ -6,10 +6,17 @@
              BackgroundColor="DarkOliveGreen">
     <VerticalStackLayout Spacing="20" Margin="20">
 
-        <Image
-            Source="{Binding Animal.ImageSource}"
-            HorizontalOptions="Center"
-            HeightRequest="300"/>
+        <Border
+            StrokeShape="RoundRectangle 20" 
+            StrokeThickness="0" 
+            WidthRequest="500" 
+            Padding="0">
+            <Image
+                Source="{Binding Animal.ImageSource}"
+                HorizontalOptions="Center"
+                Aspect="AspectFill"/>
+        </Border>
+       
 
         <Border
             StrokeShape="RoundRectangle 5"

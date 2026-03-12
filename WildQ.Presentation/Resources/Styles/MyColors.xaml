@@ -7,6 +7,7 @@
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
     <Color x:Key="MyBrown">#B57B21</Color>
+    <Color x:Key="MyOtherBrown">#B58150</Color>
 
 
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>

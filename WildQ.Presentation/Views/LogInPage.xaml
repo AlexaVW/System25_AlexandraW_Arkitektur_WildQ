@@ -4,25 +4,34 @@
              x:Class="WildQ.Presentation.Views.LogInPage"
              Title="LogInPage"
              BackgroundColor="DarkOliveGreen">
-    <VerticalStackLayout>
+    <VerticalStackLayout MaximumWidthRequest="800" Margin="10">
         <Label 
             Text="Log In"
             TextColor="Wheat"
             Style="{StaticResource SubHeadline}"
             VerticalOptions="Center" 
             HorizontalOptions="Center"/>
-
-        <Entry 
-            x:Name="UserNameEntry"
-            Placeholder="Enter username"/>
-        <Entry
-            x:Name="PasswordEntry"
-            Placeholder="Enter Password"/>
         <Button
-            x:Name="LogInButton"
-            Text="Log In"
-            Clicked="OnClickedLogIn"
-            BackgroundColor="Wheat"
-            TextColor="DarkOliveGreen"/>
+            Text="Go Back"
+            Style="{StaticResource NavButtonBrown}"
+            HorizontalOptions="Start"
+            Clicked="OnClickedGoBack"/>
+        <VerticalStackLayout Margin="0,40" Spacing="20">
+            <Entry 
+                x:Name="UserNameEntry"
+                Placeholder="Enter username"/>
+            <Entry
+                x:Name="PasswordEntry"
+                Placeholder="Enter Password"/>
+            <Button
+                x:Name="LogInButton"
+                Text="Log In"
+                Clicked="OnClickedLogIn"
+                BackgroundColor="Wheat"
+                TextColor="DarkOliveGreen"/>
+
+        </VerticalStackLayout>
+        
+        
     </VerticalStackLayout>
 </ContentPage>

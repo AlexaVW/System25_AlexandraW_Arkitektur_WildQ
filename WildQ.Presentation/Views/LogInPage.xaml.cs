@@ -34,4 +34,9 @@ public partial class LogInPage : ContentPage
             await Navigation.PopToRootAsync();
         }
     }
+
+    private async void OnClickedGoBack(object sender, EventArgs e)
+    {
+        await Navigation.PopToRootAsync();
+    }
 }

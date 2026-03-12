@@ -43,7 +43,7 @@
                 StrokeShape="RoundRectangle 5"
                 StrokeThickness="4"
                 Stroke="Wheat"
-                BackgroundColor="RosyBrown"
+                BackgroundColor="{StaticResource MyOtherBrown}"
                 MaximumWidthRequest="900"
                 Padding="0,40">
                 <VerticalStackLayout HorizontalOptions="Center">
@@ -60,10 +60,16 @@
                         HorizontalTextAlignment="Center"
                         TextColor="Wheat"/>
 
-                    <Border StrokeShape="RoundRectangle 5" HeightRequest="300" WidthRequest="500">
+                    <Border 
+                        StrokeShape="RoundRectangle 20" 
+                        HeightRequest="300" 
+                        WidthRequest="500" 
+                        Padding="0"
+                        StrokeThickness="0"
+                        Margin="10">
                         <Image 
                             Source="{Binding Animal.ImageSource}"
-                            Aspect="Fill"/>
+                            Aspect="AspectFill"/>
                     </Border>
 
                     <Label
