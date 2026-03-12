@@ -14,6 +14,5 @@ namespace WildQ.Application.Interfaces
         Task CreateAnimalAsync(Animal animal);
         Task UpdateAnimalAsync(Animal animal);
         Task DeleteAnimalAsync(Animal animal);
-
     }
 }

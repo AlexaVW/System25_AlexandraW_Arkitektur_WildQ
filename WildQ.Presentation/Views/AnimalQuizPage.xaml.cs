@@ -9,34 +9,35 @@ namespace WildQ.Presentation.Views;
 public partial class AnimalQuizPage : ContentPage
 {
     IAnimalService _animalService;
-    public AnimalQuizPage(Animal animal) // Constructor
+
+    // Constructor -----------------------------------------------------------------
+    public AnimalQuizPage(Animal animal) 
     {
         InitializeComponent();
         _animalService = new AnimalService();
+        
+        _animal = animal; // To be used in navigation and methods
+        Animal = animal; // For binding in UI
 
-        Animal = animal;
-        _animal = animal; //Telling that the animal sent in to the construct is this animal
-
-        // To start
-        if (Animal != null && Animal.Questions.Count > 0) //If Animal exists and has more than 0 questions
+        // Starting the quiz with the first question
+        if (Animal != null && Animal.Questions.Count > 0) 
         {
-            CurrentQuestion = Animal.Questions[0]; // Then starting the quiz with the first question
+            CurrentQuestion = Animal.Questions[0];
         }
-        BindingContext = this;
+        BindingContext = this; // Binding this page for UI
     }
 
-
-    int amountOfCorrectAnswers = 0;
-
+    // Properties -----------------------------------------------------------------------------
+    
     private Animal _animal;
     public Animal Animal { get; set; } // public - To use in binding for AnimalName and ImageSource in xaml
 
     public List <Answer> RandomOrderOnAnswers { get; set; }
-
     private Random _random = new Random();
-
-    private int _currentQuestionIndex = 0; // To keep track on which question we are on
-
+    
+    int amountOfCorrectAnswers = 0;
+    
+    private int _currentQuestionIndex = 0; // To keep track on which question the user is on
 
     private Question _currentQuestion;
     public Question CurrentQuestion // To be able to change the current question
@@ -48,13 +49,13 @@ public partial class AnimalQuizPage : ContentPage
 
             RandomizeOrderOnAnswers(); // Randomizing the order of answers on the current question
 
-            OnPropertyChanged(nameof(CurrentQuestion)); //Tells the UI to update to the current questiontext
+            OnPropertyChanged(nameof(CurrentQuestion)); // Tells the UI to update to the current questiontext
 
             OnPropertyChanged(nameof(RandomOrderOnAnswers)); // Tells the UI to update after the random order on the answers are done
         }
     }
     
-
+    // On Appearing --------------------------------------------------------------------------------
     protected override void OnAppearing()
     {
         base.OnAppearing();
@@ -67,9 +68,52 @@ public partial class AnimalQuizPage : ContentPage
         }
     }
 
-    private async void NextQuestion() 
+    // Clicks -------------------------------------------------------------------------------------------
+    private async void OnClickedAnswer(object sender, EventArgs e)
     {
-        _currentQuestionIndex++; // To go to the next question index
+        var button = sender as Button;
+        var selectedAnswer = button.BindingContext as Answer; // Binding the button as Answer
+        
+        if (selectedAnswer.IsTrue)
+        {
+            amountOfCorrectAnswers += 1;
+            await DisplayAlert("Correct answer", "Well done", "Next");
+        }
+        else
+        {
+            await DisplayAlert("Wrong answer", "Keep going", "Next");
+        }
+
+        NextQuestion(); 
+    }
+
+    private async void OnClickedUpdateAnimal(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new QuizAdminPage(_animal));
+    }
+
+    private async void OnClickedDeleteAnimal(object sender, EventArgs e)
+    {
+        bool delete = await DisplayAlert("Deleting animal", "Are you sure you want to delete this quiz?", "Yes", "No");
+        if (!delete)
+        {
+            return;
+        }
+        await _animalService.DeleteAnimalAsync(_animal);
+        
+        //await Navigation.PushAsync(new EndangeredAnimalQuiz());
+        await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
+    }
+    private async void OnClickedGoBackToEndangeredAnimalQuiz(object sender, EventArgs e)
+    {
+        //await Navigation.PushAsync(new EndangeredAnimalQuiz());
+        await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
+    }
+
+    // Methods ----------------------------------------------------------------------------------
+    private async void NextQuestion()
+    {
+        _currentQuestionIndex++; // To go to the next question
 
         if (_currentQuestionIndex >= _animal.Questions.Count) // If there are no questions left
         {
@@ -79,54 +123,9 @@ public partial class AnimalQuizPage : ContentPage
 
         CurrentQuestion = _animal.Questions[_currentQuestionIndex]; // Going to the next question - updating UI
     }
-
-    private async void OnClickedAnswer(object sender, EventArgs e)
-    {
-        var button = sender as Button; //Setting the sender as a Button
-        var selectedAnswer = button.BindingContext as Answer; //Binding the button as Answer
-        
-        if (selectedAnswer.IsTrue)
-        {
-            amountOfCorrectAnswers += 1;
-            await DisplayAlert("Correct answer", "Well done", "Next");
-
-        }
-        else
-        {
-            await DisplayAlert("Wrong answer", "Keep going", "Next");
-        }
-
-        NextQuestion(); //Going to the next question when clicking Next
-    }
-
-    private async void OnClickedUpdateAnimal(object sender, EventArgs e)
-    {
-        //var animal = ((Button)sender).BindingContext as Animal; //Dont need this when sending in private animal. 
-        await Navigation.PushAsync(new QuizAdminPage(_animal));
-    }
-
-    private async void OnClickedDeleteAnimal(object sender, EventArgs e)
-    {
-        //var animal = ((Button)sender).BindingContext as Animal; //Dont need this when sending in private animal
-        await _animalService.DeleteAnimalAsync(_animal);
-        bool delete = await DisplayAlert("Deleting animal", "Are you sure you want to delete this quiz?", "Yes", "No");
-        if (!delete)
-        {
-            return;
-        }
-        //await Navigation.PushAsync(new EndangeredAnimalQuiz());
-        await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
-    }
-
     private void RandomizeOrderOnAnswers()
     {
         RandomOrderOnAnswers = _currentQuestion.Answers.OrderBy(answer => _random.Next()).ToList();
-        //Random.Next gives random numbers to each answer. Ordering by those numbers - Making it to a list
-    }
-
-    private async void OnClickedGoBackToEndangeredAnimalQuiz(object sender, EventArgs e)
-    {
-        //await Navigation.PushAsync(new EndangeredAnimalQuiz());
-        await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
+        // Random.Next gives random numbers to each answer. Ordering by those numbers
     }
 }

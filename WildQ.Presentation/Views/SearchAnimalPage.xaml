@@ -18,26 +18,25 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"/>
 
-            <HorizontalStackLayout
-                HorizontalOptions="Center"
-                Spacing="20">
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
                 
                 <Button
-                Text="Go Back"
-                Clicked="OnClickedGoBackToMainPage"
-                Style="{StaticResource NavButtonBrown}"/>
+                    Text="Go Back"
+                    Clicked="OnClickedGoBackToMainPage"
+                    Style="{StaticResource NavButtonBrown}"/>
                 
                 <Entry
-                x:Name="entryAnimalName"
-                Text="{Binding AnimalNameInput}"
-                Placeholder="Enter an animal spieces"
-                WidthRequest="235"/>
+                    x:Name="entryAnimalName"
+                    Text="{Binding AnimalNameInput}"
+                    Placeholder="Enter an animal spieces"
+                    WidthRequest="235"/>
 
                 <Button 
-                Command ="{Binding GetAnimal}"
-                Text="Search for animal"
-                BackgroundColor="Wheat"
-                TextColor="DarkOliveGreen"/>
+                    Command ="{Binding SearchAnimalCommand}"
+                    Text="Search for animal"
+                    BackgroundColor="Wheat"
+                    TextColor="DarkOliveGreen"/>
+                
             </HorizontalStackLayout>
 
             <CollectionView ItemsSource="{Binding Animals}">

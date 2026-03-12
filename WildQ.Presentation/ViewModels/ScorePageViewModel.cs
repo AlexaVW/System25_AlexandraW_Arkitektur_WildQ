@@ -9,15 +9,17 @@ namespace WildQ.Presentation.ViewModels
 {
     public class ScorePageViewModel
     {
-        public int AmountOfCorrectAnswers { get; set; }
-        public int AmountOfQuestions { get; set; }
-        public Animal Animal { get; set; }
-
+        // Constructor ------------------------------------------
         public ScorePageViewModel(int correctAnswers, Animal animal)
         {
             Animal = animal;
             AmountOfCorrectAnswers = correctAnswers;
             AmountOfQuestions = animal.Questions.Count;
         }
+
+        // Properties ------------------------------------------
+        public int AmountOfCorrectAnswers { get; set; }
+        public int AmountOfQuestions { get; set; }
+        public Animal Animal { get; set; }
     }
 }

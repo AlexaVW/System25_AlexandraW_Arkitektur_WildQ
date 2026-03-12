@@ -19,16 +19,5 @@ namespace WildQ.Infrastructure.Data
             var client = new MongoClient(settings);
             return client;
         }
-
-        //private static IMongoCollection<Animal> GetAnimalCollection()
-        //{
-        //    var client = GetClient();
-
-        //    var database = client.GetDatabase("WildQDb");
-
-        //    var animalCollection = database.GetCollection<Animal>("animals");
-
-        //    return animalCollection; //Returns an IMongoCollection
-        //}
     }
 }

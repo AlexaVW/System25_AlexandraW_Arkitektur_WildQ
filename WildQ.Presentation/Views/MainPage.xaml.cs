@@ -8,9 +8,11 @@ namespace WildQ.Presentation
 {
     public partial class MainPage : ContentPage
     {
-        // Not using
+        // Not using --------------------
         IAnimalService _animalService; 
         ISearchAnimalService _searchAnimalService;
+
+        // Constructor --------------------------------------------------------
         public MainPage(IAnimalService animalService, ISearchAnimalService searchAnimalService)
         {
             InitializeComponent();
@@ -18,8 +20,8 @@ namespace WildQ.Presentation
             _searchAnimalService = searchAnimalService;
         }
 
-
-        protected override void OnAppearing() //Will always run when mainpage runs
+        // Will always show when MainPage runs --------------------------------
+        protected override void OnAppearing() 
         {
             base.OnAppearing();
             
@@ -36,6 +38,8 @@ namespace WildQ.Presentation
                 LoginAndLogoutButton.Text = "Login";
             }
         }
+        
+        // Clicks -----------------------------------------------------------
         private async void OnClickedSearchAnimal(object sender, EventArgs e)
         {
             //await Navigation.PushAsync(new Views.SearchAnimalPage());
@@ -64,18 +68,19 @@ namespace WildQ.Presentation
         private async void OnClickedLoginAndLogout(object sender, EventArgs e)
         {
             var userSession = UserSession.GetUserSession();
-
-            if (userSession.IsLoggedIn == true) // If logged in the button logs out the user
+            
+            if (userSession.IsLoggedIn == true) 
             {
+                // If logged in - the button logs out the user
                 userSession.LogOut();
 
                 LoginAndLogoutButton.Text = "Login";
                 WelcomeTextLabel.Text = "Welcome!";
-
             }
             else
             {
-                await Navigation.PushAsync(new Views.LogInPage()); //If logged out the button sends the user to loginpage
+                // If logged out the button sends the user to LoginPage
+                await Navigation.PushAsync(new Views.LogInPage()); 
             }
         }
     }

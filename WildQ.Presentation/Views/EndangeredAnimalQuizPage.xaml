@@ -5,16 +5,14 @@
              Title="EndangeredAnimalQuiz"
              BackgroundColor="DarkOliveGreen">
     <ScrollView>
-        
-    
     <VerticalStackLayout>
             
             <Label 
-            Text="Endangered Animals Quiz"
-            TextColor="Wheat"
-            Style="{StaticResource SubHeadline}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+                Text="Endangered Animals Quiz"
+                TextColor="Wheat"
+                Style="{StaticResource SubHeadline}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"/>
 
             <Grid Padding="10"
                   ColumnSpacing="10"
@@ -83,7 +81,6 @@
                     Grid.Column="6"/>
             </Grid>
             
-
             <CollectionView ItemsSource="{Binding Animals}"
                             SelectionMode="Single"
                             SelectionChanged="OnCollectionViewSelectionChanged"
@@ -102,9 +99,7 @@
                             BackgroundColor="{StaticResource MyOtherBrown}"
                             MaximumWidthRequest="900"
                             Padding="10">
-                            <VerticalStackLayout 
-                                Padding="10"
-                                Spacing="10">
+                            <VerticalStackLayout Padding="10" Spacing="10">
                                 <Label
                                     Text="{Binding AnimalName}"
                                     TextColor="Wheat"
@@ -123,7 +118,6 @@
                                         Aspect="AspectFill"/>
                                 </Border>
                                 
-
                             </VerticalStackLayout>
                         </Border>
                     </DataTemplate>

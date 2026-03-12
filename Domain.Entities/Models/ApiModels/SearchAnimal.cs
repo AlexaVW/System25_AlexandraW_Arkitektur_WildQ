@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities.Models.ApiModels
 {
-
+    // From API Ninjas - Used for Search Animal
     public class SearchAnimal
     {
         [JsonPropertyName("name")]
@@ -36,7 +36,6 @@ namespace Domain.Entities.Models.ApiModels
 
         [JsonPropertyName("diet")]
         public string Diet { get; set; }
-
 
         [JsonPropertyName("location")]
         public string Location { get; set; }

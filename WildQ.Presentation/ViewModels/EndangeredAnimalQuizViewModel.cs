@@ -14,19 +14,21 @@ namespace WildQ.Presentation.ViewModels
 {
     public class EndangeredAnimalQuizViewModel : INotifyPropertyChanged
     {
-        private readonly IAnimalService _animalService;
+        private readonly IAnimalService _animalService; // Dependency injection
 
-        public EndangeredAnimalQuizViewModel(IAnimalService animalService) //Constructor
+        // Constructor ----------------------------------------------------------------
+        public EndangeredAnimalQuizViewModel(IAnimalService animalService) 
         {
             _animalService = animalService;
             LoadAnimalsInQuizAsync();
         }
 
-        private List<Animal> _allAnimalsInQuiz; //To store all the animals so we can filter by order
+        // Properties -------------------------------------------------------------------
+        private List<Animal> _allAnimalsInQuiz; // To store all the animals once so we don't have to call the database again when using filter
 
-        // Creating an ObservableCollection on Animals instead of a list so that the system can see if anything has changed or not
+
         private ObservableCollection<Animal> _animals;
-        public ObservableCollection<Animal> Animals
+        public ObservableCollection<Animal> Animals // Binds to CollectionView ItemsSource
         {
             get { return _animals; }
             set
@@ -36,7 +38,6 @@ namespace WildQ.Presentation.ViewModels
             }
         }
         
-
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -44,33 +45,27 @@ namespace WildQ.Presentation.ViewModels
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        // Methods -----------------------------------------------------------------------------------
         private async void LoadAnimalsInQuizAsync()
         {
-            //Animals = new ObservableCollection<Animal>();
-            //var data = await _animalService.GetAllAnimalsAsync(); //Getting the data from repository
-            //foreach (var animal in data) //Adding every animal from the list to the ObservableCollection. OnProperyChanged uppdates
-            //{
-            //    Animals.Add(animal);
-            //}
+            // Getting the animals from database
             var data = await _animalService.GetAllAnimalsAsync();
 
             _allAnimalsInQuiz = data.ToList();
             Animals = new ObservableCollection<Animal>(_allAnimalsInQuiz);
-
         }
-        // Try instead?
-        // AnimalsInQuiz = new ObservableCollection<AnimalInQuiz>(await _animalsInQuizRepository.ReadAnimalInQuizAsync());
-
-
+        
         public void FilterByOrder(string order)
         {
+            // Filtering by animal-order
             var filterByOrder = _allAnimalsInQuiz.Where(animal => animal.Order == order);
 
             Animals = new ObservableCollection<Animal>(filterByOrder);
         }
 
-        public void ShowAllAnimalsInQuiz() //Using the already stored list. Don't have to call the database again
+        public void ShowAllAnimalsInQuiz() 
         {
+            // Using the already stored list without filter - Don't have to call the database again
             Animals = new ObservableCollection<Animal>(_allAnimalsInQuiz);
         }
     }

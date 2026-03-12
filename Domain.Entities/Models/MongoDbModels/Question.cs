@@ -10,8 +10,7 @@ namespace Domain.Entities.Models.MongoDbModels
     {
         public string Id { get; set; }
         public string QuestionText { get; set; }
-        //public string AnimalId { get; set; }
-
+        
         // One question belongs to one animal
 
         // One question has many answers

@@ -12,23 +12,24 @@ namespace WildQ.Infrastructure.Repositories
 {
     public class AnimalRepositoryMongoDb : IAnimalRepository
     {
+        // Getting the client and getting the database
         private IMongoDatabase _database = Data.MongoDb.GetClient().GetDatabase("WildQDb");
         public async Task CreateAsync(Animal animal)
         {
             try
             {
+                // Getting collection of animals and creating the animal
                 var animalCollection = _database.GetCollection<Animal>("animals").InsertOneAsync(animal);
 
                 await animalCollection;
             }
             catch (ArgumentNullException e)
             {
-                throw new ArgumentNullException(nameof(animal), "Couldn't create animal. Animal is null. You have to pass in an animal object that is not null");
+                throw new ArgumentNullException(nameof(animal), "Couldn't create animal. Animal is null. You have to pass in a valid animal object");
             }
 
             catch (Exception ex)
             {
-
                 throw new Exception("Error\n" + ex.Message);
             }
         }
@@ -37,21 +38,21 @@ namespace WildQ.Infrastructure.Repositories
         {
             try
             {
+                // Creating a filter to see which animal we are on right now
                 var filter = Builders<Animal>.Filter.Eq(x => x.Id, animal.Id);
 
-                var animalCollection = _database.GetCollection<Animal>("animals").DeleteOneAsync(filter); //Only need filter
+                var animalCollection = _database.GetCollection<Animal>("animals").DeleteOneAsync(filter);
 
                 await animalCollection;
             }
             catch(ArgumentNullException e)
             {
-                throw new ArgumentNullException(nameof(animal), "Couldn't delete animal. Animal is null. You have to pass in an animal object that is not null");
+                throw new ArgumentNullException(nameof(animal), "Couldn't delete animal. Animal is null. You have to pass in a valid animal object");
             }
             catch (Exception ex)
             {
                 throw new Exception("Error\n" + ex.Message);
             }
-
         }
 
         public async Task<List<Animal>> GetAllAsync() 
@@ -59,11 +60,12 @@ namespace WildQ.Infrastructure.Repositories
             List<Animal> animals = new List<Animal>();
             try
             {
-                var animalCollection = _database.GetCollection<Animal>("animals");
+                // Getting the collection of animals from MongoDb
+                var animalCollection = _database.GetCollection<Animal>("animals"); 
 
-                //Converting ImongoCollection to a list
+                // Finding the documents and returning it as a list
                 return await animalCollection
-                .Find(_ => true)
+                .Find(_ => true) 
                 .ToListAsync();
             }
             catch (Exception ex)
@@ -71,14 +73,14 @@ namespace WildQ.Infrastructure.Repositories
                 Console.WriteLine("Couldn't find any animal in the database");
                 
             }
-            return animals; // Returns an empty list of it doesn't go through
+            return animals; // Returns an empty list if it doesn't go through
         }
 
         public async Task UpdateAsync(Animal animal)
         {
             try
             {
-                // Creating a filter that looks on Id and compares it to animal id
+                // Creating a filter that looks at the Id and compares it to animal id
                 var filter = Builders<Animal>.Filter.Eq(x => x.Id, animal.Id);
 
                 var animalCollection = _database.GetCollection<Animal>("animals").ReplaceOneAsync(filter, animal);

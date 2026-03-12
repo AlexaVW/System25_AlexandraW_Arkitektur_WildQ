@@ -7,14 +7,14 @@ namespace WildQ.Presentation.Views;
 
 public partial class EndangeredAnimalQuizPage : ContentPage
 {
+    // Constructor --------------------------------------------------------
     public EndangeredAnimalQuizPage(ViewModels.EndangeredAnimalQuizViewModel viewModel)
 	{
 		InitializeComponent();
-
         BindingContext = viewModel;
     }
 
-
+    // On Appearing ------------------------------------------------------
     protected override void OnAppearing()
     {
         base.OnAppearing();
@@ -26,20 +26,22 @@ public partial class EndangeredAnimalQuizPage : ContentPage
         }
     }
 
+    // OnCollectionViewSelectionChanged -----------------------------------
     private async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e) // When an animal is selected
     {
         var selectedAnimal = ((CollectionView)sender).SelectedItem as Animal;
 
-        ((CollectionView)sender).SelectedItem = null; // To be able to klick on the same animal again if we go back
+        ((CollectionView)sender).SelectedItem = null; // To be able to klick on the same animal again if go back
 
         if (selectedAnimal != null)
         {
-            // Binding AnimalQuizPage with the animal that is clicked on
+            // Passing the properties of the animal that is selected to the quizpage
             var page = new AnimalQuizPage(selectedAnimal);
             await Navigation.PushAsync(page);
         }
     }
 
+    // Clicks -----------------------------------------------------------
     private async void OnClickedGoAdminQuizPage(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new QuizAdminPage(null)); //null so we don't have an to have an animal yet
