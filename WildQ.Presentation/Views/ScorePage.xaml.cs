@@ -5,7 +5,7 @@ namespace WildQ.Presentation.Views;
 
 public partial class ScorePage : ContentPage
 {
-    // Constructor -----------------------------------------------------
+    // Constructor ----------------------------------------------------------------------------
     public ScorePage(int amountOfCorrectAnswers, Animal animal)
 	{
 		InitializeComponent();
@@ -13,7 +13,7 @@ public partial class ScorePage : ContentPage
         BindingContext = new ScorePageViewModel(amountOfCorrectAnswers, animal);
 	}
 
-    // Clicks --------------------------------------------------------
+    // Clicks ---------------------------------------------------------------------------------
     private async void OnClickedTryAgain(object sender, EventArgs e)
     {
 		var viewModel = BindingContext as ScorePageViewModel; // To access properties

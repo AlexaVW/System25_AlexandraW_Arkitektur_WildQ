@@ -16,14 +16,14 @@ namespace WildQ.Presentation.ViewModels
     {
         private readonly IAnimalService _animalService; // Dependency injection
 
-        // Constructor ----------------------------------------------------------------
+        // Constructor ----------------------------------------------------------------------------
         public EndangeredAnimalQuizViewModel(IAnimalService animalService) 
         {
             _animalService = animalService;
             LoadAnimalsInQuizAsync();
         }
 
-        // Properties -------------------------------------------------------------------
+        // Properties -----------------------------------------------------------------------------
         private List<Animal> _allAnimalsInQuiz; // To store all the animals once so we don't have to call the database again when using filter
 
 
@@ -45,7 +45,7 @@ namespace WildQ.Presentation.ViewModels
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        // Methods -----------------------------------------------------------------------------------
+        // Methods --------------------------------------------------------------------------------------
         private async void LoadAnimalsInQuizAsync()
         {
             // Getting the animals from database

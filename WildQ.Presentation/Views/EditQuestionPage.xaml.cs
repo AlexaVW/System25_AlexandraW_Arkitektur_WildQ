@@ -9,7 +9,7 @@ public partial class EditQuestionPage : ContentPage
 {
 	IAnimalService _animalService;
 
-    // Constructor ----------------------------------------------------------------------
+    // Constructor ----------------------------------------------------------------------------
     // To edit an existing question with answers
     public EditQuestionPage(Question question, Animal animal)
     {
@@ -31,12 +31,12 @@ public partial class EditQuestionPage : ContentPage
             AnswerText4Entry.Text = question.Answers[3].AnswerText;
         }
     }
-   
-    // Properties ------------------------------------------------------------------------------
+
+    // Properties -----------------------------------------------------------------------------
     public Animal Animal { get; set; }
 	public Question Question { get; set; }
-	
-    // Clicks ----------------------------------------------------------------------------------
+
+    // Clicks ---------------------------------------------------------------------------------
     private async void OnClickedSaveQuestionButton(object sender, EventArgs e)
     {
 		// Updating the question and answers on the Animal 

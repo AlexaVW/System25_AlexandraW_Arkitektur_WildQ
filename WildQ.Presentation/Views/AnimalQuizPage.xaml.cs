@@ -10,7 +10,7 @@ public partial class AnimalQuizPage : ContentPage
 {
     IAnimalService _animalService;
 
-    // Constructor -----------------------------------------------------------------
+    // Constructor ----------------------------------------------------------------------------
     public AnimalQuizPage(Animal animal) 
     {
         InitializeComponent();
@@ -55,7 +55,7 @@ public partial class AnimalQuizPage : ContentPage
         }
     }
     
-    // On Appearing --------------------------------------------------------------------------------
+    // On Appearing ------------------------------------------------------------------------------
     protected override void OnAppearing()
     {
         base.OnAppearing();
@@ -68,7 +68,7 @@ public partial class AnimalQuizPage : ContentPage
         }
     }
 
-    // Clicks -------------------------------------------------------------------------------------------
+    // Clicks ------------------------------------------------------------------------------------
     private async void OnClickedAnswer(object sender, EventArgs e)
     {
         var button = sender as Button;
@@ -110,7 +110,7 @@ public partial class AnimalQuizPage : ContentPage
         await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
     }
 
-    // Methods ----------------------------------------------------------------------------------
+    // Methods --------------------------------------------------------------------------------------
     private async void NextQuestion()
     {
         _currentQuestionIndex++; // To go to the next question

@@ -8,11 +8,11 @@ namespace WildQ.Presentation
 {
     public partial class MainPage : ContentPage
     {
-        // Not using --------------------
+        // Not using ----------------------------
         IAnimalService _animalService; 
         ISearchAnimalService _searchAnimalService;
 
-        // Constructor --------------------------------------------------------
+        // Constructor ----------------------------------------------------------------------------
         public MainPage(IAnimalService animalService, ISearchAnimalService searchAnimalService)
         {
             InitializeComponent();
@@ -20,7 +20,7 @@ namespace WildQ.Presentation
             _searchAnimalService = searchAnimalService;
         }
 
-        // Will always show when MainPage runs --------------------------------
+        // On Appearing ------------------------------------------------------------------------------
         protected override void OnAppearing() 
         {
             base.OnAppearing();
@@ -38,8 +38,8 @@ namespace WildQ.Presentation
                 LoginAndLogoutButton.Text = "Login";
             }
         }
-        
-        // Clicks -----------------------------------------------------------
+
+        // Clicks ---------------------------------------------------------------------------------
         private async void OnClickedSearchAnimal(object sender, EventArgs e)
         {
             //await Navigation.PushAsync(new Views.SearchAnimalPage());

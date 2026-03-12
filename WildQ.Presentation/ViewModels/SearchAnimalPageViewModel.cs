@@ -17,7 +17,7 @@ namespace WildQ.Presentation.ViewModels
     {
         readonly private ISearchAnimalService _searchAnimalService; // Dependency injection
 
-        // Constructor --------------------------------------------------------
+        // Constructor ----------------------------------------------------------------------------
         public SearchAnimalPageViewModel(ISearchAnimalService searchAnimalService)
         {
             _searchAnimalService = searchAnimalService;
@@ -29,7 +29,7 @@ namespace WildQ.Presentation.ViewModels
             });
         }
 
-        // Properties ---------------------------------------------------------
+        // Properties -----------------------------------------------------------------------------
         private string _animalNameInput;
         public string AnimalNameInput 
         {
@@ -62,7 +62,7 @@ namespace WildQ.Presentation.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        // Methods --------------------------------------------------------------
+        // Methods --------------------------------------------------------------------------------------
         public async Task LoadAnimalsAsync(string animalName = "")
         {
             ObservableCollection<SearchAnimal> animals = new ObservableCollection<SearchAnimal>();

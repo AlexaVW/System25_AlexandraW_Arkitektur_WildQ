@@ -9,7 +9,7 @@ namespace WildQ.Presentation.ViewModels
 {
     public class ScorePageViewModel
     {
-        // Constructor ------------------------------------------
+        // Constructor ----------------------------------------------------------------------------
         public ScorePageViewModel(int correctAnswers, Animal animal)
         {
             Animal = animal;
@@ -17,7 +17,7 @@ namespace WildQ.Presentation.ViewModels
             AmountOfQuestions = animal.Questions.Count;
         }
 
-        // Properties ------------------------------------------
+        // Properties -----------------------------------------------------------------------------
         public int AmountOfCorrectAnswers { get; set; }
         public int AmountOfQuestions { get; set; }
         public Animal Animal { get; set; }

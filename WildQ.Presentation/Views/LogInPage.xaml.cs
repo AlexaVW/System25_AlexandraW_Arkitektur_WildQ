@@ -4,13 +4,13 @@ namespace WildQ.Presentation.Views;
 
 public partial class LogInPage : ContentPage
 {
-	// Constructor --------------------------------------------------------
+    // Constructor ----------------------------------------------------------------------------
     public LogInPage()
 	{
 		InitializeComponent();
 	}
 
-    // Clicks -------------------------------------------------------------
+    // Clicks ---------------------------------------------------------------------------------
     private async void OnClickedLogIn(object sender, EventArgs e)
     {
         string userName = UserNameEntry.Text;

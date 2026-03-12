@@ -10,8 +10,8 @@ namespace WildQ.Presentation.Views;
 public partial class QuizAdminPage : ContentPage
 {
     IAnimalService _animalService;
-    
-    // Constructor ------------------------------------------------------------------------------
+
+    // Constructor ----------------------------------------------------------------------------
     public QuizAdminPage(Animal animal)// If animal exisits = Edit animal - animal gets passed in. If empty - creating new animal
     {
         InitializeComponent();
@@ -36,11 +36,11 @@ public partial class QuizAdminPage : ContentPage
         }
     }
 
-    // Properties -------------------------------------------------------------------------
+    // Properties -----------------------------------------------------------------------------
     public Animal Animal { get; set; }
     public List<Question> Questions { get; set; }
-    
-    // Clicks -----------------------------------------------------------------------------
+
+    // Clicks ---------------------------------------------------------------------------------
     private async void OnClickedSaveButton(object sender, EventArgs e)
     {
         if (string.IsNullOrEmpty(AnimalNameEntry.Text) || 
@@ -125,7 +125,7 @@ public partial class QuizAdminPage : ContentPage
         await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
     }
 
-    // Methods --------------------------------------------------------------------
+    // Methods --------------------------------------------------------------------------------------
     private static Answer CreateNewAnswer(string answerText, bool isTrue)
     {
         return new Answer
@@ -135,8 +135,8 @@ public partial class QuizAdminPage : ContentPage
             IsTrue = isTrue
         };
     }
-    
-    // OnCollectionViewSelectionChanged --------------------------------------------
+
+    // OnCollectionViewSelectionChanged ----------------------------------------------------------
     // When clicked on an existing question to edit from the collectionview
     private async void OnSelectedChangedQuestion(object sender, SelectionChangedEventArgs e)
     {
