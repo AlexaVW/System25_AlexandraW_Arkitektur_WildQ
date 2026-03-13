@@ -12,10 +12,16 @@ namespace WildQ.Infrastructure.Repositories
 {
     public class AnimalRepositoryMongoDb : IAnimalRepository
     {
-        // Getting the client and getting the database
+        // Getting the database
         private IMongoDatabase _database = Data.MongoDb.GetClient().GetDatabase("WildQDb");
         public async Task CreateAsync(Animal animal)
         {
+            if(animal == null)
+            {
+                Debug.WriteLine("Couldn't create animal. Animal is null. You have to pass in a valid animal object");
+                return;
+            }
+            
             try
             {
                 // Getting collection of animals and creating the animal
@@ -23,19 +29,20 @@ namespace WildQ.Infrastructure.Repositories
 
                 await animalCollection;
             }
-            catch (ArgumentNullException e)
-            {
-                throw new ArgumentNullException(nameof(animal), "Couldn't create animal. Animal is null. You have to pass in a valid animal object");
-            }
-
             catch (Exception ex)
             {
-                throw new Exception("Error\n" + ex.Message);
+                Debug.WriteLine("Couldn't create animal" + ex);
             }
         }
 
         public async Task DeleteAsync(Animal animal)
         {
+            if (animal == null)
+            {
+                Debug.WriteLine("Couldn't delete animal. Animal is null. You have to pass in a valid animal object");
+                return;
+            }
+
             try
             {
                 // Creating a filter to see which animal we are on right now
@@ -45,13 +52,9 @@ namespace WildQ.Infrastructure.Repositories
 
                 await animalCollection;
             }
-            catch(ArgumentNullException e)
-            {
-                throw new ArgumentNullException(nameof(animal), "Couldn't delete animal. Animal is null. You have to pass in a valid animal object");
-            }
             catch (Exception ex)
             {
-                throw new Exception("Error\n" + ex.Message);
+                Debug.WriteLine("Couldn't delete this animal" + ex);
             }
         }
 
@@ -70,7 +73,7 @@ namespace WildQ.Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Couldn't find any animal in the database");
+                Debug.WriteLine("Error when trying to find animal " + ex);
                 
             }
             return animals; // Returns an empty list if it doesn't go through
@@ -78,6 +81,12 @@ namespace WildQ.Infrastructure.Repositories
 
         public async Task UpdateAsync(Animal animal)
         {
+            if (animal == null)
+            {
+                Debug.WriteLine("Couldn't update animal. Animal is null. You have to pass in a valid animal object");
+                return;
+            }
+
             try
             {
                 // Creating a filter that looks at the Id and compares it to animal id
@@ -87,13 +96,9 @@ namespace WildQ.Infrastructure.Repositories
 
                 await animalCollection;
             }
-            catch (ArgumentNullException e)
-            {
-                throw new ArgumentNullException(nameof(animal), "Couldn't update animal. Animal is null. You have to pass in an animal object that not null");
-            }
             catch (Exception ex)
             {
-                throw new Exception("Error\n" + ex.Message);
+                Debug.WriteLine("Error when trying to update animal " + ex);
             }
         }
     }
