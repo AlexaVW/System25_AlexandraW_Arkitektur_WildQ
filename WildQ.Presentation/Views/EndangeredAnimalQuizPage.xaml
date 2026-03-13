@@ -5,7 +5,7 @@
              Title="EndangeredAnimalQuiz"
              BackgroundColor="DarkOliveGreen">
     <ScrollView>
-    <VerticalStackLayout>
+    <VerticalStackLayout HorizontalOptions="Center" MaximumWidthRequest="1400">
             
             <Label 
                 Text="Endangered Animals Quiz"
@@ -13,78 +13,70 @@
                 Style="{StaticResource SubHeadline}"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"/>
-
-            <Grid Padding="10"
-                  ColumnSpacing="10"
-                  HorizontalOptions="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="100"/>
-                </Grid.ColumnDefinitions>
-                
-                <Button
-                    Text="Go Back"
-                    Clicked="OnClickedGoBackToMainPage"
-                    Style="{StaticResource NavButtonBrown}"
-                    Grid.Column="0"/>
-
-                <Button
-                    x:Name="OrderCarnivoraButton"
-                    Text="Carnivora"
-                    Clicked="OnClickedCarnivoraButton"
-                    BackgroundColor="Wheat"
-                    TextColor="DarkOliveGreen"
-                    Grid.Column="1"/>
-
-                <Button
-                    x:Name="OrderPrimatesButton"
-                    Text="Primates"
-                    Clicked="OnClickedPrimatesButton"
-                    BackgroundColor="Wheat"
-                    TextColor="DarkOliveGreen"
-                    Grid.Column="2"/>
-
-                <Button
-                    x:Name="OddToedUngulatesButton"
-                    Text="Odd-Toed Ungulates"
-                    Clicked="OnClickedOddToedUngulatesButton"
-                    BackgroundColor="Wheat"
-                    TextColor="DarkOliveGreen"
-                    Grid.Column="3"/>
-
-                <Button
-                    x:Name="EvenToedUngulatesButton"
-                    Text="Even-Toed Ungulates"
-                    Clicked="OnClickedEvenToedUngulatesButton"
-                    BackgroundColor="Wheat"
-                    TextColor="DarkOliveGreen"
-                    Grid.Column="4"/>
-
-                <Button
-                    x:Name="AllAnimalsButton"
-                    Text="All Animals"
-                    Clicked="OnClickedAllAnimalsButton"
-                    BackgroundColor="Wheat"
-                    TextColor="DarkOliveGreen"
-                    Grid.Column="5"/>
-
-                <Button 
-                    x:Name="AddQuizButton"
-                    Text="Add Quiz"
-                    Clicked="OnClickedGoAdminQuizPage"
-                    Style="{StaticResource NavButtonBrown}"
-                    Grid.Column="6"/>
-            </Grid>
             
+                <FlexLayout 
+                    Wrap="Wrap"
+                    JustifyContent="Center"
+                    Direction="Row"
+                    Margin="10"
+                    HorizontalOptions="Center">
+                    <Button
+                        Text="Go Back"
+                        Clicked="OnClickedGoBackToMainPage"
+                        Style="{StaticResource NavButtonBrown}"
+                        Margin="4"/>
+
+                    <Button
+                        x:Name="OrderCarnivoraButton"
+                        Text="Carnivora"
+                        Clicked="OnClickedCarnivoraButton"
+                        BackgroundColor="Wheat"
+                        TextColor="DarkOliveGreen"
+                        Margin="4"/>
+
+                    <Button
+                        x:Name="OrderPrimatesButton"
+                        Text="Primates"
+                        Clicked="OnClickedPrimatesButton"
+                        BackgroundColor="Wheat"
+                        TextColor="DarkOliveGreen"
+                        Margin="4"/>
+
+                    <Button
+                        x:Name="OddToedUngulatesButton"
+                        Text="Odd-Toed Ungulates"
+                        Clicked="OnClickedOddToedUngulatesButton"
+                        BackgroundColor="Wheat"
+                        TextColor="DarkOliveGreen"
+                        Margin="4"/>
+
+                    <Button
+                        x:Name="EvenToedUngulatesButton"
+                        Text="Even-Toed Ungulates"
+                        Clicked="OnClickedEvenToedUngulatesButton"
+                        BackgroundColor="Wheat"
+                        TextColor="DarkOliveGreen"
+                        Margin="4"/>
+
+                    <Button
+                        x:Name="AllAnimalsButton"
+                        Text="All Animals"
+                        Clicked="OnClickedAllAnimalsButton"
+                        BackgroundColor="Wheat"
+                        TextColor="DarkOliveGreen"
+                        Margin="4"/>
+
+                    <Button 
+                        x:Name="AddQuizButton"
+                        Text="Add Quiz"
+                        Clicked="OnClickedGoAdminQuizPage"
+                        Style="{StaticResource NavButtonBrown}"
+                        Margin="4"/>
+                </FlexLayout>
+                
             <CollectionView ItemsSource="{Binding Animals}"
                             SelectionMode="Single"
                             SelectionChanged="OnCollectionViewSelectionChanged"
-                            HorizontalOptions="Center"
                             Margin="10">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"/>
@@ -99,7 +91,7 @@
                             BackgroundColor="{StaticResource MyOtherBrown}"
                             MaximumWidthRequest="900"
                             Padding="10">
-                            <VerticalStackLayout Padding="10" Spacing="10">
+                            <VerticalStackLayout Padding="10" Spacing="10" Margin="0, 0, 0, 30">
                                 <Label
                                     Text="{Binding AnimalName}"
                                     TextColor="Wheat"
@@ -111,7 +103,8 @@
                                     StrokeShape="RoundRectangle 20" 
                                     StrokeThickness="0"
                                     HeightRequest="300" 
-                                    WidthRequest="500" 
+                                    MaximumWidthRequest="500" 
+                                    HorizontalOptions="Center"
                                     Padding="0">
                                     <Image
                                         Source="{Binding ImageSource}"

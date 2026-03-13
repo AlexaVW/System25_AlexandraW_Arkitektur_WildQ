@@ -5,7 +5,7 @@
              Title="AnimalQuizPage"
              BackgroundColor="DarkOliveGreen">
     <ScrollView>
-        <VerticalStackLayout Margin="10" Spacing="10">
+        <VerticalStackLayout Margin="10" Spacing="10" HorizontalOptions="Center">
 
             <Grid 
                 Padding="10"
@@ -35,7 +35,7 @@
                     Text="Delete Animal"
                     Clicked="OnClickedDeleteAnimal"
                     BackgroundColor="DarkRed"
-                    Grid.Column="4"/>
+                    Grid.Column="3"/>
             </Grid>
 
             <Border
@@ -48,22 +48,20 @@
                 <VerticalStackLayout HorizontalOptions="Center">
                     <Label 
                         Text="{Binding Animal.AnimalName}"
-                        VerticalOptions="Center" 
                         HorizontalOptions="Center"
                         Style="{StaticResource Headline}"
                         TextColor="Wheat"/>
                     <Label
                         Text="{Binding Animal.Order,
                         StringFormat='Order: {0}'}"
-                        VerticalOptions="Center"
                         HorizontalTextAlignment="Center"
                         TextColor="Wheat"/>
 
                     <Border 
                         StrokeShape="RoundRectangle 20" 
                         HeightRequest="300" 
-                        WidthRequest="500" 
-                        Padding="0"
+                        MaximumWidthRequest="500" 
+                        HorizontalOptions="Center"
                         StrokeThickness="0"
                         Margin="10">
                         <Image 
@@ -89,7 +87,8 @@
                                         BackgroundColor="Wheat"
                                         TextColor="DarkOliveGreen"
                                         Clicked="OnClickedAnswer"
-                                        WidthRequest="500"
+                                        HorizontalOptions="Fill"
+                                        MaximumWidthRequest="500"
                                         HeightRequest="45"/>
                                 </VerticalStackLayout>
 

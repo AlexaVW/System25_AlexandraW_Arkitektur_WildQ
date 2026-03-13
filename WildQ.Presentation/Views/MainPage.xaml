@@ -16,25 +16,33 @@
             HeightRequest="185"
             Aspect="AspectFit"/>
 
-            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <FlexLayout
+                Wrap="Wrap"
+                JustifyContent="Center"
+                Direction="Row"
+                Margin="10"
+                HorizontalOptions="Center">
                 <Button
                     Text="Endangered Animals Quiz"
                     Clicked="OnClickedEndangeredAnimalQuiz"
-                    Style="{StaticResource NavButtonBrown}"/>
+                    Style="{StaticResource NavButtonBrown}"
+                    Margin="4"/>
 
                 <Button
                     Text="Search Animal"
                     Clicked="OnClickedSearchAnimal"
-                    Style="{StaticResource NavButtonBrown}"/>
+                    Style="{StaticResource NavButtonBrown}"
+                    Margin="4"/>
 
                 <Button
                     x:Name="LoginAndLogoutButton"
                     Text="Login"
                     Clicked="OnClickedLoginAndLogout"
-                    Style="{StaticResource NavButtonBrown}"/>
-            </HorizontalStackLayout>
+                    Style="{StaticResource NavButtonBrown}"
+                    Margin="4"/>
+            </FlexLayout>
 
-            <VerticalStackLayout Spacing="20" WidthRequest="550">
+            <VerticalStackLayout Spacing="20" MaximumWidthRequest="550">
                 <Border
                     StrokeShape="RoundRectangle 10"
                     BackgroundColor="Wheat"
@@ -42,11 +50,9 @@
                     <Label
                         x:Name="WelcomeTextLabel"
                         Text="Welcome!"
-                        HeightRequest="40"
                         FontSize="20"
                         FontAttributes="Bold"
                         HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
                         TextColor="DarkOliveGreen"/>
                 </Border>
                 

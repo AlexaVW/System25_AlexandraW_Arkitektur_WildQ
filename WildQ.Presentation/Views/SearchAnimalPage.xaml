@@ -5,39 +5,40 @@
              Title="SearchAnimalPage"
              BackgroundColor="DarkOliveGreen">
     <ScrollView >
-        <VerticalStackLayout
-            MaximumWidthRequest="700"
-            Margin="25"
-            Spacing="20"
-            HorizontalOptions="Center">
+        <VerticalStackLayout MaximumWidthRequest="700" Margin="25" Spacing="20" HorizontalOptions="Center">
             
             <Label 
                 Text="Search for an animal and get information about it"
                 TextColor="Wheat"
                 Style="{StaticResource SubHeadline}"
-                VerticalOptions="Center" 
                 HorizontalOptions="Center"/>
 
-            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
-                
+            <FlexLayout
+                Wrap="Wrap"
+                JustifyContent="Center"
+                Direction="Row"
+                Margin="10"
+                HorizontalOptions="Center">
                 <Button
                     Text="Go Back"
                     Clicked="OnClickedGoBackToMainPage"
-                    Style="{StaticResource NavButtonBrown}"/>
-                
+                    Style="{StaticResource NavButtonBrown}"
+                    Margin="4"/>
+
                 <Entry
                     x:Name="entryAnimalName"
                     Text="{Binding AnimalNameInput}"
                     Placeholder="Enter an animal spieces"
-                    WidthRequest="235"/>
+                    MaximumWidthRequest="235"
+                    Margin="4"/>
 
                 <Button 
                     Command ="{Binding SearchAnimalCommand}"
                     Text="Search for animal"
                     BackgroundColor="Wheat"
-                    TextColor="DarkOliveGreen"/>
-                
-            </HorizontalStackLayout>
+                    TextColor="DarkOliveGreen"
+                    Margin="4"/>
+            </FlexLayout>
 
             <CollectionView ItemsSource="{Binding Animals}">
                 <CollectionView.ItemsLayout>
@@ -49,14 +50,14 @@
                         <Border
                             StrokeShape="RoundRectangle 30"
                             BackgroundColor="Wheat"
-                            MaximumWidthRequest="700">
-                            <VerticalStackLayout BackgroundColor="Wheat" Padding="10" HorizontalOptions="Center" Spacing="8">
+                            MaximumWidthRequest="700"
+                            Padding="15">
+                            <VerticalStackLayout HorizontalOptions="Center" Spacing="8">
                             <Label 
                                 Text="{Binding Name}"
                                 Style="{StaticResource SubHeadline}"
                                 FontSize="30"
-                                TextColor="Black"
-                                HorizontalOptions="Center"/>
+                                TextColor="Black"/>
                             <Label
                                 Text="{Binding Characteristics.Name_of_young ,
                                 StringFormat='Name of Young: {0}'}"

@@ -4,56 +4,71 @@
              x:Class="WildQ.Presentation.Views.EditQuestionPage"
              Title="EditQuestionPage"
              BackgroundColor="DarkOliveGreen">
-    <VerticalStackLayout >
-        <Button
-            Text="Go Back"
-            Clicked="OnClickedGoBackToQuizAdminPage"
-            Style="{StaticResource NavButtonBrown}"/>
+    <VerticalStackLayout Margin="10" Spacing="10" MaximumWidthRequest="900">
+        <Label
+            Text="Edit Question"
+            TextColor="Wheat"
+            HorizontalOptions="Center"
+            Style="{StaticResource SubHeadline}"/>
+        <HorizontalStackLayout>
+            <Button
+                Text="Go Back"
+                Clicked="OnClickedGoBackToQuizAdminPage"
+                Style="{StaticResource NavButtonBrown}"
+                HorizontalOptions="Start"/>
+        </HorizontalStackLayout>
+
+        <Border 
+            StrokeShape="RoundRectangle 5"
+            StrokeThickness="4"
+            Stroke="Wheat"
+            Padding="10">
+            <VerticalStackLayout Spacing="10" Margin="0,30">
+                <Label 
+                    Text="Question"
+                    HorizontalOptions="Center"
+                    TextColor="Wheat"
+                    Style="{StaticResource SubHeadline}"/>
+
+                <Entry
+                    x:Name="QuestionTextEntry"
+                    Placeholder="Enter Question Text"/>
+
+                <Label 
+                    Text="Answers"
+                    HorizontalOptions="Center"
+                    TextColor="Wheat"
+                    Style="{StaticResource SubHeadline}"/>
+
+                <Entry
+                    x:Name="AnswerText1Entry"
+                    Placeholder="Enter Answer 1 (Correct answer)"/>
+
+                <Entry
+                    x:Name="AnswerText2Entry"
+                    Placeholder="Enter Answer 2"/>
+
+                <Entry
+                    x:Name="AnswerText3Entry"
+                    Placeholder="Enter Answer 3"/>
+
+                <Entry
+                    x:Name="AnswerText4Entry"
+                    Placeholder="Enter Answer 4"/>
+
+                <Button
+                    x:Name="SaveQuestionButton"
+                    Text="Update Question"
+                    Clicked="OnClickedSaveQuestionButton"
+                    BackgroundColor="Wheat"
+                    TextColor="DarkOliveGreen"/>
+
+                <Button
+                    Text="Delete Question"
+                    BackgroundColor="DarkRed"
+                    Clicked="OnClickedDeleteQuestion"/>
+            </VerticalStackLayout>
+        </Border>
         
-        <Label 
-            Text="Question"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            TextColor="Wheat"
-            Style="{StaticResource SubHeadline}"/>
-
-        <Entry
-            x:Name="QuestionTextEntry"
-            Placeholder="Enter Question Text"/>
-
-        <Label 
-            Text="Answers"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            TextColor="Wheat"
-            Style="{StaticResource SubHeadline}"/>
-
-        <Entry
-            x:Name="AnswerText1Entry"
-            Placeholder="Enter Answer 1 (Correct answer)"/>
-
-        <Entry
-            x:Name="AnswerText2Entry"
-            Placeholder="Enter Answer 2"/>
-
-        <Entry
-            x:Name="AnswerText3Entry"
-            Placeholder="Enter Answer 3"/>
-
-        <Entry
-            x:Name="AnswerText4Entry"
-            Placeholder="Enter Answer 4"/>
-
-        <Button
-            x:Name="SaveQuestionButton"
-            Text="Update Question"
-            Clicked="OnClickedSaveQuestionButton"
-            BackgroundColor="Wheat"
-            TextColor="DarkOliveGreen"/>
-
-        <Button
-            Text="Delete Question"
-            BackgroundColor="DarkRed"
-            Clicked="OnClickedDeleteQuestion"/>
     </VerticalStackLayout>
 </ContentPage>

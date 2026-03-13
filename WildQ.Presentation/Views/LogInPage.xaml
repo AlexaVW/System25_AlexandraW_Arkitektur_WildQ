@@ -9,8 +9,7 @@
         <Label 
             Text="Log In"
             TextColor="Wheat"
-            Style="{StaticResource SubHeadline}"
-            VerticalOptions="Center" 
+            Style="{StaticResource SubHeadline}" 
             HorizontalOptions="Center"/>
         
         <Button

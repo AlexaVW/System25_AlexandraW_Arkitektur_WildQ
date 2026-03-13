@@ -4,12 +4,13 @@
              x:Class="WildQ.Presentation.Views.ScorePage"
              Title="ScorePage"
              BackgroundColor="DarkOliveGreen">
-    <VerticalStackLayout Spacing="20" Margin="20">
+    <ScrollView>
+    <VerticalStackLayout Spacing="20" Margin="20" MaximumWidthRequest="800">
 
         <Border
             StrokeShape="RoundRectangle 20" 
             StrokeThickness="0" 
-            WidthRequest="500" 
+            MaximumWidthRequest="500" 
             Padding="0">
             <Image
                 Source="{Binding Animal.ImageSource}"
@@ -27,29 +28,25 @@
             <VerticalStackLayout Spacing="10">
                 <Label 
                     Text="{Binding Animal.AnimalName, 
-                    StringFormat='Score for the {0} Quiz'}"
-                    VerticalOptions="Center" 
+                    StringFormat='Score for the {0} Quiz'}" 
                     HorizontalOptions="Center"
                     Style="{StaticResource Headline}"
                     TextColor="Wheat"/>
 
                 <Label 
                     Text="{Binding AmountOfCorrectAnswers}"
-                    VerticalOptions="Center" 
                     HorizontalOptions="Center"
                     FontSize="55"
                     TextColor="Wheat"/>
 
                 <Label
                     Text="Out Of"
-                    VerticalOptions="Center" 
                     HorizontalOptions="Center"
                     FontSize="30"
                     TextColor="Wheat"/>
 
                 <Label
                     Text="{Binding AmountOfQuestions}"
-                    VerticalOptions="Center" 
                     HorizontalOptions="Center"
                     Style="{StaticResource Headline}"
                     FontSize="55"
@@ -57,21 +54,28 @@
 
             </VerticalStackLayout>
         </Border>
-        
-        <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+
+        <FlexLayout
+            Wrap="Wrap"
+            JustifyContent="Center"
+            Direction="Row"
+            Margin="10"
+            HorizontalOptions="Center">
             <Button
-    Text="Try Again"
-    TextColor="White"
-    Style="{StaticResource NavButtonBrown}"
-    Clicked="OnClickedTryAgain"/>
+                Text="Try Again"
+                TextColor="White"
+                Style="{StaticResource NavButtonBrown}"
+                Clicked="OnClickedTryAgain"
+                Margin="4"/>
 
             <Button
-    Text="Go To MainPage"
-    TextColor="White"
-    Style="{StaticResource NavButtonBrown}"
-    Clicked="OnClickedGoToMainPage"/>
-        </HorizontalStackLayout>
+                Text="Go To MainPage"
+                TextColor="White"
+                Style="{StaticResource NavButtonBrown}"
+                Clicked="OnClickedGoToMainPage"
+                Margin="4"/>
+        </FlexLayout>
         
-
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
