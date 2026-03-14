@@ -10,12 +10,13 @@
             Margin="0,20"
             Spacing="25"
             HorizontalOptions="Center">
-            
+            <!-- WildQ Logo -->
             <Image
-            Source="wildq_transparent.png"
-            HeightRequest="185"
-            Aspect="AspectFit"/>
+                Source="wildq_transparent.png"
+                HeightRequest="185"
+                Aspect="AspectFit"/>
 
+            <!-- Navigation Buttons -->
             <FlexLayout
                 Wrap="Wrap"
                 JustifyContent="Center"
@@ -42,6 +43,7 @@
                     Margin="4"/>
             </FlexLayout>
 
+            <!-- Welcome and Information Labels -->
             <VerticalStackLayout Spacing="20" MaximumWidthRequest="550">
                 <Border
                     StrokeShape="RoundRectangle 10"

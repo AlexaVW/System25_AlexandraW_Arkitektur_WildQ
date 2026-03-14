@@ -13,12 +13,15 @@
                 Style="{StaticResource SubHeadline}"
                 HorizontalOptions="Center"/>
 
+
+            <!-- Navigation Button, Search Entry, Search Button  -->
             <FlexLayout
                 Wrap="Wrap"
                 JustifyContent="Center"
                 Direction="Row"
                 Margin="10"
                 HorizontalOptions="Center">
+                
                 <Button
                     Text="Go Back"
                     Clicked="OnClickedGoBackToMainPage"
@@ -35,11 +38,11 @@
                 <Button 
                     Command ="{Binding SearchAnimalCommand}"
                     Text="Search for animal"
-                    BackgroundColor="Wheat"
-                    TextColor="DarkOliveGreen"
+                    Style="{StaticResource SelectionButton}"
                     Margin="4"/>
             </FlexLayout>
 
+            <!-- The Result From The Searched Animal  -->
             <CollectionView ItemsSource="{Binding Animals}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>

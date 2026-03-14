@@ -12,4 +12,9 @@
         <Setter Property="FontFamily" Value="Exo2"/>
     </Style>
 
+    <Style x:Key="SelectionButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Wheat"/>
+        <Setter Property="TextColor" Value="DarkOliveGreen"/>
+    </Style>
+
 </ResourceDictionary>

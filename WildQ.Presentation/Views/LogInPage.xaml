@@ -7,17 +7,19 @@
     
     <VerticalStackLayout MaximumWidthRequest="800" Margin="10">
         <Label 
-            Text="Log In"
+            Text="LogIn"
             TextColor="Wheat"
             Style="{StaticResource SubHeadline}" 
             HorizontalOptions="Center"/>
         
+        <!-- Navigation Buttons -->
         <Button
             Text="Go Back"
             Style="{StaticResource NavButtonBrown}"
             HorizontalOptions="Start"
             Clicked="OnClickedGoBack"/>
         
+        <!-- Login Entries -->
         <VerticalStackLayout Margin="0,40" Spacing="20">
             <Entry 
                 x:Name="UserNameEntry"
@@ -25,12 +27,13 @@
             <Entry
                 x:Name="PasswordEntry"
                 Placeholder="Enter Password"/>
+
+            <!-- Login Button -->
             <Button
                 x:Name="LogInButton"
-                Text="Log In"
+                Text="LogIn"
                 Clicked="OnClickedLogIn"
-                BackgroundColor="Wheat"
-                TextColor="DarkOliveGreen"/>
+                Style="{StaticResource SelectionButton}"/>
         </VerticalStackLayout>
         
     </VerticalStackLayout>

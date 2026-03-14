@@ -9,6 +9,7 @@
     <Color x:Key="MyBrown">#B57B21</Color>
     <Color x:Key="MyOtherBrown">#B58150</Color>
     <Color x:Key="MyOtherOtherBrown">#E6B07A</Color>
+    
 
 
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>

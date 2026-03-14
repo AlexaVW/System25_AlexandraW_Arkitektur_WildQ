@@ -14,11 +14,12 @@
 
                 
             </ResourceDictionary.MergedDictionaries>
-            
+            <!-- Label style -->
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="Exo2"/>
             </Style>
 
+            <!-- Entry style -->
             <Style TargetType="Entry">
                 <Setter Property="FontFamily" Value="Exo2"/>
                 <Setter Property="FontSize" Value="16"/>
@@ -27,10 +28,11 @@
                 <Setter Property="TextColor" Value="Black"/>
             </Style>
 
+            <!-- Button style -->
             <Style TargetType="Button">
                 <Setter Property="FontFamily" Value="Exo2"/>
             </Style>
-            
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

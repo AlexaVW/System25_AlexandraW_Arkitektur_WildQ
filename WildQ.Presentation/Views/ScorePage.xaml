@@ -7,6 +7,7 @@
     <ScrollView>
     <VerticalStackLayout Spacing="20" Margin="20" MaximumWidthRequest="800">
 
+        <!-- The Animal -->
         <Border
             StrokeShape="RoundRectangle 20" 
             StrokeThickness="0" 
@@ -18,8 +19,8 @@
                 HorizontalOptions="Fill"
                 Aspect="AspectFit"/>
         </Border>
-       
 
+        <!-- The Score -->
         <Border
             StrokeShape="RoundRectangle 5"
             StrokeThickness="4"
@@ -56,6 +57,7 @@
             </VerticalStackLayout>
         </Border>
 
+            <!-- Navigation Buttons -->
         <FlexLayout
             Wrap="Wrap"
             JustifyContent="Center"

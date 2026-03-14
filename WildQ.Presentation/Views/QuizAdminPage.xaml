@@ -6,19 +6,21 @@
              BackgroundColor="DarkOliveGreen">
     <ScrollView>
         <VerticalStackLayout Spacing="10" MaximumWidthRequest="800">
-            <Label 
-                Text="Animal"
-                HorizontalOptions="Center"
-                TextColor="Wheat"
-                Style="{StaticResource SubHeadline}"/>
 
-                <Button
-                    Text="Go Back"
-                    Clicked="OnClickedGoBackToAnimalQuizPage"
-                    Style="{StaticResource NavButtonBrown}"
-                    HorizontalOptions="Start"/>
+            <!-- Navigation Buttons -->
+            <Button
+                Text="Go Back"
+                Clicked="OnClickedGoBackToAnimalQuizPage"
+                Style="{StaticResource NavButtonBrown}"
+                HorizontalOptions="Start"/>
 
+            <!-- Animal Entries -->
             <VerticalStackLayout Spacing="10" Margin="0,30">
+                <Label 
+                    Text="Animal"
+                    HorizontalOptions="Center"
+                    TextColor="Wheat"
+                    Style="{StaticResource SubHeadline}"/>
                 <Entry 
                     x:Name="AnimalNameEntry"
                     Placeholder="Enter Animal Name"/>
@@ -29,14 +31,15 @@
                     x:Name="OrderEntry"
                     Placeholder="Enter Order"/>
 
+                <!-- Save Button -->
                 <Button
                     x:Name="SaveButton"
                     Text="Save Animal"
                     Clicked="OnClickedSaveButton"
-                    BackgroundColor="Wheat"
-                    TextColor="DarkOliveGreen"/>
+                    Style="{StaticResource SelectionButton}"/>
             </VerticalStackLayout>
 
+            <!-- Question Entry -->
             <Label 
                 Text="New Question"
                 HorizontalOptions="Center"
@@ -47,6 +50,7 @@
                 x:Name="QuestionTextEntry"
                 Placeholder="Enter Question Text"/>
 
+            <!-- Answer Entries -->
             <Label 
                 Text="New Answers"
                 HorizontalOptions="Center"
@@ -69,13 +73,14 @@
                 x:Name="AnswerText4Entry"
                 Placeholder="Enter Answer 4"/>
 
+            <!-- Save Button -->
             <Button
                 x:Name="SaveQuestionButton"
                 Text="Save Question"
                 Clicked="OnClickedSaveQuestionButton"
-                BackgroundColor="Wheat"
-                TextColor="DarkOliveGreen"/>
+                Style="{StaticResource SelectionButton}"/>
 
+            <!-- List of existing questions -->
             <Label
                 x:Name="EditExistingQuestionLabel"
                 Text="Choose an existing question to edit"

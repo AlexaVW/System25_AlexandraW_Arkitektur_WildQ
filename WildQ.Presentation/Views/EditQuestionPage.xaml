@@ -10,6 +10,8 @@
             TextColor="Wheat"
             HorizontalOptions="Center"
             Style="{StaticResource SubHeadline}"/>
+
+        <!-- Navigation Buttons -->
         <HorizontalStackLayout>
             <Button
                 Text="Go Back"
@@ -18,6 +20,7 @@
                 HorizontalOptions="Start"/>
         </HorizontalStackLayout>
 
+        <!-- Question Entry -->
         <Border 
             StrokeShape="RoundRectangle 5"
             StrokeThickness="4"
@@ -34,6 +37,7 @@
                     x:Name="QuestionTextEntry"
                     Placeholder="Enter Question Text"/>
 
+                <!-- Answer Entries -->
                 <Label 
                     Text="Answers"
                     HorizontalOptions="Center"
@@ -56,12 +60,12 @@
                     x:Name="AnswerText4Entry"
                     Placeholder="Enter Answer 4"/>
 
+                <!-- Save / Delete Buttons -->
                 <Button
                     x:Name="SaveQuestionButton"
                     Text="Update Question"
                     Clicked="OnClickedSaveQuestionButton"
-                    BackgroundColor="Wheat"
-                    TextColor="DarkOliveGreen"/>
+                    Style="{StaticResource SelectionButton}"/>
 
                 <Button
                     Text="Delete Question"

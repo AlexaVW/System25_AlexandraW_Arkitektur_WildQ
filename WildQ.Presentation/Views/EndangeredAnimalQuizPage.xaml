@@ -13,13 +13,14 @@
                 Style="{StaticResource SubHeadline}"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"/>
-            
-                <FlexLayout 
-                    Wrap="Wrap"
-                    JustifyContent="Center"
-                    Direction="Row"
-                    Margin="10"
-                    HorizontalOptions="Center">
+
+            <!-- Navigation Buttons -->
+            <FlexLayout 
+                Wrap="Wrap"
+                JustifyContent="Center"
+                Direction="Row"
+                Margin="10"
+                HorizontalOptions="Center">
                     <Button
                         Text="Go Back"
                         Clicked="OnClickedGoBackToMainPage"
@@ -30,40 +31,35 @@
                         x:Name="OrderCarnivoraButton"
                         Text="Carnivora"
                         Clicked="OnClickedCarnivoraButton"
-                        BackgroundColor="Wheat"
-                        TextColor="DarkOliveGreen"
+                        Style="{StaticResource SelectionButton}"
                         Margin="4"/>
 
                     <Button
                         x:Name="OrderPrimatesButton"
                         Text="Primates"
                         Clicked="OnClickedPrimatesButton"
-                        BackgroundColor="Wheat"
-                        TextColor="DarkOliveGreen"
+                        Style="{StaticResource SelectionButton}"
                         Margin="4"/>
 
                     <Button
                         x:Name="OddToedUngulatesButton"
                         Text="Odd-Toed Ungulates"
                         Clicked="OnClickedOddToedUngulatesButton"
-                        BackgroundColor="Wheat"
-                        TextColor="DarkOliveGreen"
+                        Style="{StaticResource SelectionButton}"
                         Margin="4"/>
 
                     <Button
                         x:Name="EvenToedUngulatesButton"
                         Text="Even-Toed Ungulates"
                         Clicked="OnClickedEvenToedUngulatesButton"
-                        BackgroundColor="Wheat"
-                        TextColor="DarkOliveGreen"
+                        Style="{StaticResource SelectionButton}"
                         Margin="4"/>
 
                     <Button
                         x:Name="AllAnimalsButton"
                         Text="All Animals"
                         Clicked="OnClickedAllAnimalsButton"
-                        BackgroundColor="Wheat"
-                        TextColor="DarkOliveGreen"
+                        Style="{StaticResource SelectionButton}"
                         Margin="4"/>
 
                     <Button 
@@ -73,7 +69,8 @@
                         Style="{StaticResource NavButtonBrown}"
                         Margin="4"/>
                 </FlexLayout>
-                
+
+            <!-- The Animals -->
             <CollectionView ItemsSource="{Binding Animals}"
                             SelectionMode="Single"
                             SelectionChanged="OnCollectionViewSelectionChanged"
