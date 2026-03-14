@@ -11,11 +11,12 @@
             StrokeShape="RoundRectangle 20" 
             StrokeThickness="0" 
             MaximumWidthRequest="500" 
+            HorizontalOptions="Fill"
             Padding="0">
             <Image
                 Source="{Binding Animal.ImageSource}"
-                HorizontalOptions="Center"
-                Aspect="AspectFill"/>
+                HorizontalOptions="Fill"
+                Aspect="AspectFit"/>
         </Border>
        
 

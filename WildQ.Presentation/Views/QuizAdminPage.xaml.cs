@@ -21,6 +21,7 @@ public partial class QuizAdminPage : ContentPage
         Animal = animal;
 
         EditExistingQuestionLabel.IsVisible = false; // Not visible when creating animal
+        ExistingQuestionsBorder.IsVisible = false;
 
         if (animal != null) // If Edit Animal 
         {
@@ -32,7 +33,10 @@ public partial class QuizAdminPage : ContentPage
             OrderEntry.Text = animal.Order;
             SaveButton.Text = "Update Animal"; // New text on the button
 
-            EditExistingQuestionLabel.IsVisible = animal.Questions != null && animal.Questions.Count > 0; // Is visible if there are questions
+            // Are only visible if there are questions
+            bool hasQuestions = animal.Questions != null && animal.Questions.Count > 0;
+            EditExistingQuestionLabel.IsVisible = hasQuestions; 
+            ExistingQuestionsBorder.IsVisible = hasQuestions;
         }
     }
 

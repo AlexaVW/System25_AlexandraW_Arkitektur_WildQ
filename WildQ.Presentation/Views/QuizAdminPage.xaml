@@ -84,6 +84,7 @@
                 Style="{StaticResource SubHeadline}"/>
 
             <Border
+                x:Name="ExistingQuestionsBorder"
                 StrokeShape="RoundRectangle 5"
                 BackgroundColor="Wheat"
                 MaximumWidthRequest="500">
