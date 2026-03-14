@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using WildQ.Application.Interfaces;
 using WildQ.Application.Services;
@@ -24,7 +25,8 @@ namespace WildQ.Presentation
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            // builder.Configuration.AddUserSecrets<App>();
+            builder.Logging.AddDebug();
 #endif
 
             //Dependency Injection

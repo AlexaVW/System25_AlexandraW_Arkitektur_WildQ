@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities.Models.MongoDbModels;
 using MongoDB.Driver;
+using Microsoft.Extensions;
 
 
 namespace WildQ.Infrastructure.Data
