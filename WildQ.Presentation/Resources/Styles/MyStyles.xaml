@@ -9,12 +9,16 @@
         <Setter Property="Padding" Value="10"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="TextColor" Value="White"/>
-        <Setter Property="FontFamily" Value="Exo2"/>
     </Style>
 
     <Style x:Key="SelectionButton" TargetType="Button">
         <Setter Property="BackgroundColor" Value="Wheat"/>
         <Setter Property="TextColor" Value="DarkOliveGreen"/>
+    </Style>
+
+    <Style x:Key="DeleteButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource MyRed}"/>
+        <Setter Property="TextColor" Value="White"/>
     </Style>
 
 </ResourceDictionary>

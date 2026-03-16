@@ -25,7 +25,6 @@ namespace WildQ.Presentation
                 });
 
 #if DEBUG
-            // builder.Configuration.AddUserSecrets<App>();
             builder.Logging.AddDebug();
 #endif
 

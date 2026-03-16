@@ -35,7 +35,8 @@
                     x:Name="DeleteAnimalButton"
                     Text="Delete Animal"
                     Clicked="OnClickedDeleteAnimal"
-                    BackgroundColor="DarkRed"
+                    Style="{StaticResource DeleteButton}"
+                    TextColor="White"
                     Grid.Column="3"/>
             </Grid>
 
