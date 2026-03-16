@@ -54,39 +54,22 @@ public partial class EndangeredAnimalQuizPage : ContentPage
 
     private void OnClickedCarnivoraButton(object sender, EventArgs e)
     {
-        var viewModel = BindingContext as EndangeredAnimalQuizViewModel;
-        if (viewModel != null)
-        {
-            viewModel.FilterByOrder("Carnivora");
-        }
-        
+        FilterByAnimalOrder("Carnivora");
     }
 
     private void OnClickedPrimatesButton(object sender, EventArgs e)
     {
-        var viewModel = BindingContext as EndangeredAnimalQuizViewModel;
-        if (viewModel != null)
-        {
-            viewModel.FilterByOrder("Primates");
-        }
+        FilterByAnimalOrder("Primates");
     }
 
     private void OnClickedOddToedUngulatesButton(object sender, EventArgs e)
     {
-        var viewModel = BindingContext as EndangeredAnimalQuizViewModel;
-        if (viewModel != null)
-        {
-            viewModel.FilterByOrder("Odd-Toed Ungulates");
-        }
+        FilterByAnimalOrder("Odd-Toed Ungulates");
     }
 
     private void OnClickedEvenToedUngulatesButton(object sender, EventArgs e)
     {
-        var viewModel = BindingContext as EndangeredAnimalQuizViewModel;
-        if (viewModel != null)
-        {
-            viewModel.FilterByOrder("Even-Toed Ungulates");
-        }
+        FilterByAnimalOrder("Even-Toed Ungulates");
     }
 
     private void OnClickedAllAnimalsButton(object sender, EventArgs e)
@@ -95,6 +78,15 @@ public partial class EndangeredAnimalQuizPage : ContentPage
         if (viewModel != null)
         {
             viewModel.ShowAllAnimalsInQuiz();
+        }
+    }
+
+    private void FilterByAnimalOrder(string animalOrderName)
+    {
+        var viewModel = BindingContext as EndangeredAnimalQuizViewModel;
+        if (viewModel != null)
+        {
+            viewModel.FilterByOrder(animalOrderName);
         }
     }
 }

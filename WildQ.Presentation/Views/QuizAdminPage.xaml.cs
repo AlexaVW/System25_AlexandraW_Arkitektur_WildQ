@@ -45,56 +45,29 @@ public partial class QuizAdminPage : ContentPage
     public List<Question> Questions { get; set; }
 
     // Clicks ---------------------------------------------------------------------------------
+    // Animal
     private async void OnClickedSaveButton(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(AnimalNameEntry.Text) || 
-            string.IsNullOrEmpty(ImageSourceEntry.Text) || 
-            string.IsNullOrEmpty(OrderEntry.Text))
+        if(!await ValidAnimalInput())
         {
-            await DisplayAlert("Error", "You can't leave any field empty", "OK");
             return;
         }
         
         if (Animal == null) // Create new Animal
         {
-            Animal = new Animal()
-            {
-                // Reading from entry
-                Id = Guid.NewGuid().ToString(),
-                AnimalName = AnimalNameEntry.Text,
-                ImageSource = ImageSourceEntry.Text,
-                Order = OrderEntry.Text
-            };
-            
-                await _animalService.CreateAnimalAsync(Animal);
-                await DisplayAlert("Succesful", "Animal is saved", "OK");
+            await CreateNewAnimal();
         }
         else // When edit - the new entries are inserted into Animal
         {
-            Animal.AnimalName = AnimalNameEntry.Text; 
-            Animal.ImageSource = ImageSourceEntry.Text;
-            Animal.Order = OrderEntry.Text;
-            
-            await _animalService.UpdateAnimalAsync(Animal);
-            await DisplayAlert("Succesful", "Animal updated", "OK");
+            await UpdateExistingAnimal();
         }
     }
 
     // Question and Answers
     private async void OnClickedSaveQuestionButton(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(QuestionTextEntry.Text))
+        if(!await ValidQuestionAndAnswerInputs())
         {
-            await DisplayAlert("Error", "You can't leave any field empty", "OK");
-            return;
-        }
-
-        if(string.IsNullOrEmpty(AnswerText1Entry.Text) || 
-            string.IsNullOrEmpty(AnswerText2Entry.Text) ||
-            string.IsNullOrEmpty(AnswerText3Entry.Text) ||
-            string.IsNullOrEmpty(AnswerText4Entry.Text))
-        {
-            await DisplayAlert("Error", "You can't leave any field empty", "OK");
             return;
         }
         
@@ -103,6 +76,94 @@ public partial class QuizAdminPage : ContentPage
             await DisplayAlert("Error", "You have to save the animal first", "OK");
             return;
         }
+        
+        Question question = CreateQuestion();
+        await SaveQuestion(question);
+    }
+
+    private async void OnClickedGoBackToAnimalQuizPage(object sender, EventArgs e)
+    {
+        //await Navigation.PushAsync(new EndangeredAnimalQuiz());
+        await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
+    }
+
+    // Methods --------------------------------------------------------------------------------------
+    // Animal------------------------------------------------------
+    private async Task<bool> ValidAnimalInput()
+    {
+        if (string.IsNullOrWhiteSpace(AnimalNameEntry.Text) ||
+            string.IsNullOrWhiteSpace(ImageSourceEntry.Text) ||
+            string.IsNullOrWhiteSpace(OrderEntry.Text))
+        {
+            await DisplayAlert("Error", "You can't leave any field empty", "OK");
+            return false;
+        }
+        return true;
+    }
+    private async Task CreateNewAnimal()
+    {
+        Animal = new Animal()
+        {
+            // Reading from entry
+            Id = Guid.NewGuid().ToString(),
+            AnimalName = AnimalNameEntry.Text,
+            ImageSource = ImageSourceEntry.Text,
+            Order = OrderEntry.Text
+        };
+
+        await _animalService.CreateAnimalAsync(Animal);
+        await DisplayAlert("Successful", "Animal is saved", "OK");
+    }
+
+    private async Task UpdateExistingAnimal()
+    {
+        Animal.AnimalName = AnimalNameEntry.Text;
+        Animal.ImageSource = ImageSourceEntry.Text;
+        Animal.Order = OrderEntry.Text;
+
+        await _animalService.UpdateAnimalAsync(Animal);
+        await DisplayAlert("Successful", "Animal updated", "OK");
+    }
+
+    // Question and Answers ------------------------------------------
+    private async Task<bool> ValidQuestionAndAnswerInputs()
+    {
+        if (string.IsNullOrWhiteSpace(QuestionTextEntry.Text))
+        {
+            await DisplayAlert("Error", "You can't leave any field empty", "OK");
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(AnswerText1Entry.Text) ||
+            string.IsNullOrWhiteSpace(AnswerText2Entry.Text) ||
+            string.IsNullOrWhiteSpace(AnswerText3Entry.Text) ||
+            string.IsNullOrWhiteSpace(AnswerText4Entry.Text))
+        {
+            await DisplayAlert("Error", "You can't leave any field empty", "OK");
+            return false;
+        }
+        return true;
+    }
+    private static Answer CreateNewAnswer(string answerText, bool isTrue)
+    {
+        return new Answer
+        {
+            Id = Guid.NewGuid().ToString(),
+            AnswerText = answerText,
+            IsTrue = isTrue
+        };
+    }
+    private async Task SaveQuestion(Question question)
+    {
+        Animal.Questions.Add(question);
+
+        await _animalService.UpdateAnimalAsync(Animal);
+        await DisplayAlert("Successful", "the question is updated", "OK");
+
+        await Navigation.PushAsync(new QuizAdminPage(Animal));
+    }
+    private Question CreateQuestion()
+    {
         Question question = new Question()
         {
             Id = Guid.NewGuid().ToString(),
@@ -115,29 +176,7 @@ public partial class QuizAdminPage : ContentPage
                 CreateNewAnswer(AnswerText4Entry.Text, false)
             }
         };
-        Animal.Questions.Add(question);
-
-        await _animalService.UpdateAnimalAsync(Animal);
-        await DisplayAlert("Succesful", "the question is updated", "OK");
-
-        await Navigation.PushAsync(new QuizAdminPage(Animal));
-    }
-
-    private async void OnClickedGoBackToAnimalQuizPage(object sender, EventArgs e)
-    {
-        //await Navigation.PushAsync(new EndangeredAnimalQuiz());
-        await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
-    }
-
-    // Methods --------------------------------------------------------------------------------------
-    private static Answer CreateNewAnswer(string answerText, bool isTrue)
-    {
-        return new Answer
-        {
-            Id = Guid.NewGuid().ToString(),
-            AnswerText = answerText,
-            IsTrue = isTrue
-        };
+        return question;
     }
 
     // OnCollectionViewSelectionChanged ----------------------------------------------------------
