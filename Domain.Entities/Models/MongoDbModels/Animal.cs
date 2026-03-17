@@ -13,7 +13,7 @@ namespace Domain.Entities.Models.MongoDbModels
         public string ImageSource { get; set; }
         public string Order {  get; set; }
 
-        //One animal has many questions
+        // One animal has a list of questions
         public List<Question> Questions { get; set; } = new List<Question>(); 
     }
 }

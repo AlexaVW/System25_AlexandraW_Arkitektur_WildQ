@@ -21,8 +21,9 @@ public partial class EditQuestionPage : ContentPage
         
         Question = question;
 
-        if (question != null) // Filling in the entries with the existing question and answers
+        if (question != null) 
         {
+            // Populating entries with existing data
             QuestionTextEntry.Text = question.QuestionText;
 
             AnswerText1Entry.Text = question.Answers[0].AnswerText;
@@ -39,7 +40,7 @@ public partial class EditQuestionPage : ContentPage
     // Clicks ---------------------------------------------------------------------------------
     private async void OnClickedSaveQuestionButton(object sender, EventArgs e)
     {
-		// Updating the question and answers on the Animal 
+		// Updating the question and answers in Animal 
         Question.QuestionText = QuestionTextEntry.Text;
 		
 		Question.Answers[0].AnswerText = AnswerText1Entry.Text;

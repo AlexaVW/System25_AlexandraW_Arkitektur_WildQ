@@ -11,7 +11,6 @@ namespace WildQ.Infrastructure.Repositories
 {
     public class SearchAnimalRepositoryAPI : ISearchAnimalRepository
     {
-        // Returns a list of animals that the user searched for
         public async Task<List<SearchAnimal>> GetAsync(string animalName)
         {
             return await APISearchAnimal.GetAnimalsAsync(animalName);

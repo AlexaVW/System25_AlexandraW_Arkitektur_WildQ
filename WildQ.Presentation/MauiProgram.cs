@@ -33,7 +33,7 @@ namespace WildQ.Presentation
             builder.Services.AddScoped<ISearchAnimalService, SearchAnimalService>();
             builder.Services.AddScoped<IAnimalRepository, AnimalRepositoryMongoDb>();
 
-            builder.Services.AddTransient<SearchAnimalPageViewModel>(); // Creates a new instance
+            builder.Services.AddTransient<SearchAnimalPageViewModel>(); 
             builder.Services.AddTransient<SearchAnimalPage>();
 
             builder.Services.AddTransient<EndangeredAnimalQuizViewModel>();

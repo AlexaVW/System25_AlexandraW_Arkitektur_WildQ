@@ -12,28 +12,31 @@ public partial class QuizAdminPage : ContentPage
     IAnimalService _animalService;
 
     // Constructor ----------------------------------------------------------------------------
-    public QuizAdminPage(Animal animal)// If animal exisits = Edit animal - animal gets passed in. If empty - creating new animal
+    
+    public QuizAdminPage(Animal animal) 
     {
         InitializeComponent();
 
         _animalService = new AnimalService();
 
         Animal = animal;
-
-        EditExistingQuestionLabel.IsVisible = false; // Not visible when creating animal
+        
+        // Not visible when creating animal
+        EditExistingQuestionLabel.IsVisible = false; 
         ExistingQuestionsBorder.IsVisible = false;
-
-        if (animal != null) // If Edit Animal 
+        
+        // Edit Animal 
+        if (animal != null) 
         {
-            BindingContext = Animal; // For Binding in UI
+            BindingContext = Animal; 
 
-            // Getting the data that already exists and inserting it to the entries
+            // Populating entries with existing data
             AnimalNameEntry.Text = animal.AnimalName;
             ImageSourceEntry.Text = animal.ImageSource;
             OrderEntry.Text = animal.Order;
-            SaveButton.Text = "Update Animal"; // New text on the button
+            SaveButton.Text = "Update Animal";
 
-            // Are only visible if there are questions
+            // Only visible if there are questions
             bool hasQuestions = animal.Questions != null && animal.Questions.Count > 0;
             EditExistingQuestionLabel.IsVisible = hasQuestions; 
             ExistingQuestionsBorder.IsVisible = hasQuestions;
@@ -53,11 +56,11 @@ public partial class QuizAdminPage : ContentPage
             return;
         }
         
-        if (Animal == null) // Create new Animal
+        if (Animal == null) 
         {
             await CreateNewAnimal();
         }
-        else // When edit - the new entries are inserted into Animal
+        else 
         {
             await UpdateExistingAnimal();
         }
@@ -71,7 +74,7 @@ public partial class QuizAdminPage : ContentPage
             return;
         }
         
-        if (Animal == null) // Have to save the animal before creating questions
+        if (Animal == null) 
         {
             await DisplayAlert("Error", "You have to save the animal first", "OK");
             return;
@@ -83,12 +86,11 @@ public partial class QuizAdminPage : ContentPage
 
     private async void OnClickedGoBackToAnimalQuizPage(object sender, EventArgs e)
     {
-        //await Navigation.PushAsync(new EndangeredAnimalQuiz());
         await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
     }
 
     // Methods --------------------------------------------------------------------------------------
-    // Animal------------------------------------------------------
+    // Animal ------------------------------------------------------
     private async Task<bool> ValidAnimalInput()
     {
         if (string.IsNullOrWhiteSpace(AnimalNameEntry.Text) ||
@@ -117,6 +119,7 @@ public partial class QuizAdminPage : ContentPage
 
     private async Task UpdateExistingAnimal()
     {
+        // Reading from entry
         Animal.AnimalName = AnimalNameEntry.Text;
         Animal.ImageSource = ImageSourceEntry.Text;
         Animal.Order = OrderEntry.Text;
@@ -125,7 +128,7 @@ public partial class QuizAdminPage : ContentPage
         await DisplayAlert("Successful", "Animal updated", "OK");
     }
 
-    // Question and Answers ------------------------------------------
+    // Question and Answers ----------------------------------------
     private async Task<bool> ValidQuestionAndAnswerInputs()
     {
         if (string.IsNullOrWhiteSpace(QuestionTextEntry.Text))
@@ -143,6 +146,22 @@ public partial class QuizAdminPage : ContentPage
             return false;
         }
         return true;
+    }
+    private Question CreateQuestion()
+    {
+        Question question = new Question()
+        {
+            Id = Guid.NewGuid().ToString(),
+            QuestionText = QuestionTextEntry.Text,
+            Answers = new List<Answer>
+            {
+                CreateNewAnswer(AnswerText1Entry.Text, true),
+                CreateNewAnswer(AnswerText2Entry.Text, false),
+                CreateNewAnswer(AnswerText3Entry.Text, false),
+                CreateNewAnswer(AnswerText4Entry.Text, false)
+            }
+        };
+        return question;
     }
     private static Answer CreateNewAnswer(string answerText, bool isTrue)
     {
@@ -162,30 +181,15 @@ public partial class QuizAdminPage : ContentPage
 
         await Navigation.PushAsync(new QuizAdminPage(Animal));
     }
-    private Question CreateQuestion()
-    {
-        Question question = new Question()
-        {
-            Id = Guid.NewGuid().ToString(),
-            QuestionText = QuestionTextEntry.Text,
-            Answers = new List<Answer>
-            {
-                CreateNewAnswer(AnswerText1Entry.Text, true),
-                CreateNewAnswer(AnswerText2Entry.Text, false),
-                CreateNewAnswer(AnswerText3Entry.Text, false),
-                CreateNewAnswer(AnswerText4Entry.Text, false)
-            }
-        };
-        return question;
-    }
+    
 
     // OnCollectionViewSelectionChanged ----------------------------------------------------------
-    // When clicked on an existing question to edit from the collectionview
+    // When clicked on an existing question to edit 
     private async void OnSelectedChangedQuestion(object sender, SelectionChangedEventArgs e)
     {
         Question question = ((CollectionView)sender).SelectedItem as Question;
 
-        ((CollectionView)sender).SelectedItem = null; // So we can go back and click on the same question again
+        ((CollectionView)sender).SelectedItem = null; 
 
         if (question != null)
         {

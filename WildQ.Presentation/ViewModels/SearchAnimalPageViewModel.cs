@@ -15,14 +15,14 @@ namespace WildQ.Presentation.ViewModels
 {
     public class SearchAnimalPageViewModel : INotifyPropertyChanged
     {
-        readonly private ISearchAnimalService _searchAnimalService; // Dependency injection
+        readonly private ISearchAnimalService _searchAnimalService;
 
         // Constructor ----------------------------------------------------------------------------
         public SearchAnimalPageViewModel(ISearchAnimalService searchAnimalService)
         {
             _searchAnimalService = searchAnimalService;
             
-            // The command running when user clicks on Search button
+            // When user clicks on Search button
             SearchAnimalCommand = new Command(async () =>
             {
                 await LoadAnimalsAsync(AnimalNameInput); // Loading the searched animal from the API
@@ -36,16 +36,14 @@ namespace WildQ.Presentation.ViewModels
             get { return _animalNameInput; }
             set
             {
-                // UI is updating when value is changed
                 _animalNameInput = value; 
                 OnPropertyChanged(nameof(AnimalNameInput)); 
             }
         }
-        public ICommand SearchAnimalCommand { get; set; } // The command running when user clicks search button
+        public ICommand SearchAnimalCommand { get; set; } 
 
-        // Creating an ObservableCollection so that UI can update
         private ObservableCollection<SearchAnimal> _animals = new ObservableCollection<SearchAnimal>();
-        public ObservableCollection<SearchAnimal> Animals // The property binding to ItemsSource 
+        public ObservableCollection<SearchAnimal> Animals 
         {
             get { return _animals; }
             set
@@ -68,7 +66,6 @@ namespace WildQ.Presentation.ViewModels
             ObservableCollection<SearchAnimal> animals = new ObservableCollection<SearchAnimal>();
             if (!string.IsNullOrWhiteSpace(animalName))
             {
-                // Getting the animal from the API
                 var animalList = await _searchAnimalService.GetAnimalsAsync(animalName);
                 animals = new ObservableCollection<SearchAnimal>(animalList);
             }

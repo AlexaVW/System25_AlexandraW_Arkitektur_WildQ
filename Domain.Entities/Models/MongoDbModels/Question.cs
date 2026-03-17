@@ -13,7 +13,7 @@ namespace Domain.Entities.Models.MongoDbModels
         
         // One question belongs to one animal
 
-        // One question has many answers
+        // One question has a list of answers
         public List<Answer> Answers { get; set; } = new List<Answer>();
     }
 }

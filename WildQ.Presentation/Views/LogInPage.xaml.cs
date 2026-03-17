@@ -16,7 +16,7 @@ public partial class LogInPage : ContentPage
         string userName = UserNameEntry.Text;
         string passWord = PasswordEntry.Text;
 
-        if(string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(passWord))
+        if(string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(passWord))
         {
             await DisplayAlert("Error", "You have to enter a username and password", "OK");
             return;

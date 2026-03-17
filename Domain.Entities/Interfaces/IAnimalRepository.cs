@@ -9,7 +9,7 @@ namespace Domain.Entities.Interfaces
 {
     public interface IAnimalRepository
     {
-        Task<List<Models.MongoDbModels.Animal>> GetAllAsync(); // Returns a list of Animal
+        Task<List<Models.MongoDbModels.Animal>> GetAllAsync();
 
         Task CreateAsync(Animal animal);
 

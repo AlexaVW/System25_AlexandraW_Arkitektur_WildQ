@@ -63,7 +63,6 @@ namespace WildQ.Infrastructure.Repositories
             List<Animal> animals = new List<Animal>();
             try
             {
-                // Getting the collection of animals from MongoDb
                 var animalCollection = _database.GetCollection<Animal>("animals"); 
 
                 // Finding the documents and returning it as a list

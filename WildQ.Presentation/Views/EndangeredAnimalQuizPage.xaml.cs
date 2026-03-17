@@ -27,11 +27,11 @@ public partial class EndangeredAnimalQuizPage : ContentPage
     }
 
     // OnCollectionViewSelectionChanged ----------------------------------------------------------
-    private async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e) // When an animal is selected
+    private async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e) 
     {
         var selectedAnimal = ((CollectionView)sender).SelectedItem as Animal;
 
-        ((CollectionView)sender).SelectedItem = null; // To be able to klick on the same animal again if go back
+        ((CollectionView)sender).SelectedItem = null; 
 
         if (selectedAnimal != null)
         {
@@ -44,7 +44,7 @@ public partial class EndangeredAnimalQuizPage : ContentPage
     // Clicks ---------------------------------------------------------------------------------
     private async void OnClickedGoAdminQuizPage(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new QuizAdminPage(null)); //null so we don't have an to have an animal yet
+        await Navigation.PushAsync(new QuizAdminPage(null));
     }
 
     private async void OnClickedGoBackToMainPage(object sender, EventArgs e)
@@ -81,6 +81,7 @@ public partial class EndangeredAnimalQuizPage : ContentPage
         }
     }
 
+    // Methods ------------------------------------------------------------------
     private void FilterByAnimalOrder(string animalOrderName)
     {
         var viewModel = BindingContext as EndangeredAnimalQuizViewModel;

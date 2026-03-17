@@ -16,7 +16,7 @@ public partial class ScorePage : ContentPage
     // Clicks ---------------------------------------------------------------------------------
     private async void OnClickedTryAgain(object sender, EventArgs e)
     {
-		var viewModel = BindingContext as ScorePageViewModel; // To access properties
+		var viewModel = BindingContext as ScorePageViewModel; 
         await Navigation.PushAsync(new AnimalQuizPage(viewModel.Animal));
     }
 

@@ -16,42 +16,44 @@ public partial class AnimalQuizPage : ContentPage
         InitializeComponent();
         _animalService = new AnimalService();
         
-        _animal = animal; // To be used in navigation and methods
-        Animal = animal; // For binding in UI
+        _animal = animal; 
+        Animal = animal; 
 
         // Starting the quiz with the first question
         if (Animal != null && Animal.Questions.Count > 0) 
         {
             CurrentQuestion = Animal.Questions[0];
         }
-        BindingContext = this; // Binding this page for UI
+        BindingContext = this; 
     }
 
     // Properties -----------------------------------------------------------------------------
     
     private Animal _animal;
-    public Animal Animal { get; set; } // public - To use in binding for AnimalName and ImageSource in xaml
+    public Animal Animal { get; set; } 
 
     public List <Answer> RandomOrderOnAnswers { get; set; }
     private Random _random = new Random();
     
     int amountOfCorrectAnswers = 0;
     
-    private int _currentQuestionIndex = 0; // To keep track on which question the user is on
+    private int _currentQuestionIndex = 0; 
 
     private Question _currentQuestion;
-    public Question CurrentQuestion // To be able to change the current question
+    public Question CurrentQuestion 
     {
         get { return _currentQuestion; }
         set
         {
-            _currentQuestion = value; // Updating the current question
+            _currentQuestion = value; 
 
-            RandomizeOrderOnAnswers(); // Randomizing the order of answers on the current question
-
-            OnPropertyChanged(nameof(CurrentQuestion)); // Tells the UI to update to the current questiontext
-
-            OnPropertyChanged(nameof(RandomOrderOnAnswers)); // Tells the UI to update after the random order on the answers are done
+            RandomizeOrderOnAnswers();
+            
+            // Tells the UI to update to the current questiontext
+            OnPropertyChanged(nameof(CurrentQuestion));
+            
+            // Tells the UI to update after the random order on the answers are done
+            OnPropertyChanged(nameof(RandomOrderOnAnswers)); 
         }
     }
     
@@ -72,7 +74,7 @@ public partial class AnimalQuizPage : ContentPage
     private async void OnClickedAnswer(object sender, EventArgs e)
     {
         var button = sender as Button;
-        var selectedAnswer = button.BindingContext as Answer; // Binding the button as Answer
+        var selectedAnswer = button.BindingContext as Answer;
         
         if (selectedAnswer.IsTrue)
         {
@@ -101,31 +103,30 @@ public partial class AnimalQuizPage : ContentPage
         }
         await _animalService.DeleteAnimalAsync(_animal);
         
-        //await Navigation.PushAsync(new EndangeredAnimalQuiz());
         await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
     }
     private async void OnClickedGoBackToEndangeredAnimalQuiz(object sender, EventArgs e)
     {
-        //await Navigation.PushAsync(new EndangeredAnimalQuiz());
         await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
     }
 
     // Methods --------------------------------------------------------------------------------------
     private async void NextQuestion()
     {
-        _currentQuestionIndex++; // To go to the next question
+        _currentQuestionIndex++;
 
-        if (_currentQuestionIndex >= _animal.Questions.Count) // If there are no questions left
+        // If there are no questions left
+        if (_currentQuestionIndex >= _animal.Questions.Count) 
         {
             await Navigation.PushAsync(new ScorePage(amountOfCorrectAnswers, _animal));
             return;
         }
-
-        CurrentQuestion = _animal.Questions[_currentQuestionIndex]; // Going to the next question - updating UI
+        
+        // Going to the next question - updating UI
+        CurrentQuestion = _animal.Questions[_currentQuestionIndex]; 
     }
     private void RandomizeOrderOnAnswers()
     {
         RandomOrderOnAnswers = _currentQuestion.Answers.OrderBy(answer => _random.Next()).ToList();
-        // Random.Next gives random numbers to each answer. Ordering by those numbers
     }
 }

@@ -9,17 +9,17 @@ namespace WildQ.Application.Services
     public class UserSession
     {
         // Designpattern: Singleton
-        // To not make a new instance of the class on every page.
         // Used to keep track of who is logged in.
+        // Only have to make an instance of this class once
         
-        private static readonly UserSession _instance = new UserSession(); // Can now only make one instance of this class
+        private static readonly UserSession _instance = new UserSession(); 
 
         public static UserSession GetUserSession()
         {
-            return _instance; // Getting the instance of this class
+            return _instance; 
         }
 
-        private UserSession() // Private constructor so we can't make an instans of this class
+        private UserSession() 
         {
 
         }

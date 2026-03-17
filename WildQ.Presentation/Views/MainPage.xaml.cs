@@ -42,7 +42,6 @@ namespace WildQ.Presentation
         // Clicks ---------------------------------------------------------------------------------
         private async void OnClickedSearchAnimal(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new Views.SearchAnimalPage());
             await Shell.Current.GoToAsync(nameof(SearchAnimalPage));
         }
 
@@ -56,13 +55,12 @@ namespace WildQ.Presentation
                 return;
             }
             
-            //await Navigation.PushAsync(new Views.EndangeredAnimalQuiz());
             await Shell.Current.GoToAsync(nameof(EndangeredAnimalQuizPage));
         }
 
         private async void OnClickedLogIn(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Views.LogInPage());
+            await Navigation.PushAsync(new LogInPage());
         }
 
         private async void OnClickedLoginAndLogout(object sender, EventArgs e)
@@ -80,7 +78,7 @@ namespace WildQ.Presentation
             else
             {
                 // If logged out the button sends the user to LoginPage
-                await Navigation.PushAsync(new Views.LogInPage()); 
+                await Navigation.PushAsync(new LogInPage()); 
             }
         }
     }

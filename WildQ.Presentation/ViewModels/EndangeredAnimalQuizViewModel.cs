@@ -14,7 +14,7 @@ namespace WildQ.Presentation.ViewModels
 {
     public class EndangeredAnimalQuizViewModel : INotifyPropertyChanged
     {
-        private readonly IAnimalService _animalService; // Dependency injection
+        private readonly IAnimalService _animalService; 
 
         // Constructor ----------------------------------------------------------------------------
         public EndangeredAnimalQuizViewModel(IAnimalService animalService) 
@@ -24,7 +24,7 @@ namespace WildQ.Presentation.ViewModels
         }
 
         // Properties -----------------------------------------------------------------------------
-        private List<Animal> _allAnimalsInQuiz; // To store all the animals once so we don't have to call the database again when using filter
+        private List<Animal> _allAnimalsInQuiz; 
 
 
         private ObservableCollection<Animal> _animals;
@@ -46,9 +46,8 @@ namespace WildQ.Presentation.ViewModels
         public event PropertyChangedEventHandler? PropertyChanged;
 
         // Methods --------------------------------------------------------------------------------------
-        private async void LoadAnimalsInQuizAsync()
+        private async Task LoadAnimalsInQuizAsync()
         {
-            // Getting the animals from database
             var data = await _animalService.GetAllAnimalsAsync();
 
             _allAnimalsInQuiz = data.ToList();
@@ -65,7 +64,6 @@ namespace WildQ.Presentation.ViewModels
 
         public void ShowAllAnimalsInQuiz() 
         {
-            // Using the already stored list without filter - Don't have to call the database again
             Animals = new ObservableCollection<Animal>(_allAnimalsInQuiz);
         }
     }

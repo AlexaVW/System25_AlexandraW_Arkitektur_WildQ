@@ -8,7 +8,7 @@ public partial class SearchAnimalPage : ContentPage
     public SearchAnimalPage(ViewModels.SearchAnimalPageViewModel viewModel)
 	{
 		InitializeComponent();
-        BindingContext = viewModel;
+        BindingContext = viewModel; 
     }
 
     // Clicks ---------------------------------------------------------------------------------

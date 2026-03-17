@@ -17,7 +17,7 @@ namespace WildQ.Infrastructure.Data
 
         public static async Task<List<SearchAnimal>> GetAnimalsAsync(string animalName)
         {
-            List<SearchAnimal> animals = new List<SearchAnimal>(); //Initializing the list before try catch so that it will always return a list, empty or not. It wont be null
+            List<SearchAnimal> animals = new List<SearchAnimal>();
             try
             {
                 HttpClient client = new HttpClient();
@@ -42,7 +42,6 @@ namespace WildQ.Infrastructure.Data
                 
             }
             return animals;
-
         }
     }
 }
